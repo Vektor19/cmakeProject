@@ -1,6 +1,7 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 #include <iostream>
+#include "renderer/ShaderProgram.h"
 
 int main(void)
 {
@@ -60,21 +61,12 @@ int main(void)
         "   fragment_color = vec4(color, 1.0);"
         "}";
 
-    GLuint v_shader = glCreateShader(GL_VERTEX_SHADER);
-    glShaderSource(v_shader, 1, &v_shader_source, nullptr);
-    glCompileShader(v_shader);
-
-    GLuint f_shader = glCreateShader(GL_FRAGMENT_SHADER);
-    glShaderSource(f_shader, 1, &f_shader_source, nullptr);
-    glCompileShader(f_shader);
-
-    GLuint shader_program = glCreateProgram();
-    glAttachShader(shader_program, v_shader);
-    glAttachShader(shader_program, f_shader);
-    glLinkProgram(shader_program);
-
-    glDeleteShader(v_shader);
-    glDeleteShader(f_shader);
+    renderer::ShaderProgram shaderProgram(v_shader_source, f_shader_source);
+    if (!shaderProgram.isCompiled())
+    {
+        std::cerr << "Can't create shader program\n";
+        return -1;
+    }
 
     GLuint points_vbo = 0;
     glGenBuffers(1, &points_vbo);
@@ -106,7 +98,7 @@ int main(void)
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
-        glUseProgram(shader_program);
+        shaderProgram.use();
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
