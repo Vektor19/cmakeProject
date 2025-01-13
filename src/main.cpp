@@ -2,8 +2,8 @@
 #include <GLFW/glfw3.h>
 #include <iostream>
 #include "renderer/ShaderProgram.h"
-
-int main(void)
+#include "resources/ResourceManager.h"
+int main(int argc, char** argv)
 {
     GLFWwindow* window;
 
@@ -43,26 +43,12 @@ int main(void)
         0.0f, 0.0f, 1.0f,
     };
 
-    const char* v_shader_source =
-        "#version 460\n"
-        "layout(location = 0) in vec3 vertex_position;"
-        "layout(location = 1) in vec3 vertex_color;"
-        "out vec3 color;"
-        "void main(){"
-        "   gl_Position = vec4(vertex_position, 1.0);"
-        "   color = vertex_color;"
-        "}";
 
-    const char* f_shader_source =
-        "#version 460\n"
-        "in vec3 color;"
-        "out vec4 fragment_color;"
-        "void main(){"
-        "   fragment_color = vec4(color, 1.0);"
-        "}";
-
-    renderer::ShaderProgram shaderProgram(v_shader_source, f_shader_source);
-    if (!shaderProgram.isCompiled())
+    
+    resources::ResourcesManager* pResourcesManager = resources::ResourcesManager::get_instance();
+    pResourcesManager->setExecutablePath(argv[0]);
+    auto pDefaultShaderProgram = pResourcesManager->loadShaders("DefaultShaderProgram", "res/shaders/vertex_default.txt", "res/shaders/fragment_default.txt");
+    if (!pDefaultShaderProgram)
     {
         std::cerr << "Can't create shader program\n";
         return -1;
@@ -98,7 +84,7 @@ int main(void)
     {
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
-        shaderProgram.use();
+        pDefaultShaderProgram->use();
         glBindVertexArray(vao);
         glDrawArrays(GL_TRIANGLES, 0, 3);
 
@@ -109,7 +95,7 @@ int main(void)
         /* Poll for and process events */
         glfwPollEvents();
     }
-	
+    pResourcesManager->destroy();
     glfwTerminate();
     return 0;
 }
