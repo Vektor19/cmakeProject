@@ -7,7 +7,10 @@ add_executable(${ProjectName}
 	src/renderer/ShaderProgram.h
 	src/renderer/ShaderProgram.cpp
 	src/resources/ResourceManager.h
-	src/resources/ResourceManager.cpp)
+	src/resources/ResourceManager.cpp
+	src/resources/stb_image.h
+	src/renderer/Texture2D.h
+	src/renderer/Texture2D.cpp)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)

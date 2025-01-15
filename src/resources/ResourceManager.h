@@ -3,7 +3,11 @@
 #include <map>
 #include <string>
 
-namespace renderer { class ShaderProgram; }
+namespace renderer
+{
+	class ShaderProgram;
+	class Texture2D;
+}
 
 namespace resources {
 	class ResourcesManager
@@ -20,11 +24,16 @@ namespace resources {
 		void setExecutablePath(const std::string& path);
 		std::shared_ptr<renderer::ShaderProgram> loadShaders(const std::string& shaderProgramName, const std::string& vertexPath, const std::string& fragmentPath);
 		std::shared_ptr<renderer::ShaderProgram> getShaderProgram(const std::string& shaderProgramName) const;
+		std::shared_ptr<renderer::Texture2D> loadTexture(const std::string& textureName, const std::string& textureRelativePath);
+		std::shared_ptr<renderer::Texture2D> getTexture(const std::string& textureName);
+
 	private:
 		std::string m_path;
 		static ResourcesManager* m_pInstance;
 		typedef std::map<std::string, std::shared_ptr<renderer::ShaderProgram>> ShaderPogramMap;
+		typedef std::map<std::string, std::shared_ptr<renderer::Texture2D>> TextureMap;
 		ShaderPogramMap m_shaderPrograms;
+		TextureMap m_texturesMap;
 		ResourcesManager() = default;
 		std::string getFileString(const std::string& relativeFilePath);
 	};
