@@ -5,6 +5,22 @@
 #include "resources/ResourceManager.h"
 #include "renderer/Texture2D.h"
 
+int g_windowsWidth = 1280;
+int g_windowsHeight = 720;
+
+void glfwWindowSizeCallback(GLFWwindow* window, int newWidth, int newHeight)
+{
+    g_windowsWidth = newWidth;
+    g_windowsHeight = newHeight;
+    glViewport(0, 0, g_windowsWidth, g_windowsHeight);
+}
+void glfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+    {
+        glfwSetWindowShouldClose(window, GL_TRUE);
+    }
+}
 int main(int argc, char** argv)
 {
     GLFWwindow* window;
@@ -14,7 +30,7 @@ int main(int argc, char** argv)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(1280, 720, "vetal loh", NULL, NULL);
+    window = glfwCreateWindow(g_windowsWidth, g_windowsHeight, "vetal loh", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
@@ -22,6 +38,8 @@ int main(int argc, char** argv)
     }
 
     /* Make the window's context current */
+    glfwSetWindowSizeCallback(window, glfwWindowSizeCallback);
+    glfwSetKeyCallback(window, glfwKeyCallback);
     glfwMakeContextCurrent(window);
 	
 	if (!gladLoadGL())
