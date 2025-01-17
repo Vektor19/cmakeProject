@@ -1,4 +1,5 @@
 #include "ShaderProgram.h"
+#include <glm/gtc/type_ptr.hpp>
 namespace renderer {
 	ShaderProgram::ShaderProgram(const std::string& vertexShader, const std::string& fragmentShader)
 	{
@@ -45,9 +46,13 @@ namespace renderer {
 	{
         glUseProgram(m_programId);
 	}
-    void ShaderProgram::setInt(const std::string name, const GLuint value)
+    void ShaderProgram::setInt(const std::string& name, const GLuint value)
     {
         glUniform1i(glGetUniformLocation(m_programId, name.c_str()), value);
+    }
+    void ShaderProgram::setMatrix(const std::string& name, const glm::mat4& matrix)
+    {
+        glUniformMatrix4fv(glGetUniformLocation(m_programId, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));
     }
     ShaderProgram& ShaderProgram::operator=(ShaderProgram&& shaderProgram) noexcept
     {
