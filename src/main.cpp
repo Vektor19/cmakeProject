@@ -1,18 +1,18 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
+#include <glm/vec2.hpp>
 #include <iostream>
 #include "renderer/ShaderProgram.h"
 #include "resources/ResourceManager.h"
 #include "renderer/Texture2D.h"
 
-int g_windowsWidth = 1280;
-int g_windowsHeight = 720;
+glm::ivec2 windowSize(1280, 720);
 
 void glfwWindowSizeCallback(GLFWwindow* window, int newWidth, int newHeight)
 {
-    g_windowsWidth = newWidth;
-    g_windowsHeight = newHeight;
-    glViewport(0, 0, g_windowsWidth, g_windowsHeight);
+    windowSize.x = newWidth;
+    windowSize.y = newHeight;
+    glViewport(0, 0, windowSize.x, windowSize.y);
 }
 void glfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -30,7 +30,7 @@ int main(int argc, char** argv)
         return -1;
 
     /* Create a windowed mode window and its OpenGL context */
-    window = glfwCreateWindow(g_windowsWidth, g_windowsHeight, "vetal loh", NULL, NULL);
+    window = glfwCreateWindow(windowSize.x, windowSize.y, "vetal loh", NULL, NULL);
     if (!window)
     {
         glfwTerminate();
