@@ -1,0 +1,95 @@
+#include "Sprite.h"
+#include "ShaderProgram.h"
+#include "Texture2D.h"
+#include <glm/mat4x4.hpp>
+#include <glm/gtc/matrix_transform.hpp>
+
+namespace renderer
+{
+	Sprite::Sprite(const std::shared_ptr<Texture2D> pTexture,
+		const std::shared_ptr<ShaderProgram> pShaderProgam,
+		const glm::vec2& position,
+		const glm::vec2& size,
+		const float rotation
+		)
+		: m_pTexture(std::move(pTexture))
+		, m_pShaderProgam(std::move(pShaderProgam))
+		, m_position(position)
+		, m_size(size)
+		, m_rotation(rotation)
+	{
+		const GLfloat vertexCoords[] = {
+			0.0f, 0.0f,
+			0.0f, 1.0f,
+			1.0f, 1.0f,
+
+			1.0f, 1.0f,
+			1.0f, 0.0f,
+			0.0f, 0.0f,
+		};
+		const GLfloat texCoords[] = {
+			0.0f, 0.0f,
+			0.0f, 1.0f,
+			1.0f, 1.0f,
+
+			1.0f, 1.0f,
+			1.0f, 0.0f,
+			0.0f, 0.0f,
+		};
+		glGenVertexArrays(1, &m_VAO);
+		glBindVertexArray(m_VAO);
+
+		glGenBuffers(1, &m_vertexCoordsVBO);
+		glBindBuffer(GL_ARRAY_BUFFER, m_vertexCoordsVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(vertexCoords), vertexCoords, GL_STATIC_DRAW);
+		glEnableVertexAttribArray(0);
+		glVertexAttribPointer(0, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+		glGenBuffers(1, &m_textureCoordsVBO);
+		glBindBuffer(GL_ARRAY_BUFFER, m_textureCoordsVBO);
+		glBufferData(GL_ARRAY_BUFFER, sizeof(texCoords), texCoords, GL_STATIC_DRAW);
+		glEnableVertexAttribArray(1);
+		glVertexAttribPointer(1, 2, GL_FLOAT, GL_FALSE, 0, nullptr);
+
+
+		glBindBuffer(GL_ARRAY_BUFFER, 0);
+		glBindVertexArray(0);
+	}
+	Sprite::~Sprite()
+	{
+		glDeleteBuffers(1, &m_vertexCoordsVBO);
+		glDeleteBuffers(1, &m_textureCoordsVBO);
+		glDeleteVertexArrays(1, &m_VAO);
+	}
+	void Sprite::render() const
+	{
+		m_pShaderProgam->use();
+
+		glm::mat4 modelMat(1.f);
+		modelMat = glm::translate(modelMat, glm::vec3(m_position, 0.f));
+		modelMat = glm::translate(modelMat, glm::vec3(0.5f * m_size.x, 0.5f * m_size.y, 0.f));
+		modelMat = glm::rotate(modelMat, glm::radians(m_rotation), glm::vec3(0.f,0.f,1.f));
+		modelMat = glm::translate(modelMat, glm::vec3(-0.5f*m_size.x, -0.5f * m_size.y, 0.f));
+		modelMat = glm::scale(modelMat, glm::vec3(m_size, 1.0f));
+
+		glBindVertexArray(m_VAO);
+		m_pShaderProgam->setMatrix("modelMat", modelMat);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
+
+		glActiveTexture(GL_TEXTURE0);
+		m_pTexture->bind();
+		glBindVertexArray(0);
+	}
+	void Sprite::setPosition(const glm::vec2& position)
+	{
+		this->m_position = position;
+	}
+	void Sprite::setSize(const glm::vec2& size)
+	{
+		this->m_size = size;
+	}
+	void Sprite::setRotation(const float rotation)
+	{
+		this->m_rotation = rotation;
+	}
+}
