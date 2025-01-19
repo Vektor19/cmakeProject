@@ -12,7 +12,9 @@ add_executable(${ProjectName}
 	src/renderer/Texture2D.h
 	src/renderer/Texture2D.cpp
 	src/renderer/Sprite.h
-	src/renderer/Sprite.cpp)
+	src/renderer/Sprite.cpp
+	src/game/Game.h
+	src/game/Game.cpp)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
