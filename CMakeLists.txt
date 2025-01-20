@@ -13,6 +13,8 @@ add_executable(${ProjectName}
 	src/renderer/Texture2D.cpp
 	src/renderer/Sprite.h
 	src/renderer/Sprite.cpp
+	src/renderer/AnimatedSprite.h
+	src/renderer/AnimatedSprite.cpp
 	src/game/Game.h
 	src/game/Game.cpp)
 
