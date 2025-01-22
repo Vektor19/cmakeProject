@@ -9,6 +9,7 @@ namespace renderer
 	class ShaderProgram;
 	class Texture2D;
 	class Sprite;
+	class AnimatedSprite;
 }
 
 namespace resources {
@@ -35,6 +36,13 @@ namespace resources {
 													const unsigned int height,
 													const std::string& subTextureName="default");
 		std::shared_ptr<renderer::Sprite> getSprite(const std::string& spriteName);
+		std::shared_ptr<renderer::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
+																	 const std::string& textureName,
+																	 const std::string& shaderProgramName,
+																	 const unsigned int width,
+												  					 const unsigned int height,
+												 					 const std::string& subTextureName = "default");
+		std::shared_ptr<renderer::AnimatedSprite> getAnimatedSprite(const std::string& spriteName);
 		std::shared_ptr<renderer::Texture2D> loadTextureAtlas(const std::string& textureName,
 															  const std::string& textureRelativePath,
 															  const unsigned int subTextureWidth,
@@ -47,9 +55,11 @@ namespace resources {
 		typedef std::map<std::string, std::shared_ptr<renderer::ShaderProgram>> ShaderPogramMap;
 		typedef std::map<std::string, std::shared_ptr<renderer::Texture2D>> TextureMap;
 		typedef std::map<std::string, std::shared_ptr<renderer::Sprite>> SpriteMap;
+		typedef std::map<std::string, std::shared_ptr<renderer::AnimatedSprite>> AnimatedSpriteMap;
 		ShaderPogramMap m_shaderPrograms;
 		TextureMap m_texturesMap;
 		SpriteMap m_spritesMap;
+		AnimatedSpriteMap m_animatedSpritesMap;
 		ResourcesManager() = default;
 		std::string getFileString(const std::string& relativeFilePath);
 	};

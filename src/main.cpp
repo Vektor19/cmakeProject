@@ -8,6 +8,7 @@
 #include "resources/ResourceManager.h"
 #include "renderer/Texture2D.h"
 #include "renderer/Sprite.h"
+#include "renderer/AnimatedSprite.h"
 
 glm::ivec2 windowSize(1280, 720);
 
@@ -120,6 +121,20 @@ int main(int argc, char** argv)
     auto texture = pResourcesManager->loadTextureAtlas("DefaultTextureAtlas", "res/textures/map_8x8.png", 8, 8, std::move(subTexureNames));
     auto pSprite = pResourcesManager->loadSprite("DefaultSprite", "DefaultTextureAtlas", "SpriteShaderProgram", 100, 100, "block");
     pSprite->setPosition(glm::vec2(100));
+
+    auto pAnimatedSprite = pResourcesManager->loadAnimatedSprite("DefaultAnimatedSprite", "DefaultTextureAtlas", "SpriteShaderProgram", 100, 100, "block");
+    pAnimatedSprite->setPosition(glm::vec2(300));
+    std::vector<std::pair<std::string, uint64_t>> waterState;
+    waterState.emplace_back(std::make_pair<std::string, uint64_t>("water1", 1000000000));
+    waterState.emplace_back(std::make_pair<std::string, uint64_t>("water2", 1000000000));
+    waterState.emplace_back(std::make_pair<std::string, uint64_t>("water3", 1000000000));
+
+    std::vector<std::pair<std::string, uint64_t>> blockState;
+    blockState.emplace_back(std::make_pair<std::string, uint64_t>("block", 1000000000));
+    blockState.emplace_back(std::make_pair<std::string, uint64_t>("grassBlock", 1000000000));
+    pAnimatedSprite->addState("water", std::move(waterState));
+    pAnimatedSprite->addState("block", std::move(blockState));
+    pAnimatedSprite->setState("water");
     GLuint points_vbo = 0;
     glGenBuffers(1, &points_vbo);
     glBindBuffer(GL_ARRAY_BUFFER, points_vbo);
@@ -164,13 +179,17 @@ int main(int argc, char** argv)
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
     glClearColor(1,1,0,1);
+    auto lastTime = std::chrono::high_resolution_clock::now();
     while (!glfwWindowShouldClose(window))
     {
+        auto currentTime = std::chrono::high_resolution_clock::now();
+        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
+        lastTime = currentTime;
+        pAnimatedSprite->update(duration);
         /* Render here */
         glClear(GL_COLOR_BUFFER_BIT);
-        
         pSprite->render();
-
+        pAnimatedSprite->render();
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
 
