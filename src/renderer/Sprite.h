@@ -2,6 +2,7 @@
 #include <glad/glad.h>
 #include <glm/vec2.hpp>
 #include <memory>
+#include <string>
 
 namespace renderer
 {
@@ -11,8 +12,9 @@ namespace renderer
 	class Sprite
 	{
 	public:
-		Sprite(const std::shared_ptr<Texture2D> pTexture,
-			   const std::shared_ptr<ShaderProgram> pShaderProgam,
+		Sprite(std::shared_ptr<Texture2D> pTexture,
+			   const std::string& initialSubtextureName,
+			   std::shared_ptr<ShaderProgram> pShaderProgam,
 			   const glm::vec2& position = glm::vec2(0.f),
 			   const glm::vec2& size = glm::vec2(100.f),
 			   const float rotation = 0.f);
