@@ -2,6 +2,7 @@
 #include <memory>
 #include <map>
 #include <string>
+#include <vector>
 
 namespace renderer
 {
@@ -31,8 +32,14 @@ namespace resources {
 													const std::string& textureName,
 													const std::string& shaderProgramName,
 													const unsigned int width,
-													const unsigned int height);
+													const unsigned int height,
+													const std::string& subTextureName="default");
 		std::shared_ptr<renderer::Sprite> getSprite(const std::string& spriteName);
+		std::shared_ptr<renderer::Texture2D> loadTextureAtlas(const std::string& textureName,
+															  const std::string& textureRelativePath,
+															  const unsigned int subTextureWidth,
+															  const unsigned int subTextureHeight,
+															  std::vector<std::string>& subTexturesNames);
 
 	private:
 		std::string m_path;

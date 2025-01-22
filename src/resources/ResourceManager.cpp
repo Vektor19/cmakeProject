@@ -101,7 +101,7 @@ namespace resources {
 		return nullptr;
 	}
 
-	std::shared_ptr<renderer::Sprite> ResourcesManager::loadSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderProgramName, const unsigned int width, const unsigned int height)
+	std::shared_ptr<renderer::Sprite> ResourcesManager::loadSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderProgramName, const unsigned int width, const unsigned int height, const std::string& subTextureName)
 	{
 		auto pTexture = this->getTexture(textureName);
 		if (!pTexture)
@@ -115,7 +115,7 @@ namespace resources {
 			std::cerr << "Can't find shaderProgram: " << shaderProgramName << " for sprite: " << spriteName << std::endl;
 			return nullptr;
 		}
-		std::shared_ptr<renderer::Sprite> pSprite = m_spritesMap.emplace(spriteName, std::make_shared<renderer::Sprite>(pTexture, pShaderProgram, glm::vec2(0.f, 0.f), glm::vec2(width, height))).first->second;
+		std::shared_ptr<renderer::Sprite> pSprite = m_spritesMap.emplace(spriteName, std::make_shared<renderer::Sprite>(pTexture, subTextureName, pShaderProgram, glm::vec2(0.f, 0.f), glm::vec2(width, height))).first->second;
 		return pSprite;
 	}
 
@@ -128,6 +128,35 @@ namespace resources {
 		}
 		std::cerr << "Can't find sprite: " << spriteName << std::endl;
 		return nullptr;
+	}
+
+	std::shared_ptr<renderer::Texture2D> ResourcesManager::loadTextureAtlas(const std::string& textureName,
+																			const std::string& textureRelativePath,
+																			const unsigned int subTextureWidth,
+																			const unsigned int subTextureHeight,
+																			std::vector<std::string>& subTexturesNames)
+	{
+		auto pTexture = this->loadTexture(textureName, textureRelativePath);
+		if (pTexture)
+		{
+			unsigned int width = pTexture->getWidth();
+			unsigned int height = pTexture->getHeight();
+			unsigned int offsetX = 0;
+			unsigned int offsetY = 0;
+			for (auto& subtextureName : subTexturesNames)
+			{
+				pTexture->addSubtexture(subtextureName,
+					glm::vec2(static_cast<float>(offsetX) / width, static_cast<float>(height - offsetY - subTextureHeight) / height),
+					glm::vec2(static_cast<float>(offsetX + subTextureWidth) / width, static_cast<float>(height - offsetY) / height));
+				offsetX += subTextureWidth;
+				if (offsetX>= width)
+				{
+					offsetX = 0;
+					offsetY += subTextureHeight;
+				}
+			}
+		}
+		return pTexture;
 	}
 
 	std::string ResourcesManager::getFileString(const std::string& relativeFilePath)

@@ -36,7 +36,7 @@ namespace renderer
 
 		glBindTexture(GL_TEXTURE_2D, 0);
 	}
-	Texture2D::Texture2D(Texture2D&& texture2d)
+	Texture2D::Texture2D(Texture2D&& texture2d) noexcept
 	{
 		m_Id = texture2d.m_Id;
 		texture2d.m_Id = 0;
@@ -44,7 +44,7 @@ namespace renderer
 		m_width = texture2d.m_width;
 		m_height = texture2d.m_height;
 	}
-	Texture2D& Texture2D::operator=(Texture2D&& texture2d)
+	Texture2D& Texture2D::operator=(Texture2D&& texture2d) noexcept
 	{
 		glDeleteTextures(1, &m_Id);
 		m_Id = texture2d.m_Id;

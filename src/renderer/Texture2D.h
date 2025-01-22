@@ -28,13 +28,16 @@ namespace renderer
 		Texture2D() = delete;
 		Texture2D(const Texture2D&) = delete;
 		Texture2D& operator=(const Texture2D&) = delete;
-		Texture2D(Texture2D&& texture2d);
-		Texture2D& operator=(Texture2D&& texture2d);
+		Texture2D(Texture2D&& texture2d) noexcept;
+		Texture2D& operator=(Texture2D&& texture2d) noexcept;
 
 		void bind() const;
 
 		void addSubtexture(const std::string& name, const glm::vec2& leftBottomUV, const glm::vec2& rightTopUV);
 		const Subtexture2D& getSubtexture(const std::string& name) const;
+
+		unsigned int getWidth() const { return m_width; }
+		unsigned int getHeight() const { return m_height; }
 	private:
 		GLuint m_Id;
 		GLenum m_format;

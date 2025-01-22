@@ -88,7 +88,37 @@ int main(int argc, char** argv)
         return -1;
     }
     auto tex = pResourcesManager->loadTexture("DefaultTexture", "res/textures/map_8x8.png");
-    auto pSprite = pResourcesManager->loadSprite("DefaultSprite", "DefaultTexture", "SpriteShaderProgram", 100, 200);
+    std::vector<std::string> subTexureNames =
+    {
+        "block",
+        "topLeftBlock",
+        "topRightBlock",
+        "topBlock",
+        "bottomLeftBlock",
+        "leftBlock",
+        "bottomLeftAndTopRightBlock",
+        "withoutBottomRightBlock",
+        "bottomrightBlock",
+        "bottomRightAndTopLeftBlock",
+        "rightBlock",
+        "withoutBottomLeftBlock",
+        "bottomBlock",
+        "withoutTopRightBlock",
+        "withoutTopLeftBlock",
+        "water1",
+        "water2",
+        "water3",
+        "betonBlock",
+        "grassBlock",
+        "leadBlock",
+        "roadBlock",
+        "bulletTop",
+        "bulletBottom",
+        "bulletLeft",
+        "bulletRight"
+    };
+    auto texture = pResourcesManager->loadTextureAtlas("DefaultTextureAtlas", "res/textures/map_8x8.png", 8, 8, std::move(subTexureNames));
+    auto pSprite = pResourcesManager->loadSprite("DefaultSprite", "DefaultTextureAtlas", "SpriteShaderProgram", 100, 100, "block");
     pSprite->setPosition(glm::vec2(100));
     GLuint points_vbo = 0;
     glGenBuffers(1, &points_vbo);
