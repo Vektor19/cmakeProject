@@ -128,12 +128,7 @@ int main(int argc, char** argv)
     waterState.emplace_back(std::make_pair<std::string, uint64_t>("water1", 1000000000));
     waterState.emplace_back(std::make_pair<std::string, uint64_t>("water2", 1000000000));
     waterState.emplace_back(std::make_pair<std::string, uint64_t>("water3", 1000000000));
-
-    std::vector<std::pair<std::string, uint64_t>> blockState;
-    blockState.emplace_back(std::make_pair<std::string, uint64_t>("block", 1000000000));
-    blockState.emplace_back(std::make_pair<std::string, uint64_t>("grassBlock", 1000000000));
     pAnimatedSprite->addState("water", std::move(waterState));
-    pAnimatedSprite->addState("block", std::move(blockState));
     pAnimatedSprite->setState("water");
     GLuint points_vbo = 0;
     glGenBuffers(1, &points_vbo);
