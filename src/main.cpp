@@ -57,7 +57,7 @@ int main(int argc, char** argv)
 	std::cout<<"OpenGL "<<GLVersion.major<<"."<<GLVersion.minor<<std::endl;
     glfwSwapInterval(1);
 
-    glClearColor(1, 1, 0, 1);
+    glClearColor(0, 0, 0, 1);
     ResourcesManager::setExecutablePath(argv[0]);
     if(!g_pGame->init())
     {
