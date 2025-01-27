@@ -16,51 +16,49 @@ namespace resources {
 	class ResourcesManager
 	{
 	public:
+		ResourcesManager() = delete;
+		~ResourcesManager() = delete;
 		ResourcesManager(const ResourcesManager&) = delete;
 		ResourcesManager(ResourcesManager&&) = delete;
 		ResourcesManager& operator=(const ResourcesManager&) = delete;
 		ResourcesManager& operator=(ResourcesManager&&) = delete;
 
-		static ResourcesManager* get_instance();
-		static void destroy();
 
-		void setExecutablePath(const std::string& path);
-		std::shared_ptr<renderer::ShaderProgram> loadShaders(const std::string& shaderProgramName, const std::string& vertexPath, const std::string& fragmentPath);
-		std::shared_ptr<renderer::ShaderProgram> getShaderProgram(const std::string& shaderProgramName) const;
-		std::shared_ptr<renderer::Texture2D> loadTexture(const std::string& textureName, const std::string& textureRelativePath);
-		std::shared_ptr<renderer::Texture2D> getTexture(const std::string& textureName);
-		std::shared_ptr<renderer::Sprite> loadSprite(const std::string& spriteName,
+		static void setExecutablePath(const std::string& path);
+		static std::shared_ptr<renderer::ShaderProgram> loadShaders(const std::string& shaderProgramName, const std::string& vertexPath, const std::string& fragmentPath);
+		static std::shared_ptr<renderer::ShaderProgram> getShaderProgram(const std::string& shaderProgramName);
+		static std::shared_ptr<renderer::Texture2D> loadTexture(const std::string& textureName, const std::string& textureRelativePath);
+		static std::shared_ptr<renderer::Texture2D> getTexture(const std::string& textureName);
+		static std::shared_ptr<renderer::Sprite> loadSprite(const std::string& spriteName,
 													const std::string& textureName,
 													const std::string& shaderProgramName,
 													const unsigned int width,
 													const unsigned int height,
 													const std::string& subTextureName="default");
-		std::shared_ptr<renderer::Sprite> getSprite(const std::string& spriteName);
-		std::shared_ptr<renderer::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
+		static std::shared_ptr<renderer::Sprite> getSprite(const std::string& spriteName);
+		static std::shared_ptr<renderer::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
 																	 const std::string& textureName,
 																	 const std::string& shaderProgramName,
 																	 const unsigned int width,
 												  					 const unsigned int height,
 												 					 const std::string& subTextureName = "default");
-		std::shared_ptr<renderer::AnimatedSprite> getAnimatedSprite(const std::string& spriteName);
-		std::shared_ptr<renderer::Texture2D> loadTextureAtlas(const std::string& textureName,
+		static std::shared_ptr<renderer::AnimatedSprite> getAnimatedSprite(const std::string& spriteName);
+		static std::shared_ptr<renderer::Texture2D> loadTextureAtlas(const std::string& textureName,
 															  const std::string& textureRelativePath,
 															  const unsigned int subTextureWidth,
 															  const unsigned int subTextureHeight,
 															  std::vector<std::string>& subTexturesNames);
-
+		static void unloadAllResources();
 	private:
-		std::string m_path;
-		static ResourcesManager* m_pInstance;
+		static std::string m_path;
 		typedef std::map<std::string, std::shared_ptr<renderer::ShaderProgram>> ShaderPogramMap;
 		typedef std::map<std::string, std::shared_ptr<renderer::Texture2D>> TextureMap;
 		typedef std::map<std::string, std::shared_ptr<renderer::Sprite>> SpriteMap;
 		typedef std::map<std::string, std::shared_ptr<renderer::AnimatedSprite>> AnimatedSpriteMap;
-		ShaderPogramMap m_shaderPrograms;
-		TextureMap m_texturesMap;
-		SpriteMap m_spritesMap;
-		AnimatedSpriteMap m_animatedSpritesMap;
-		ResourcesManager() = default;
-		std::string getFileString(const std::string& relativeFilePath);
+		static ShaderPogramMap m_shaderPrograms;
+		static TextureMap m_texturesMap;
+		static SpriteMap m_spritesMap;
+		static AnimatedSpriteMap m_animatedSpritesMap;
+		static std::string getFileString(const std::string& relativeFilePath);
 	};
 }

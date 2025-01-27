@@ -11,25 +11,11 @@
 #include "stb_image.h"
 
 namespace resources {
-
-	ResourcesManager* ResourcesManager::m_pInstance = nullptr;
-	ResourcesManager* ResourcesManager::get_instance()
-	{
-		if (m_pInstance == nullptr)
-		{
-			m_pInstance = new ResourcesManager;
-		}
-		return m_pInstance;
-	}
-
-	void ResourcesManager::destroy()
-	{
-		if (m_pInstance != nullptr)
-		{
-			delete m_pInstance;
-			m_pInstance = nullptr;
-		}
-	}
+	ResourcesManager::ShaderPogramMap ResourcesManager::m_shaderPrograms;
+	ResourcesManager::TextureMap ResourcesManager::m_texturesMap;
+	ResourcesManager::SpriteMap ResourcesManager::m_spritesMap;
+	ResourcesManager::AnimatedSpriteMap ResourcesManager::m_animatedSpritesMap;
+	std::string ResourcesManager::m_path;
 
 	void ResourcesManager::setExecutablePath(const std::string& path)
 	{
@@ -62,7 +48,7 @@ namespace resources {
 		return nullptr;
 	}
 
-	std::shared_ptr<renderer::ShaderProgram> ResourcesManager::getShaderProgram(const std::string& shaderProgramName) const
+	std::shared_ptr<renderer::ShaderProgram> ResourcesManager::getShaderProgram(const std::string& shaderProgramName)
 	{
 		ShaderPogramMap::const_iterator it = m_shaderPrograms.find(shaderProgramName);
 		if (it != m_shaderPrograms.end())
@@ -104,13 +90,13 @@ namespace resources {
 
 	std::shared_ptr<renderer::Sprite> ResourcesManager::loadSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderProgramName, const unsigned int width, const unsigned int height, const std::string& subTextureName)
 	{
-		auto pTexture = this->getTexture(textureName);
+		auto pTexture = getTexture(textureName);
 		if (!pTexture)
 		{
 			std::cerr << "Can't find texture: " << textureName << " for sprite: " << spriteName << std::endl;
 			return nullptr;
 		}
-		auto pShaderProgram = this->getShaderProgram(shaderProgramName);
+		auto pShaderProgram = getShaderProgram(shaderProgramName);
 		if (!pShaderProgram)
 		{
 			std::cerr << "Can't find shaderProgram: " << shaderProgramName << " for sprite: " << spriteName << std::endl;
@@ -133,13 +119,13 @@ namespace resources {
 
 	std::shared_ptr<renderer::AnimatedSprite> ResourcesManager::loadAnimatedSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderProgramName, const unsigned int width, const unsigned int height, const std::string& subTextureName)
 	{
-		auto pTexture = this->getTexture(textureName);
+		auto pTexture = getTexture(textureName);
 		if (!pTexture)
 		{
 			std::cerr << "Can't find texture: " << textureName << " for animated sprite: " << spriteName << std::endl;
 			return nullptr;
 		}
-		auto pShaderProgram = this->getShaderProgram(shaderProgramName);
+		auto pShaderProgram = getShaderProgram(shaderProgramName);
 		if (!pShaderProgram)
 		{
 			std::cerr << "Can't find shaderProgram: " << shaderProgramName << " for sprite: " << spriteName << std::endl;
@@ -166,7 +152,7 @@ namespace resources {
 																			const unsigned int subTextureHeight,
 																			std::vector<std::string>& subTexturesNames)
 	{
-		auto pTexture = this->loadTexture(textureName, textureRelativePath);
+		auto pTexture = loadTexture(textureName, textureRelativePath);
 		if (pTexture)
 		{
 			unsigned int width = pTexture->getWidth();
@@ -187,6 +173,14 @@ namespace resources {
 			}
 		}
 		return pTexture;
+	}
+
+	void ResourcesManager::unloadAllResources()
+	{
+		m_animatedSpritesMap.clear();
+		m_shaderPrograms.clear();
+		m_texturesMap.clear();
+		m_spritesMap.clear();
 	}
 
 	std::string ResourcesManager::getFileString(const std::string& relativeFilePath)
