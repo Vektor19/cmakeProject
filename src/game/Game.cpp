@@ -25,12 +25,6 @@ Game::~Game()
 
 bool Game::init()
 {
-    auto pDefaultShaderProgram = ResourcesManager::loadShaders("DefaultShaderProgram", "res/shaders/vertex_default.txt", "res/shaders/fragment_default.txt");
-    if (!pDefaultShaderProgram)
-    {
-        std::cerr << "Can't create shader program\n";
-        return true;
-    }
     auto pSpriteShaderProgram = ResourcesManager::loadShaders("SpriteShaderProgram", "res/shaders/vSprite.txt", "res/shaders/fSprite.txt");
     if (!pSpriteShaderProgram)
     {
@@ -116,14 +110,10 @@ bool Game::init()
     pTankSprite->addState("TankRightState", std::move(tankRightState));
 
 
-    pDefaultShaderProgram->use();
-    pDefaultShaderProgram->setInt("tex", 0);
-
     glm::mat4 modelMatrix = glm::mat4(1.f);
     modelMatrix = glm::translate(modelMatrix, glm::vec3(100.f, 200.f, 0.f));
     glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_windowSize.x), 0.f, static_cast<float>(m_windowSize.y), -100.f, 100.f);
     /* Loop until the user closes the window */
-    pDefaultShaderProgram->setMatrix("projectionMat", projectionMatrix);
     pSpriteShaderProgram->use();
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
