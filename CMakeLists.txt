@@ -20,7 +20,9 @@ add_executable(${ProjectName}
 	src/game/Tank.h
 	src/game/Tank.cpp
 	src/renderer/VertexBuffer.h
-	src/renderer/VertexBuffer.cpp)
+	src/renderer/VertexBuffer.cpp
+	src/renderer/IndexBuffer.h
+	src/renderer/IndexBuffer.cpp)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
