@@ -22,7 +22,11 @@ add_executable(${ProjectName}
 	src/renderer/VertexBuffer.h
 	src/renderer/VertexBuffer.cpp
 	src/renderer/IndexBuffer.h
-	src/renderer/IndexBuffer.cpp)
+	src/renderer/IndexBuffer.cpp
+	src/renderer/VertexArray.h
+	src/renderer/VertexArray.cpp
+	src/renderer/VertexBufferLayout.h
+	src/renderer/VertexBufferLayout.cpp)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
