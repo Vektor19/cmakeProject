@@ -9,8 +9,8 @@ namespace renderer
 		~VertexBuffer();
 		VertexBuffer(const VertexBuffer&) = delete;
 		VertexBuffer& operator=(const VertexBuffer&) = delete;
-		VertexBuffer(VertexBuffer&&);
-		VertexBuffer& operator=(VertexBuffer&&);
+		VertexBuffer(VertexBuffer&&) noexcept;
+		VertexBuffer& operator=(VertexBuffer&&) noexcept;
 		void init(const void* data, const unsigned int size);
 		void update(const void* data, const unsigned int size);
 		void bind() const;

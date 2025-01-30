@@ -9,22 +9,28 @@ namespace renderer
 	{
 		glDeleteBuffers(1, &m_id);
 	}
-	VertexBuffer::VertexBuffer(VertexBuffer&&)
+	VertexBuffer::VertexBuffer(VertexBuffer&& other) noexcept
 	{
-
+		m_id = other.m_id;
+		other.m_id = 0;
 	}
-	VertexBuffer& VertexBuffer::operator=(VertexBuffer&&)
+	VertexBuffer& VertexBuffer::operator=(VertexBuffer&& other) noexcept
 	{
+		m_id = other.m_id;
+		other.m_id = 0;
 		// TODO: вставьте здесь оператор return
+		return *this;
 	}
 	void VertexBuffer::init(const void* data, const unsigned int size)
 	{
 		glGenBuffers(1, &m_id);
-		bind();
-		glBufferData(GL_ARRAY_BUFFER, size * sizeof(GLfloat), data, GL_STATIC_DRAW);
+		glBindBuffer(GL_ARRAY_BUFFER, m_id);
+		glBufferData(GL_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
 	}
 	void VertexBuffer::update(const void* data, const unsigned int size)
 	{
+		glBindBuffer(GL_ARRAY_BUFFER, m_id);
+		glBufferSubData(GL_ARRAY_BUFFER, 0, size, &data);
 	}
 	void VertexBuffer::bind() const
 	{
