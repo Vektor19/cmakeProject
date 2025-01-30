@@ -9,10 +9,9 @@ namespace renderer
 		~IndexBuffer();
 		IndexBuffer(const IndexBuffer&) = delete;
 		IndexBuffer& operator=(const IndexBuffer&) = delete;
-		IndexBuffer(IndexBuffer&&) noexcept;
-		IndexBuffer& operator=(IndexBuffer&&) noexcept;
+		IndexBuffer(IndexBuffer&& other) noexcept;
+		IndexBuffer& operator=(IndexBuffer&& other) noexcept;
 		void init(const void* data, const unsigned int size);
-		void update(const void* data, const unsigned int size);
 		void bind() const;
 		void unbind() const;
 	private:
