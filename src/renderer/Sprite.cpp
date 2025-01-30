@@ -3,7 +3,7 @@
 #include "Texture2D.h"
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
-
+#include "Renderer.h"
 namespace renderer
 {
 	Sprite::Sprite(std::shared_ptr<Texture2D> pTexture,
@@ -49,7 +49,7 @@ namespace renderer
 		textureCoordsLayout.addElementLayoutFloat(2, false);
 		m_vertexArray.addBuffer(m_textureCoordsBuffer, textureCoordsLayout);
 
-		m_indexBuffer.init(indeces, 6 * sizeof(GLuint));
+		m_indexBuffer.init(indeces, 6);
 
 
 		m_vertexArray.unbind();
@@ -70,12 +70,12 @@ namespace renderer
 		modelMat = glm::translate(modelMat, glm::vec3(-0.5f*m_size.x, -0.5f * m_size.y, 0.f));
 		modelMat = glm::scale(modelMat, glm::vec3(m_size, 1.0f));
 
-		m_vertexArray.bind();
 		m_pShaderProgam->setMatrix("modelMat", modelMat);
-		glDrawElements(GL_TRIANGLES, 6, GL_UNSIGNED_INT, nullptr);
+
 		glActiveTexture(GL_TEXTURE0);
 		m_pTexture->bind();
-		m_vertexArray.unbind();
+		Renderer::draw(m_vertexArray, m_indexBuffer, *m_pShaderProgam);
+		
 	}
 	void Sprite::setPosition(const glm::vec2& position)
 	{

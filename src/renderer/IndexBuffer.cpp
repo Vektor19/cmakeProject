@@ -2,7 +2,7 @@
 
 namespace renderer
 {
-	IndexBuffer::IndexBuffer():m_id(0)
+	IndexBuffer::IndexBuffer():m_id(0), m_count(0)
 	{
 	}
 	IndexBuffer::~IndexBuffer()
@@ -13,18 +13,23 @@ namespace renderer
 	{
 		m_id = other.m_id;
 		other.m_id = 0;
+		m_count = other.m_count;
+		other.m_count = 0;
 	}
 	IndexBuffer& IndexBuffer::operator=(IndexBuffer&& other) noexcept
 	{
 		m_id = other.m_id;
 		other.m_id = 0;
+		m_count = other.m_count;
+		other.m_count = 0;
 		return *this;
 	}
-	void IndexBuffer::init(const void* data, const unsigned int size)
+	void IndexBuffer::init(const void* data, const unsigned int count)
 	{
+		m_count = count;
 		glGenBuffers(1, &m_id);
 		glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_id);
-		glBufferData(GL_ELEMENT_ARRAY_BUFFER, size, data, GL_STATIC_DRAW);
+		glBufferData(GL_ELEMENT_ARRAY_BUFFER, count * sizeof(GLuint), data, GL_STATIC_DRAW);
 	}
 	void IndexBuffer::bind() const
 	{

@@ -26,7 +26,9 @@ add_executable(${ProjectName}
 	src/renderer/VertexArray.h
 	src/renderer/VertexArray.cpp
 	src/renderer/VertexBufferLayout.h
-	src/renderer/VertexBufferLayout.cpp)
+	src/renderer/VertexBufferLayout.cpp
+	src/renderer/Renderer.h
+	src/renderer/Renderer.cpp)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)

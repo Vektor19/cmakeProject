@@ -7,6 +7,7 @@
 #include "renderer/Texture2D.h"
 #include "renderer/Sprite.h"
 #include "renderer/AnimatedSprite.h"
+#include "renderer/Renderer.h"
 #include "game/Game.h"
 
 using namespace resources;
@@ -18,7 +19,7 @@ void glfwWindowSizeCallback(GLFWwindow* window, int newWidth, int newHeight)
 {
     windowSize.x = newWidth;
     windowSize.y = newHeight;
-    glViewport(0, 0, windowSize.x, windowSize.y);
+    renderer::Renderer::setViewport(newWidth, newHeight);
 }
 void glfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
@@ -54,10 +55,9 @@ int main(int argc, char** argv)
 		std::cout<<"Can't load GLAD"<< std::endl;
 		return -1;
 	}
-	std::cout<<"OpenGL "<<GLVersion.major<<"."<<GLVersion.minor<<std::endl;
+	std::cout<<"OpenGL "<< renderer::Renderer::getGlVersion()<<std::endl;
     glfwSwapInterval(1);
-
-    glClearColor(0, 0, 0, 1);
+    renderer::Renderer::setClearColor(0, 0, 0, 1);
     ResourcesManager::setExecutablePath(argv[0]);
     if(!g_pGame->init())
     {
@@ -72,7 +72,7 @@ int main(int argc, char** argv)
         lastTime = currentTime;
         g_pGame->update(duration);
         /* Render here */
-        glClear(GL_COLOR_BUFFER_BIT);
+        renderer::Renderer::clear();
         g_pGame->render();
         /* Swap front and back buffers */
         glfwSwapBuffers(window);
