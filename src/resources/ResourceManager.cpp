@@ -6,6 +6,10 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+
+#include <rapidjson/document.h>
+#include <rapidjson/error/en.h>
+
 #define STB_IMAGE_IMPLEMENTATION
 #define STBI_ONLY_PNG
 #include "stb_image.h"
@@ -181,6 +185,55 @@ namespace resources {
 		m_shaderPrograms.clear();
 		m_texturesMap.clear();
 		m_spritesMap.clear();
+	}
+
+	bool ResourcesManager::loadJSONResources(const std::string& jsonPath)
+	{
+		std::string jsonString = getFileString(jsonPath);
+		if (jsonString.empty())
+		{
+			std::cerr << "No JSON resources file!" << std::endl;
+			return false;
+		}
+		rapidjson::Document document;
+		rapidjson::ParseResult parseResult = document.Parse(jsonString.c_str());
+		if (!parseResult)
+		{
+			std::cerr << "JSON parse error: " << rapidjson::GetParseError_En(parseResult.Code()) << "(" << parseResult.Offset() << ")" << std::endl;
+			std::cerr << "In file: " << jsonPath << std::endl;
+			return false;
+		}
+		auto shadersIt = document.FindMember("shaders");
+		if (shadersIt != document.MemberEnd())
+		{
+			for (const auto& currentShader : shadersIt->value.GetArray())
+			{
+				std::string name = currentShader["name"].GetString();
+				std::string filePath_v = currentShader["filePath_v"].GetString();
+				std::string filePath_f = currentShader["filePath_f"].GetString();
+				loadShaders(name, filePath_v, filePath_f);
+			}
+		}
+		auto textureAtlasesIt = document.FindMember("textureAtlases");
+		if (textureAtlasesIt != document.MemberEnd())
+		{
+			for (const auto& currentTextureAtlas : textureAtlasesIt->value.GetArray())
+			{
+				std::string name = currentTextureAtlas["name"].GetString();
+				std::string filePath = currentTextureAtlas["filePath"].GetString();
+				const unsigned int subTextureWidth = currentTextureAtlas["subTextureWidth"].GetUint();
+				const unsigned int subTextureHeight = currentTextureAtlas["subTextureHeight"].GetUint();
+				const auto subTexturesArray = currentTextureAtlas["subTextures"].GetArray();
+				std::vector<std::string> subTextures;
+				subTextures.reserve(subTexturesArray.Size());
+				for (const auto& subTexture : subTexturesArray)
+				{
+					subTextures.emplace_back(subTexture);
+				}
+				loadTextureAtlas(name, filePath, subTextureWidth, subTextureHeight, std::move(subTextures));
+			}
+		}
+		return true;
 	}
 
 	std::string ResourcesManager::getFileString(const std::string& relativeFilePath)

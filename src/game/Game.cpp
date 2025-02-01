@@ -25,12 +25,8 @@ Game::~Game()
 
 bool Game::init()
 {
-    auto pSpriteShaderProgram = ResourcesManager::loadShaders("SpriteShaderProgram", "res/shaders/vSprite.txt", "res/shaders/fSprite.txt");
-    if (!pSpriteShaderProgram)
-    {
-        std::cerr << "Can't create shader program\n";
-        return true;
-    }
+    ResourcesManager::loadJSONResources("res/resources.json");
+    auto pSpriteShaderProgram = ResourcesManager::getShaderProgram("spriteShader");
     auto tex = ResourcesManager::loadTexture("DefaultTexture", "res/textures/map_8x8.png");
     std::vector<std::string> subTexureNames =
     {
@@ -75,16 +71,9 @@ bool Game::init()
     auto texture = ResourcesManager::loadTextureAtlas("DefaultTextureAtlas", "res/textures/map_8x8.png", 8, 8, std::move(subTexureNames));
     auto tankTexture = ResourcesManager::loadTextureAtlas("TanksTextureAtlas", "res/textures/tanks.png", 16, 16, std::move(tanksSubTexureNames));
 
-    auto pAnimatedSprite = ResourcesManager::loadAnimatedSprite("DefaultAnimatedSprite", "DefaultTextureAtlas", "SpriteShaderProgram", 100, 100, "block");
-    pAnimatedSprite->setPosition(glm::vec2(300));
-    std::vector<std::pair<std::string, uint64_t>> waterState;
-    waterState.emplace_back(std::make_pair<std::string, uint64_t>("water1", 1000000000));
-    waterState.emplace_back(std::make_pair<std::string, uint64_t>("water2", 1000000000));
-    waterState.emplace_back(std::make_pair<std::string, uint64_t>("water3", 1000000000));
-    pAnimatedSprite->addState("water", std::move(waterState));
-    pAnimatedSprite->setState("water");
+    
 
-    auto pTankSprite = ResourcesManager::loadAnimatedSprite("YellowTankSprite", "TanksTextureAtlas", "SpriteShaderProgram", 100, 100, "tankTop1");
+    auto pTankSprite = ResourcesManager::loadAnimatedSprite("YellowTankSprite", "TanksTextureAtlas", "spriteShader", 100, 100, "tankTop1");
 
     pTankSprite->setPosition(glm::vec2(0));
 

@@ -10,8 +10,6 @@
 		{
 			"name": "mapTextureAtlas",
 			"filePath": "res/textures/map_8x8.png",
-			"width": 48,
-			"height": 40,
 			"subTextureWidth": 8,
 			"subTextureHeight": 8,
 			"subTextures":[
@@ -46,8 +44,6 @@
 		{
 			"name": "tanksTextureAtlas",
 			"filePath": "res/textures/tanks.png",
-			"width": 256,
-			"height": 256,
 			"subTextureWidth": 16,
 			"subTextureHeight": 16,
 			"subTextures":[

@@ -49,6 +49,7 @@ namespace resources {
 															  const unsigned int subTextureHeight,
 															  std::vector<std::string>& subTexturesNames);
 		static void unloadAllResources();
+		static bool loadJSONResources(const std::string& jsonPath);
 	private:
 		static std::string m_path;
 		typedef std::map<std::string, std::shared_ptr<renderer::ShaderProgram>> ShaderPogramMap;
