@@ -228,7 +228,7 @@ namespace resources {
 				subTextures.reserve(subTexturesArray.Size());
 				for (const auto& subTexture : subTexturesArray)
 				{
-					subTextures.emplace_back(subTexture);
+					subTextures.emplace_back(subTexture.GetString());
 				}
 				loadTextureAtlas(name, filePath, subTextureWidth, subTextureHeight, std::move(subTextures));
 			}

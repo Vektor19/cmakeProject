@@ -27,59 +27,24 @@ bool Game::init()
 {
     ResourcesManager::loadJSONResources("res/resources.json");
     auto pSpriteShaderProgram = ResourcesManager::getShaderProgram("spriteShader");
-    auto tex = ResourcesManager::loadTexture("DefaultTexture", "res/textures/map_8x8.png");
-    std::vector<std::string> subTexureNames =
+    if (!pSpriteShaderProgram)
     {
-        "block",
-        "topLeftBlock",
-        "topRightBlock",
-        "topBlock",
-        "bottomLeftBlock",
-        "leftBlock",
-        "bottomLeftAndTopRightBlock",
-        "withoutBottomRightBlock",
-        "bottomrightBlock",
-        "bottomRightAndTopLeftBlock",
-        "rightBlock",
-        "withoutBottomLeftBlock",
-        "bottomBlock",
-        "withoutTopRightBlock",
-        "withoutTopLeftBlock",
-        "water1",
-        "water2",
-        "water3",
-        "betonBlock",
-        "grassBlock",
-        "leadBlock",
-        "roadBlock",
-        "bulletTop",
-        "bulletBottom",
-        "bulletLeft",
-        "bulletRight"
-    };
-    std::vector<std::string> tanksSubTexureNames =
+        std::cerr << "No spriteShader!" << std::endl;
+        return false;
+    }
+    auto pTanksTextureAtlas = ResourcesManager::getTexture("tanksTextureAtlas");
+    if (!pTanksTextureAtlas)
     {
-        "tankTop1",
-        "tankTop2",
-        "tankLeft1",
-        "tankLeft2",
-        "tankBottom1",
-        "tankBottom2",
-        "tankRight1",
-        "tankRight2"
-    };
-    auto texture = ResourcesManager::loadTextureAtlas("DefaultTextureAtlas", "res/textures/map_8x8.png", 8, 8, std::move(subTexureNames));
-    auto tankTexture = ResourcesManager::loadTextureAtlas("TanksTextureAtlas", "res/textures/tanks.png", 16, 16, std::move(tanksSubTexureNames));
-
-    
-
-    auto pTankSprite = ResourcesManager::loadAnimatedSprite("YellowTankSprite", "TanksTextureAtlas", "spriteShader", 100, 100, "tankTop1");
+        std::cerr << "No tanksTextureAtlas!" << std::endl;
+        return false;
+    }
+    auto pTankSprite = ResourcesManager::loadAnimatedSprite("YellowTankSprite", "tanksTextureAtlas", "spriteShader", 100, 100, "yellowType1_Top1");
 
     pTankSprite->setPosition(glm::vec2(0));
 
     std::vector<std::pair<std::string, uint64_t>> tankTopState;
-    tankTopState.emplace_back(std::make_pair<std::string, uint64_t>("tankTop1", 200000000));
-    tankTopState.emplace_back(std::make_pair<std::string, uint64_t>("tankTop2", 200000000));
+    tankTopState.emplace_back(std::make_pair<std::string, uint64_t>("yellowType1_Top1", 200000000));
+    tankTopState.emplace_back(std::make_pair<std::string, uint64_t>("yellowType1_Top2", 200000000));
     pTankSprite->addState("TankTopState", std::move(tankTopState));
     pTankSprite->setState("TankTopState");
 
