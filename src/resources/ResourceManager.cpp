@@ -233,6 +233,39 @@ namespace resources {
 				loadTextureAtlas(name, filePath, subTextureWidth, subTextureHeight, std::move(subTextures));
 			}
 		}
+		auto animatedSpritesIt = document.FindMember("animatedSprites");
+		if (animatedSpritesIt != document.MemberEnd())
+		{
+			for (const auto& currentSprite : animatedSpritesIt->value.GetArray())
+			{
+				std::string name = currentSprite["name"].GetString();
+				std::string textureAtlas = currentSprite["textureAtlas"].GetString();
+				std::string shader = currentSprite["shader"].GetString();
+				const unsigned int initialWidth = currentSprite["initialWidth"].GetUint();
+				const unsigned int initialHeight = currentSprite["initialHeight"].GetUint();
+				std::string initialSubTexture = currentSprite["initialSubTexture"].GetString();
+				auto pSprite = loadAnimatedSprite(name, textureAtlas, shader, initialWidth, initialHeight, initialSubTexture);
+				if (!pSprite)
+				{
+					continue;
+				}
+				const auto statesArray = currentSprite["states"].GetArray();
+				for (const auto& currentState : statesArray)
+				{
+					std::string stateName = currentState["stateName"].GetString();
+					const auto framesArray = currentState["frames"].GetArray();
+					std::vector<std::pair<std::string, uint64_t>> state;
+
+					for (const auto& currentFrame : framesArray)
+					{
+						std::string subTexture = currentFrame["subTexture"].GetString();
+						unsigned int duration = currentFrame["duration"].GetUint64();
+						state.emplace_back(std::make_pair<std::string, uint64_t>(std::move(subTexture), duration));
+					}
+					pSprite->addState(stateName, std::move(state));
+				}
+			}
+		}
 		return true;
 	}
 

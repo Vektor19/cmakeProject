@@ -21,22 +21,22 @@ void Tank::setOrientation(const EOrientation eOrientation)
 	switch (m_eOrientation)
 	{
 	case Tank::EOrientation::Top:
-		m_pSprite->setState("TankTopState");
+		m_pSprite->setState("tankTopState");
 		m_moveOffset.x = 0.f;
 		m_moveOffset.y = 1.f;
 		break;
 	case Tank::EOrientation::Bottom:
-		m_pSprite->setState("TankBottomState");
+		m_pSprite->setState("tankBottomState");
 		m_moveOffset.x = 0.f;
 		m_moveOffset.y = -1.f;
 		break;
 	case Tank::EOrientation::Left:
-		m_pSprite->setState("TankLeftState");
+		m_pSprite->setState("tankLeftState");
 		m_moveOffset.x = -1.f;
 		m_moveOffset.y = 0.f;
 		break;
 	case Tank::EOrientation::Right:
-		m_pSprite->setState("TankRightState");
+		m_pSprite->setState("tankRightState");
 		m_moveOffset.x = 1.f;
 		m_moveOffset.y = 0.f;
 		break;
