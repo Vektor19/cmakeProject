@@ -4,21 +4,19 @@ project(${ProjectName})
 
 add_executable(${ProjectName}
 	src/main.cpp
-	src/renderer/ShaderProgram.h
-	src/renderer/ShaderProgram.cpp
+	
 	src/resources/ResourceManager.h
 	src/resources/ResourceManager.cpp
 	src/resources/stb_image.h
+	
+	src/renderer/ShaderProgram.h
+	src/renderer/ShaderProgram.cpp
 	src/renderer/Texture2D.h
 	src/renderer/Texture2D.cpp
 	src/renderer/Sprite.h
 	src/renderer/Sprite.cpp
 	src/renderer/AnimatedSprite.h
 	src/renderer/AnimatedSprite.cpp
-	src/game/Game.h
-	src/game/Game.cpp
-	src/game/Tank.h
-	src/game/Tank.cpp
 	src/renderer/VertexBuffer.h
 	src/renderer/VertexBuffer.cpp
 	src/renderer/IndexBuffer.h
@@ -28,7 +26,14 @@ add_executable(${ProjectName}
 	src/renderer/VertexBufferLayout.h
 	src/renderer/VertexBufferLayout.cpp
 	src/renderer/Renderer.h
-	src/renderer/Renderer.cpp)
+	src/renderer/Renderer.cpp
+	
+	src/game/Game.h
+	src/game/Game.cpp
+	src/game/game_objects/GameObject.h
+	src/game/game_objects/GameObject.cpp
+	src/game/game_objects/Tank.h
+	src/game/game_objects/Tank.cpp)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)

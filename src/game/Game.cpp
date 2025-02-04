@@ -8,7 +8,7 @@
 #include <glm/gtc/matrix_transform.hpp>
 #include <iostream>
 #include "Game.h"
-#include "../game/Tank.h"
+#include "../game/game_objects/Tank.h"
 #include <GLFW/glfw3.h>
 using namespace resources;
 Game::Game(const glm::ivec2& windowSize)
