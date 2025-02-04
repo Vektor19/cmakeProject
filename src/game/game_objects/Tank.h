@@ -1,8 +1,9 @@
 #pragma once
 #include <memory>
 #include <glm/vec2.hpp>
+#include "GameObject.h"
 namespace renderer { class AnimatedSprite; }
-class Tank
+class Tank: public GameObject
 {
 public:
 	enum class EOrientation
@@ -15,10 +16,10 @@ public:
 	Tank(std::shared_ptr<renderer::AnimatedSprite> pAnimatedSprite, const float velocity, const glm::vec2& position);
 	
 
-	void render() const;
+	void render() const override;
 	void setOrientation(const EOrientation eOrientation);
 	void move(const bool move);
-	void update(const uint64_t delta);
+	void update(const uint64_t delta) override;
 
 
 
