@@ -20,6 +20,7 @@ namespace resources {
 	ResourcesManager::SpriteMap ResourcesManager::m_spritesMap;
 	ResourcesManager::AnimatedSpriteMap ResourcesManager::m_animatedSpritesMap;
 	std::string ResourcesManager::m_path;
+	std::vector<std::vector<std::string>> m_levelsDescriptions;
 
 	void ResourcesManager::setExecutablePath(const std::string& path)
 	{
