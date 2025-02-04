@@ -12,7 +12,7 @@
 
 using namespace resources;
 
-glm::ivec2 windowSize(1280, 720);
+glm::ivec2 windowSize(13 * 16, 14 * 16);
 std::unique_ptr<Game> g_pGame = std::make_unique<Game>(windowSize);
 
 void glfwWindowSizeCallback(GLFWwindow* window, int newWidth, int newHeight)

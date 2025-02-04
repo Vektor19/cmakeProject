@@ -54,7 +54,7 @@ bool Game::init()
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
 
-    m_pTank = std::make_unique<Tank>(pTankSprite, 0.0000005, glm::vec2(0), glm::vec2(100));
+    m_pTank = std::make_unique<Tank>(pTankSprite, 0.0000005, glm::vec2(0), glm::vec2(16));
 
 	return true;
 }
