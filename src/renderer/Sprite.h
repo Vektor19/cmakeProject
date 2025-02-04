@@ -16,26 +16,17 @@ namespace renderer
 	{
 	public:
 		Sprite(std::shared_ptr<Texture2D> pTexture,
-			   const std::string& initialSubtextureName,
-			   std::shared_ptr<ShaderProgram> pShaderProgam,
-			   const glm::vec2& position = glm::vec2(0.f),
-			   const glm::vec2& size = glm::vec2(100.f),
-			   const float rotation = 0.f);
+			const std::string& initialSubtextureName,
+			std::shared_ptr<ShaderProgram> pShaderProgam);
 
 		~Sprite();
 		Sprite(const Sprite&) = delete;
 		Sprite& operator=(const Sprite&) = delete;
 
-		virtual void render() const;
-		void setPosition(const glm::vec2& position);
-		void setSize(const glm::vec2& size);
-		void setRotation(const float rotation);
+		virtual void render(const glm::vec2& position, const glm::vec2& size, const float rotation) const;
 	protected:
 		std::shared_ptr<ShaderProgram> m_pShaderProgam;
 		std::shared_ptr<Texture2D> m_pTexture;
-		glm::vec2 m_position;
-		glm::vec2 m_size;
-		float m_rotation;
 
 		VertexBuffer m_vertexCoordsBuffer;
 		VertexBuffer m_textureCoordsBuffer;

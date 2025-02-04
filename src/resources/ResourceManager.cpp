@@ -92,7 +92,7 @@ namespace resources {
 		return nullptr;
 	}
 
-	std::shared_ptr<renderer::Sprite> ResourcesManager::loadSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderProgramName, const unsigned int width, const unsigned int height, const std::string& subTextureName)
+	std::shared_ptr<renderer::Sprite> ResourcesManager::loadSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderProgramName, const std::string& subTextureName)
 	{
 		auto pTexture = getTexture(textureName);
 		if (!pTexture)
@@ -106,7 +106,7 @@ namespace resources {
 			std::cerr << "Can't find shaderProgram: " << shaderProgramName << " for sprite: " << spriteName << std::endl;
 			return nullptr;
 		}
-		std::shared_ptr<renderer::Sprite> pSprite = m_spritesMap.emplace(spriteName, std::make_shared<renderer::Sprite>(pTexture, subTextureName, pShaderProgram, glm::vec2(0.f, 0.f), glm::vec2(width, height))).first->second;
+		std::shared_ptr<renderer::Sprite> pSprite = m_spritesMap.emplace(spriteName, std::make_shared<renderer::Sprite>(pTexture, subTextureName, pShaderProgram)).first->second;
 		return pSprite;
 	}
 
@@ -121,7 +121,7 @@ namespace resources {
 		return nullptr;
 	}
 
-	std::shared_ptr<renderer::AnimatedSprite> ResourcesManager::loadAnimatedSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderProgramName, const unsigned int width, const unsigned int height, const std::string& subTextureName)
+	std::shared_ptr<renderer::AnimatedSprite> ResourcesManager::loadAnimatedSprite(const std::string& spriteName, const std::string& textureName, const std::string& shaderProgramName, const std::string& subTextureName)
 	{
 		auto pTexture = getTexture(textureName);
 		if (!pTexture)
@@ -135,7 +135,7 @@ namespace resources {
 			std::cerr << "Can't find shaderProgram: " << shaderProgramName << " for sprite: " << spriteName << std::endl;
 			return nullptr;
 		}
-		std::shared_ptr<renderer::AnimatedSprite> pSprite = m_animatedSpritesMap.emplace(spriteName, std::make_shared<renderer::AnimatedSprite>(pTexture, subTextureName, pShaderProgram, glm::vec2(0.f, 0.f), glm::vec2(width, height))).first->second;
+		std::shared_ptr<renderer::AnimatedSprite> pSprite = m_animatedSpritesMap.emplace(spriteName, std::make_shared<renderer::AnimatedSprite>(pTexture, subTextureName, pShaderProgram)).first->second;
 		return pSprite;
 	}
 
@@ -244,7 +244,7 @@ namespace resources {
 				const unsigned int initialWidth = currentSprite["initialWidth"].GetUint();
 				const unsigned int initialHeight = currentSprite["initialHeight"].GetUint();
 				std::string initialSubTexture = currentSprite["initialSubTexture"].GetString();
-				auto pSprite = loadAnimatedSprite(name, textureAtlas, shader, initialWidth, initialHeight, initialSubTexture);
+				auto pSprite = loadAnimatedSprite(name, textureAtlas, shader, initialSubTexture);
 				if (!pSprite)
 				{
 					continue;

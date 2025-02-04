@@ -13,7 +13,11 @@ public:
 		Left,
 		Right
 	};
-	Tank(std::shared_ptr<renderer::AnimatedSprite> pAnimatedSprite, const float velocity, const glm::vec2& position);
+	Tank(std::shared_ptr<renderer::AnimatedSprite> pAnimatedSprite,
+		 const float velocity,
+		 const glm::vec2& position,
+		 const glm::vec2& size,
+	  	 const float rotation = 0);
 	
 
 	void render() const override;
@@ -28,6 +32,5 @@ private:
 	std::shared_ptr<renderer::AnimatedSprite> m_pSprite;
 	bool m_move;
 	float m_velocity;
-	glm::vec2 m_position;
 	glm::vec2 m_moveOffset;
 };

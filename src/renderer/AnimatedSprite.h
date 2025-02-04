@@ -12,14 +12,11 @@ namespace renderer
 	public:
 		AnimatedSprite(std::shared_ptr<Texture2D> pTexture,
 				  	   const std::string& initialSubtextureName,
-					   std::shared_ptr<ShaderProgram> pShaderProgam,
-					   const glm::vec2& position = glm::vec2(0.f),
-					   const glm::vec2& size = glm::vec2(100.f),
-					   const float rotation = 0.f);
+					   std::shared_ptr<ShaderProgram> pShaderProgam);
 		void addState(const std::string& stateName, std::vector<std::pair<std::string, uint64_t>>& subTextureDurations);
 		void setState(const std::string& stateName);
 		void update(const uint64_t& delta);
-		void render() const override;
+		void render(const glm::vec2& position, const glm::vec2& size, const float rotation) const override;
 		~AnimatedSprite();
 	private:
 		std::map<std::string, std::vector<std::pair<std::string, uint64_t>>> m_animationStatesDurationsMap;

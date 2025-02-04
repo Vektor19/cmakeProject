@@ -7,7 +7,7 @@ public:
 	virtual void render() const = 0;
 	virtual void update(const uint64_t delta) = 0;
 	virtual ~GameObject();
-private:
+protected:
 	glm::vec2 m_position;
 	glm::vec2 m_size;
 	float m_rotation;

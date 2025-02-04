@@ -32,15 +32,11 @@ namespace resources {
 		static std::shared_ptr<renderer::Sprite> loadSprite(const std::string& spriteName,
 													const std::string& textureName,
 													const std::string& shaderProgramName,
-													const unsigned int width,
-													const unsigned int height,
 													const std::string& subTextureName="default");
 		static std::shared_ptr<renderer::Sprite> getSprite(const std::string& spriteName);
 		static std::shared_ptr<renderer::AnimatedSprite> loadAnimatedSprite(const std::string& spriteName,
 																	 const std::string& textureName,
 																	 const std::string& shaderProgramName,
-																	 const unsigned int width,
-												  					 const unsigned int height,
 												 					 const std::string& subTextureName = "default");
 		static std::shared_ptr<renderer::AnimatedSprite> getAnimatedSprite(const std::string& spriteName);
 		static std::shared_ptr<renderer::Texture2D> loadTextureAtlas(const std::string& textureName,

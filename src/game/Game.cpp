@@ -40,7 +40,7 @@ bool Game::init()
     }
     auto pTankSprite = ResourcesManager::getAnimatedSprite("YellowTankSprite");
 
-    pTankSprite->setPosition(glm::vec2(0));
+    
 
     std::vector<std::pair<std::string, uint64_t>> tankTopState;
     pTankSprite->setState("tankTopState");
@@ -54,7 +54,7 @@ bool Game::init()
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
 
-    m_pTank = std::make_unique<Tank>(pTankSprite, 0.0000005, glm::vec2(0));
+    m_pTank = std::make_unique<Tank>(pTankSprite, 0.0000005, glm::vec2(0), glm::vec2(100));
 
 	return true;
 }
