@@ -30,6 +30,8 @@ add_executable(${ProjectName}
 	
 	src/game/Game.h
 	src/game/Game.cpp
+	src/game/Level.h
+	src/game/Level.cpp
 	src/game/game_objects/GameObject.h
 	src/game/game_objects/GameObject.cpp
 	src/game/game_objects/Tank.h
