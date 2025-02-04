@@ -46,12 +46,14 @@ namespace resources {
 															  std::vector<std::string>& subTexturesNames);
 		static void unloadAllResources();
 		static bool loadJSONResources(const std::string& jsonPath);
+		static const std::vector<std::vector<std::string>>& getLevelsDescriptions() { return m_levelsDescriptions; }
 	private:
 		static std::string m_path;
 		typedef std::map<std::string, std::shared_ptr<renderer::ShaderProgram>> ShaderPogramMap;
 		typedef std::map<std::string, std::shared_ptr<renderer::Texture2D>> TextureMap;
 		typedef std::map<std::string, std::shared_ptr<renderer::Sprite>> SpriteMap;
 		typedef std::map<std::string, std::shared_ptr<renderer::AnimatedSprite>> AnimatedSpriteMap;
+		static std::vector<std::vector<std::string>> m_levelsDescriptions;
 		static ShaderPogramMap m_shaderPrograms;
 		static TextureMap m_texturesMap;
 		static SpriteMap m_spritesMap;

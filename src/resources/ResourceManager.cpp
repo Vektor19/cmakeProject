@@ -275,10 +275,23 @@ namespace resources {
 				const auto description = currentLevel["description"].GetArray();
 				std::vector<std::string> levelRows;
 				levelRows.reserve(description.Size());
+				size_t maxRowLength = 0;
 				for (const auto& currentRow : description)
 				{
 					levelRows.emplace_back(currentRow.GetString());
+					if (maxRowLength < levelRows.back().length())
+					{
+						maxRowLength = levelRows.back().length();
+					}
 				}
+				for (auto& currentRow : levelRows)
+				{
+					while (currentRow.length()< maxRowLength)
+					{
+						currentRow.append("D");
+					}
+				}
+				m_levelsDescriptions.emplace_back(std::move(levelRows));
 			}
 		}
 		return true;
