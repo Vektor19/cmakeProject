@@ -241,8 +241,6 @@ namespace resources {
 				std::string name = currentSprite["name"].GetString();
 				std::string textureAtlas = currentSprite["textureAtlas"].GetString();
 				std::string shader = currentSprite["shader"].GetString();
-				const unsigned int initialWidth = currentSprite["initialWidth"].GetUint();
-				const unsigned int initialHeight = currentSprite["initialHeight"].GetUint();
 				std::string initialSubTexture = currentSprite["initialSubTexture"].GetString();
 				auto pSprite = loadAnimatedSprite(name, textureAtlas, shader, initialSubTexture);
 				if (!pSprite)
@@ -266,6 +264,20 @@ namespace resources {
 				}
 			}
 		}
+
+		auto spritesIt = document.FindMember("sprites");
+		if (spritesIt != document.MemberEnd())
+		{
+			for (const auto& currentSprite : spritesIt->value.GetArray())
+			{
+				std::string name = currentSprite["name"].GetString();
+				std::string textureAtlas = currentSprite["textureAtlas"].GetString();
+				std::string shader = currentSprite["shader"].GetString();
+				std::string initialSubTexture = currentSprite["initialSubTexture"].GetString();
+				loadSprite(name, textureAtlas, shader, initialSubTexture);
+			}
+		}
+
 
 		auto levelsIt = document.FindMember("levels");
 		if (levelsIt != document.MemberEnd())
