@@ -9,6 +9,7 @@
 #include <iostream>
 #include "Game.h"
 #include "../game/game_objects/Tank.h"
+#include "../game/Level.h"
 #include <GLFW/glfw3.h>
 using namespace resources;
 Game::Game(const glm::ivec2& windowSize)
@@ -54,8 +55,9 @@ bool Game::init()
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
 
-    m_pTank = std::make_unique<Tank>(pTankSprite, 0.0000005, glm::vec2(0), glm::vec2(16));
+    m_pTank = std::make_unique<Tank>(pTankSprite, 0.0000001, glm::vec2(0), glm::vec2(16));
 
+    m_pLevel = std::make_unique<Level>(ResourcesManager::getLevelsDescriptions()[0]);
 	return true;
 }
 
@@ -65,6 +67,10 @@ void Game::update(const uint64_t delta)
     if (m_pTank)
     {
         m_pTank->update(delta);
+    }
+    if (m_pLevel)
+    {
+        m_pLevel->update(delta);
     }
 }
 
@@ -98,6 +104,10 @@ void Game::render()
             m_pTank->move(false);
         }
         m_pTank->render();
+    }
+    if (m_pLevel)
+    {
+        m_pLevel->render();
     }
 }
 

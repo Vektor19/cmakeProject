@@ -13,7 +13,7 @@ public:
 	~Level();
 
 private:
-	unsigned int m_widthBlocks;
-	unsigned int m_heightBlocks;
+	size_t m_widthBlocks;
+	size_t m_heightBlocks;
 	std::vector<std::shared_ptr<GameObject>> m_mapObjects;
 };
