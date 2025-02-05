@@ -14,12 +14,28 @@ using namespace resources;
 
 glm::ivec2 windowSize(13 * 16, 14 * 16);
 std::unique_ptr<Game> g_pGame = std::make_unique<Game>(windowSize);
+const float g_aspectRation = 13.f / 14.f;
 
 void glfwWindowSizeCallback(GLFWwindow* window, int newWidth, int newHeight)
 {
     windowSize.x = newWidth;
     windowSize.y = newHeight;
-    renderer::Renderer::setViewport(newWidth, newHeight);
+    unsigned int viewPortWidth = newWidth;
+    unsigned int viewPortHeight = newHeight;
+    unsigned int viewPortLeftOffset = 0;
+    unsigned int viewPortBottomOffset = 0;
+    if (static_cast<float>(windowSize.x) / windowSize.y > g_aspectRation)
+    {
+        viewPortWidth = static_cast<unsigned int>(newHeight * g_aspectRation);
+        viewPortLeftOffset = (newWidth - viewPortWidth) / 2;
+    }
+    else
+    {
+
+        viewPortHeight = static_cast<unsigned int>(newWidth / g_aspectRation);
+        viewPortBottomOffset = (newHeight - viewPortHeight) / 2;
+    }
+    renderer::Renderer::setViewport(viewPortWidth, viewPortHeight, viewPortLeftOffset, viewPortBottomOffset);
 }
 void glfwKeyCallback(GLFWwindow* window, int key, int scancode, int action, int mods)
 {
