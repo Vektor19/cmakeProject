@@ -2,7 +2,6 @@
 #include "../renderer/ShaderProgram.h"
 #include "../renderer/Texture2D.h"
 #include "../renderer/Sprite.h"
-#include "../renderer/AnimatedSprite.h"
 #include <glm/vec2.hpp>
 #include <glm/mat4x4.hpp>
 #include <glm/gtc/matrix_transform.hpp>
@@ -39,12 +38,9 @@ bool Game::init()
         std::cerr << "No tanksTextureAtlas!" << std::endl;
         return false;
     }
-    auto pTankSprite = ResourcesManager::getAnimatedSprite("YellowTankSprite");
-
     
 
     std::vector<std::pair<std::string, uint64_t>> tankTopState;
-    pTankSprite->setState("tankTopState");
 
 
     glm::mat4 modelMatrix = glm::mat4(1.f);
@@ -55,7 +51,11 @@ bool Game::init()
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
 
-    m_pTank = std::make_unique<Tank>(pTankSprite, 0.0000001, glm::vec2(0), glm::vec2(16));
+    m_pTank = std::make_unique<Tank>(ResourcesManager::getSprite("tankSprite_top"),
+        ResourcesManager::getSprite("tankSprite_bottom"),
+        ResourcesManager::getSprite("tankSprite_left"),
+        ResourcesManager::getSprite("tankSprite_right"),
+        0.0000001, glm::vec2(0), glm::vec2(16));
 
     m_pLevel = std::make_unique<Level>(ResourcesManager::getLevelsDescriptions()[0]);
 	return true;

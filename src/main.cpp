@@ -6,9 +6,9 @@
 #include "resources/ResourceManager.h"
 #include "renderer/Texture2D.h"
 #include "renderer/Sprite.h"
-#include "renderer/AnimatedSprite.h"
 #include "renderer/Renderer.h"
 #include "game/Game.h"
+#include <chrono>
 
 using namespace resources;
 

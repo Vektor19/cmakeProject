@@ -11,6 +11,7 @@ namespace renderer
 		std::shared_ptr<ShaderProgram> pShaderProgam)
 		: m_pTexture(std::move(pTexture))
 		, m_pShaderProgam(std::move(pShaderProgam))
+		, m_lastFrameIndex(0)
 	{
 		const GLfloat vertexCoords[] = {
 			0.0f, 0.0f,
@@ -52,8 +53,20 @@ namespace renderer
 	{
 		
 	}
-	void Sprite::render(const glm::vec2& position, const glm::vec2& size, const float rotation) const
+	void Sprite::render(const glm::vec2& position, const glm::vec2& size, const float rotation, size_t frameIndex) const
 	{
+		if (frameIndex != m_lastFrameIndex)
+		{
+			m_lastFrameIndex = frameIndex;
+			const FrameDescription& currentFrame = m_framesDescriptions[frameIndex];
+			const GLfloat texCoords[] = {
+				currentFrame.leftBottomUV.x, currentFrame.leftBottomUV.y,
+				currentFrame.leftBottomUV.x, currentFrame.rightTopUV.y,
+				currentFrame.rightTopUV.x, currentFrame.rightTopUV.y,
+				currentFrame.rightTopUV.x, currentFrame.leftBottomUV.y,
+			};
+			m_textureCoordsBuffer.update(texCoords, 2 * 4 * sizeof(GLfloat));
+		}
 		m_pShaderProgam->use();
 
 		glm::mat4 modelMat(1.f);
@@ -68,5 +81,17 @@ namespace renderer
 		glActiveTexture(GL_TEXTURE0);
 		m_pTexture->bind();
 		Renderer::draw(m_vertexArray, m_indexBuffer, *m_pShaderProgam);
+	}
+	void Sprite::setFrames(std::vector<FrameDescription> framesDescriptions)
+	{
+		m_framesDescriptions = std::move(framesDescriptions);
+	}
+	uint64_t Sprite::getFrameDuration(const size_t frameIndex) const
+	{
+		return m_framesDescriptions[frameIndex].duration;
+	}
+	size_t Sprite::getFramesCount() const
+	{
+		return m_framesDescriptions.size();
 	}
 }
