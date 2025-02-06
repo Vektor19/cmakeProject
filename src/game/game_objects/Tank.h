@@ -14,10 +14,30 @@ public:
 		Left,
 		Right
 	};
-	Tank(std::shared_ptr<renderer::Sprite> pSprite_top,
-		 std::shared_ptr<renderer::Sprite> pSprite_bottom,
-		 std::shared_ptr<renderer::Sprite> pSprite_left,
-		 std::shared_ptr<renderer::Sprite> pSprite_right,
+	enum class ETankType
+	{
+		Yellow1,
+		Yellow2,
+		Yellow3,
+		Yellow4,
+		White1,
+		White2,
+		White3,
+		White4,
+		Green1,
+		Green2,
+		Green3,
+		Green4,
+		Green5,
+		Green6,
+		Green7,
+		Green8,
+		Red1,
+		Red2,
+		Red3,
+		Red4
+	};
+	Tank(const ETankType eTankType,
 		 const float velocity,
 		 const glm::vec2& position,
 		 const glm::vec2& size,
@@ -38,10 +58,10 @@ private:
 	std::shared_ptr<renderer::Sprite> m_pSprite_left;
 	std::shared_ptr<renderer::Sprite> m_pSprite_right;
 
-	renderer::SpriteAnimator m_spriteAnimator_top;
-	renderer::SpriteAnimator m_spriteAnimator_bottom;
-	renderer::SpriteAnimator m_spriteAnimator_left;
-	renderer::SpriteAnimator m_spriteAnimator_right;
+	std::unique_ptr<renderer::SpriteAnimator> m_spriteAnimator_top;
+	std::unique_ptr<renderer::SpriteAnimator> m_spriteAnimator_bottom;
+	std::unique_ptr<renderer::SpriteAnimator> m_spriteAnimator_left;
+	std::unique_ptr<renderer::SpriteAnimator> m_spriteAnimator_right;
 
 	bool m_move;
 	float m_velocity;
