@@ -1,7 +1,8 @@
 #include "BrickWall.h"
 #include "../../renderer/Sprite.h"
 
-BrickWall::BrickWall(const std::shared_ptr<renderer::Sprite> pSprite,
+BrickWall::BrickWall(const EBrickWallType eBrickWallType, 
+	const std::shared_ptr<renderer::Sprite> pSprite,
 	const glm::vec2& position,
 	const glm::vec2& size,
 	const float rotation)
