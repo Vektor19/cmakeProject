@@ -1,27 +1,44 @@
 #include "Tank.h"
 #include "../../renderer/Sprite.h"
-Tank::Tank(std::shared_ptr<renderer::Sprite> pSprite_top,
-		   std::shared_ptr<renderer::Sprite> pSprite_bottom,
-		   std::shared_ptr<renderer::Sprite> pSprite_left,
-		   std::shared_ptr<renderer::Sprite> pSprite_right,
+#include "../../resources/ResourceManager.h"
+Tank::Tank(const ETankType eTankType,
 		   const float velocity,
 		   const glm::vec2& position,
 		   const glm::vec2& size,
 		   const float rotation)
 		   : GameObject(position, size, rotation)
 		   , m_eOrientation(EOrientation::Top)
-		   , m_pSprite_top(std::move(pSprite_top))
-		   , m_pSprite_bottom(std::move(pSprite_bottom))
-		   , m_pSprite_left(std::move(pSprite_left))
-		   , m_pSprite_right(std::move(pSprite_right))
-		   , m_spriteAnimator_top(m_pSprite_top)
-		   , m_spriteAnimator_bottom(m_pSprite_bottom)
-		   , m_spriteAnimator_left(m_pSprite_left)
-		   , m_spriteAnimator_right(m_pSprite_right)
 		   , m_move(false)
 		   , m_velocity(velocity)
 		   , m_moveOffset(0.f, 1.f)
 {
+	std::string spriteTopName;
+	std::string spriteBottomName;
+	std::string spriteLeftName;
+	std::string spriteRightName;
+	switch (eTankType)
+	{
+	case ETankType::Yellow1:
+		spriteTopName		= "tankSprite_top";
+		spriteBottomName	= "tankSprite_bottom";
+		spriteLeftName		= "tankSprite_left";
+		spriteRightName		= "tankSprite_right";
+	default:
+		spriteTopName		= "tankSprite_top";
+		spriteBottomName	= "tankSprite_bottom";
+		spriteLeftName		= "tankSprite_left";
+		spriteRightName		= "tankSprite_right";
+		break;
+	}
+	m_pSprite_top    = resources::ResourcesManager::getSprite(spriteTopName);
+	m_pSprite_bottom = resources::ResourcesManager::getSprite(spriteBottomName);
+	m_pSprite_left   = resources::ResourcesManager::getSprite(spriteLeftName);
+	m_pSprite_right  = resources::ResourcesManager::getSprite(spriteRightName);
+
+	m_spriteAnimator_top	= std::make_unique<renderer::SpriteAnimator>(m_pSprite_top);
+	m_spriteAnimator_bottom = std::make_unique<renderer::SpriteAnimator>(m_pSprite_bottom);
+	m_spriteAnimator_left	= std::make_unique<renderer::SpriteAnimator>(m_pSprite_left);
+	m_spriteAnimator_right	= std::make_unique<renderer::SpriteAnimator>(m_pSprite_right);
 }
 
 void Tank::render() const
@@ -29,16 +46,16 @@ void Tank::render() const
 	switch (m_eOrientation)
 	{
 	case Tank::EOrientation::Top:
-		m_pSprite_top->render(m_position, m_size, m_rotation, m_spriteAnimator_top.getCurrentFrame());
+		m_pSprite_top->render(m_position, m_size, m_rotation, m_spriteAnimator_top->getCurrentFrame());
 		break;
 	case Tank::EOrientation::Bottom:
-		m_pSprite_bottom->render(m_position, m_size, m_rotation, m_spriteAnimator_bottom.getCurrentFrame());
+		m_pSprite_bottom->render(m_position, m_size, m_rotation, m_spriteAnimator_bottom->getCurrentFrame());
 		break;
 	case Tank::EOrientation::Left:
-		m_pSprite_left->render(m_position, m_size, m_rotation, m_spriteAnimator_left.getCurrentFrame());
+		m_pSprite_left->render(m_position, m_size, m_rotation, m_spriteAnimator_left->getCurrentFrame());
 		break;
 	case Tank::EOrientation::Right:
-		m_pSprite_right->render(m_position, m_size, m_rotation, m_spriteAnimator_right.getCurrentFrame());
+		m_pSprite_right->render(m_position, m_size, m_rotation, m_spriteAnimator_right->getCurrentFrame());
 		break;
 	default:
 		break;
@@ -88,16 +105,16 @@ void Tank::update(const uint64_t delta)
 		switch (m_eOrientation)
 		{
 		case Tank::EOrientation::Top:
-			m_spriteAnimator_top.update(delta);
+			m_spriteAnimator_top->update(delta);
 			break;
 		case Tank::EOrientation::Bottom:
-			m_spriteAnimator_bottom.update(delta);
+			m_spriteAnimator_bottom->update(delta);
 			break;
 		case Tank::EOrientation::Left:
-			m_spriteAnimator_left.update(delta);
+			m_spriteAnimator_left->update(delta);
 			break;
 		case Tank::EOrientation::Right:
-			m_spriteAnimator_right.update(delta);
+			m_spriteAnimator_right->update(delta);
 			break;
 		default:
 			break;
