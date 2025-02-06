@@ -86,6 +86,6 @@ void BrickWall::renderBrick(EBrickLocation eBrickLocation) const
 	const EBrickState state = m_eBrickStates[static_cast<size_t>(eBrickLocation)];
 	if (state != EBrickState::Destroyed)
 	{
-		m_sprites[static_cast<size_t>(state)]->render(m_position + offsets[static_cast<size_t>(eBrickLocation)], m_size/4.f, m_rotation);
+		m_sprites[static_cast<size_t>(state)]->render(m_position + offsets[static_cast<size_t>(eBrickLocation)], m_size/2.f, m_rotation);
 	}
 }
