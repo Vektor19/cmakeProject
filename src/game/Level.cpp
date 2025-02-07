@@ -9,7 +9,6 @@
 #include "game_objects/Border.h"
 #include "../resources/ResourceManager.h"
 #include <iostream>
-const unsigned int BLOCK_SIZE = 16;
 
 std::shared_ptr<GameObject> createGameObjectByChar(const char character, const glm::vec2& position, const glm::vec2& size, const float rotation = 0)
 {
@@ -66,6 +65,12 @@ Level::Level(const std::vector<std::string>& levelDescription)
 	}
 	m_widthBlocks = levelDescription[0].length();
 	m_heightBlocks = levelDescription.size();
+	m_playerRespawn1 = { BLOCK_SIZE * (m_widthBlocks / 2 - 1), BLOCK_SIZE / 2 };
+	m_playerRespawn2 = { BLOCK_SIZE * (m_widthBlocks / 2 + 3), BLOCK_SIZE / 2 };
+	m_enemyRespawn1  = { BLOCK_SIZE,                           BLOCK_SIZE * m_heightBlocks - BLOCK_SIZE / 2 };
+	m_enemyRespawn2  = { BLOCK_SIZE * (m_widthBlocks / 2 + 1), BLOCK_SIZE * m_heightBlocks - BLOCK_SIZE / 2 };
+	m_enemyRespawn3  = { BLOCK_SIZE * m_widthBlocks,           BLOCK_SIZE * m_heightBlocks - BLOCK_SIZE / 2 };
+
 	m_mapObjects.reserve(static_cast<size_t>(m_widthBlocks) * m_heightBlocks);
 	unsigned int currentBottomOffset = static_cast<unsigned int>(BLOCK_SIZE * (m_heightBlocks - 1) + BLOCK_SIZE / 2.f);
 	for (const std::string& currentRow : levelDescription)
@@ -73,6 +78,26 @@ Level::Level(const std::vector<std::string>& levelDescription)
 		unsigned int currentLeftOffset = BLOCK_SIZE;
 		for (const char currentElement : currentRow)
 		{
+			switch (currentElement)
+			{
+			case 'K':
+				m_playerRespawn1 = { currentLeftOffset, currentBottomOffset };
+				break;
+			case 'L':
+				m_playerRespawn2 = { currentLeftOffset, currentBottomOffset };
+				break;
+			case 'M':
+				m_enemyRespawn1 = { currentLeftOffset, currentBottomOffset };
+				break;
+			case 'N':
+				m_enemyRespawn2 = { currentLeftOffset, currentBottomOffset };
+				break;
+			case 'O':
+				m_enemyRespawn3 = { currentLeftOffset, currentBottomOffset };
+				break;
+			default:
+				break;
+			}
 			m_mapObjects.emplace_back(createGameObjectByChar(currentElement, glm::vec2(currentLeftOffset, currentBottomOffset), glm::vec2(BLOCK_SIZE, BLOCK_SIZE), 0));
 			currentLeftOffset += BLOCK_SIZE;
 		}
