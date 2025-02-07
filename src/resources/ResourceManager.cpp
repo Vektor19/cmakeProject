@@ -226,7 +226,7 @@ namespace resources {
 					for (const auto& currentFrame : framesArray)
 					{
 						std::string subTextureStr = currentFrame["subTexture"].GetString();
-						const uint64_t duration = currentFrame["duration"].GetUint64();
+						const double duration = currentFrame["duration"].GetDouble();
 						auto pTextureAtlas = getTexture(textureAtlas);
 						auto pSubTexture = pTextureAtlas->getSubtexture(subTextureStr);
 						framesDescriptions.emplace_back(pSubTexture.leftBottomUV, pSubTexture.rightTopUV, duration);

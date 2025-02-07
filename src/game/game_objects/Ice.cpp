@@ -24,7 +24,7 @@ void Ice::render() const
 	renderBlock(EBlockLocation::BottomRight);
 }
 
-void Ice::update(const uint64_t delta)
+void Ice::update(const double delta)
 {
 }
 

@@ -86,7 +86,7 @@ namespace renderer
 	{
 		m_framesDescriptions = std::move(framesDescriptions);
 	}
-	uint64_t Sprite::getFrameDuration(const size_t frameIndex) const
+	double Sprite::getFrameDuration(const size_t frameIndex) const
 	{
 		return m_framesDescriptions[frameIndex].duration;
 	}

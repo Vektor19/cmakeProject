@@ -16,6 +16,6 @@ void Border::render() const
 	m_sprite->render(m_position, m_size, m_rotation, m_layer);
 }
 
-void Border::update(const uint64_t delta)
+void Border::update(const double delta)
 {
 }

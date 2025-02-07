@@ -48,7 +48,7 @@ public:
 	void render() const override;
 	void setOrientation(const EOrientation eOrientation);
 	void move(const bool move);
-	void update(const uint64_t delta) override;
+	void update(const double delta) override;
 
 
 

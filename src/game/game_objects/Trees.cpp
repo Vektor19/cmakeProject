@@ -23,7 +23,7 @@ void Trees::render() const
 	renderBlock(EBlockLocation::BottomRight);
 }
 
-void Trees::update(const uint64_t delta)
+void Trees::update(const double delta)
 {
 }
 

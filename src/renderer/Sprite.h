@@ -19,8 +19,8 @@ namespace renderer
 		{
 			glm::vec2 leftBottomUV;
 			glm::vec2 rightTopUV;
-			uint64_t duration;
-			FrameDescription(const glm::vec2& _leftBottomUV, const glm::vec2& _rightTopUV, const uint64_t _duration)
+			double duration;
+			FrameDescription(const glm::vec2& _leftBottomUV, const glm::vec2& _rightTopUV, const double _duration)
 				:leftBottomUV(_leftBottomUV), rightTopUV(_rightTopUV), duration(_duration)
 			{}
 		};
@@ -34,7 +34,7 @@ namespace renderer
 
 		void render(const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer = 0, size_t frameIndex=0) const;
 		void setFrames(std::vector<FrameDescription> framesDescriptions);
-		uint64_t getFrameDuration(const size_t frameIndex) const;
+		double getFrameDuration(const size_t frameIndex) const;
 		size_t getFramesCount() const;
 	protected:
 		std::shared_ptr<ShaderProgram> m_pShaderProgam;

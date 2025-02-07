@@ -20,7 +20,7 @@ public:
 		const float rotation = 0,
 		const float layer = 0);
 	void render() const override;
-	void update(const uint64_t delta) override;
+	void update(const double delta) override;
 
 private:
 	void renderBlock(EBlockLocation eBlockLocation) const;

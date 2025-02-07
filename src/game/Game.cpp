@@ -47,11 +47,11 @@ bool Game::init()
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
 
-    m_pTank = std::make_unique<Tank>(Tank::ETankType::Yellow1, 0.0000001, m_pLevel->getPlayerRespawn1(), glm::vec2(Level::BLOCK_SIZE), 0.f);
+    m_pTank = std::make_unique<Tank>(Tank::ETankType::Yellow1, 0.1, m_pLevel->getPlayerRespawn1(), glm::vec2(Level::BLOCK_SIZE), 0.f);
 	return true;
 }
 
-void Game::update(const uint64_t delta)
+void Game::update(const double delta)
 {
     //ResourcesManager::getAnimatedSprite("DefaultAnimatedSprite")->update(delta);
     if (m_pTank)

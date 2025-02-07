@@ -86,7 +86,7 @@ int main(int argc, char** argv)
     while (!glfwWindowShouldClose(window))
     {
         auto currentTime = std::chrono::high_resolution_clock::now();
-        auto duration = std::chrono::duration_cast<std::chrono::nanoseconds>(currentTime - lastTime).count();
+        double duration = std::chrono::duration<double, std::milli>(currentTime - lastTime).count();
         lastTime = currentTime;
         g_pGame->update(duration);
         /* Render here */

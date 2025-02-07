@@ -9,7 +9,7 @@ public:
 	Game(const glm::ivec2& windowSize);
 	~Game();
 	bool init();
-	void update(const uint64_t delta);
+	void update(const double delta);
 	void render();
 	void setKey(const int key, const int action);
 	size_t getCurrentLevelWidth() const;
