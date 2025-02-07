@@ -51,7 +51,7 @@ bool Game::init()
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
 
-    m_pTank = std::make_unique<Tank>(Tank::ETankType::Yellow1, 0.0000001, glm::vec2(0), glm::vec2(16));
+    m_pTank = std::make_unique<Tank>(Tank::ETankType::Yellow1, 0.0000001, glm::vec2(0), glm::vec2(16), 0.f);
 
     m_pLevel = std::make_unique<Level>(ResourcesManager::getLevelsDescriptions()[1]);
 	return true;

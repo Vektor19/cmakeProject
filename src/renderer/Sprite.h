@@ -32,7 +32,7 @@ namespace renderer
 		Sprite(const Sprite&) = delete;
 		Sprite& operator=(const Sprite&) = delete;
 
-		void render(const glm::vec2& position, const glm::vec2& size, const float rotation, size_t frameIndex=0) const;
+		void render(const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer = 0, size_t frameIndex=0) const;
 		void setFrames(std::vector<FrameDescription> framesDescriptions);
 		uint64_t getFrameDuration(const size_t frameIndex) const;
 		size_t getFramesCount() const;

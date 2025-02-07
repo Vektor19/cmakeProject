@@ -4,8 +4,9 @@
 
 Trees::Trees(const glm::vec2& position,
 	const glm::vec2& size,
-	const float rotation)
-	: GameObject(position, size, rotation)
+	const float rotation,
+	const float layer)
+	: GameObject(position, size, rotation, layer)
 	, m_blockOffsets { glm::vec2(0, m_size.y / 2.f),
 					   glm::vec2(m_size.x / 2.f, m_size.y / 2.f),
 					   glm::vec2(0, 0),
@@ -28,5 +29,5 @@ void Trees::update(const uint64_t delta)
 
 void Trees::renderBlock(EBlockLocation eBlockLocation) const
 {
-	m_sprite->render(m_position + m_blockOffsets[static_cast<size_t>(eBlockLocation)], m_size / 2.f, m_rotation);
+	m_sprite->render(m_position + m_blockOffsets[static_cast<size_t>(eBlockLocation)], m_size / 2.f, m_rotation, m_layer);
 }

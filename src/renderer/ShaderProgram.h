@@ -13,6 +13,7 @@ namespace renderer {
 		bool isCompiled() const { return m_isCompiled; }
 		void use() const;
 		void setInt(const std::string& name, const GLuint value);
+		void setFloat(const std::string& name, const GLfloat value);
 		void setMatrix(const std::string& name, const glm::mat4& matrix);
 
 		ShaderProgram() = delete;

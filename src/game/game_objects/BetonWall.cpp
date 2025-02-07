@@ -5,8 +5,9 @@
 BetonWall::BetonWall(const EBetonWallType eBetonWallType,
 	const glm::vec2& position,
 	const glm::vec2& size,
-	const float rotation)
-	: GameObject(position, size, rotation)
+	const float rotation,
+	const float layer)
+	: GameObject(position, size, rotation, layer)
 	, m_eBrickStates{EBrickState::Destroyed,
 					 EBrickState::Destroyed,
 					 EBrickState::Destroyed,
@@ -72,6 +73,6 @@ void BetonWall::renderBrick(EBrickLocation eBrickLocation) const
 	const EBrickState state = m_eBrickStates[static_cast<size_t>(eBrickLocation)];
 	if (state != EBrickState::Destroyed)
 	{
-		m_sprites[static_cast<size_t>(state)]->render(m_position + m_blockOffsets[static_cast<size_t>(eBrickLocation)], m_size/2.f, m_rotation);
+		m_sprites[static_cast<size_t>(state)]->render(m_position + m_blockOffsets[static_cast<size_t>(eBrickLocation)], m_size/2.f, m_rotation, m_layer);
 	}
 }

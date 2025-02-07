@@ -53,7 +53,7 @@ namespace renderer
 	{
 		
 	}
-	void Sprite::render(const glm::vec2& position, const glm::vec2& size, const float rotation, size_t frameIndex) const
+	void Sprite::render(const glm::vec2& position, const glm::vec2& size, const float rotation, const float layer, size_t frameIndex) const
 	{
 		if (frameIndex != m_lastFrameIndex)
 		{
@@ -77,7 +77,7 @@ namespace renderer
 		modelMat = glm::scale(modelMat, glm::vec3(size, 1.0f));
 
 		m_pShaderProgam->setMatrix("modelMat", modelMat);
-
+		m_pShaderProgam->setFloat("layer", layer);
 		glActiveTexture(GL_TEXTURE0);
 		m_pTexture->bind();
 		Renderer::draw(m_vertexArray, m_indexBuffer, *m_pShaderProgam);

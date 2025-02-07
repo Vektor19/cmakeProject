@@ -4,8 +4,9 @@
 
 Eagle::Eagle(const glm::vec2& position,
 	const glm::vec2& size,
-	const float rotation)
-	: GameObject(position, size, rotation)
+	const float rotation,
+	const float layer)
+	: GameObject(position, size, rotation, layer)
 	, m_eCurrentEagleState(EEagleState::Alive)
 {
 	m_sprites[static_cast<size_t>(EEagleState::Alive)] = resources::ResourcesManager::getSprite("eagle");
@@ -14,7 +15,7 @@ Eagle::Eagle(const glm::vec2& position,
 
 void Eagle::render() const
 {
-	m_sprites[static_cast<size_t>(m_eCurrentEagleState)]->render(m_position, m_size, m_rotation);
+	m_sprites[static_cast<size_t>(m_eCurrentEagleState)]->render(m_position, m_size, m_rotation, m_layer);
 }
 
 void Eagle::update(const uint64_t delta)

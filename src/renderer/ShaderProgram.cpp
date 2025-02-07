@@ -50,6 +50,10 @@ namespace renderer {
     {
         glUniform1i(glGetUniformLocation(m_programId, name.c_str()), value);
     }
+    void ShaderProgram::setFloat(const std::string& name, const GLfloat value)
+    {
+        glUniform1f(glGetUniformLocation(m_programId, name.c_str()), value);
+    }
     void ShaderProgram::setMatrix(const std::string& name, const glm::mat4& matrix)
     {
         glUniformMatrix4fv(glGetUniformLocation(m_programId, name.c_str()), 1, GL_FALSE, glm::value_ptr(matrix));

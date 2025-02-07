@@ -74,6 +74,7 @@ int main(int argc, char** argv)
 	std::cout<<"OpenGL "<< renderer::Renderer::getGlVersion()<<std::endl;
     glfwSwapInterval(1);
     renderer::Renderer::setClearColor(0, 0, 0, 1);
+    renderer::Renderer::setDepthTest(true);
     ResourcesManager::setExecutablePath(argv[0]);
     if(!g_pGame->init())
     {
