@@ -14,7 +14,6 @@ using namespace resources;
 
 glm::ivec2 windowSize(13 * 16, 14 * 16);
 std::unique_ptr<Game> g_pGame = std::make_unique<Game>(windowSize);
-const float g_aspectRation = 13.f / 14.f;
 
 void glfwWindowSizeCallback(GLFWwindow* window, int newWidth, int newHeight)
 {
@@ -24,15 +23,16 @@ void glfwWindowSizeCallback(GLFWwindow* window, int newWidth, int newHeight)
     unsigned int viewPortHeight = newHeight;
     unsigned int viewPortLeftOffset = 0;
     unsigned int viewPortBottomOffset = 0;
-    if (static_cast<float>(windowSize.x) / windowSize.y > g_aspectRation)
+
+    const float levelAspectRation = static_cast<float>(g_pGame->getCurrentLevelWidth()) / g_pGame->getCurrentLevelHeight();
+    if (static_cast<float>(windowSize.x) / windowSize.y > levelAspectRation)
     {
-        viewPortWidth = static_cast<unsigned int>(newHeight * g_aspectRation);
+        viewPortWidth = static_cast<unsigned int>(newHeight * levelAspectRation);
         viewPortLeftOffset = (newWidth - viewPortWidth) / 2;
     }
     else
     {
-
-        viewPortHeight = static_cast<unsigned int>(newWidth / g_aspectRation);
+        viewPortHeight = static_cast<unsigned int>(newWidth / levelAspectRation);
         viewPortBottomOffset = (newHeight - viewPortHeight) / 2;
     }
     renderer::Renderer::setViewport(viewPortWidth, viewPortHeight, viewPortLeftOffset, viewPortBottomOffset);
@@ -81,6 +81,7 @@ int main(int argc, char** argv)
         std::cerr << "Can't init game";
         return -1;
     }
+    glfwSetWindowSize(window, static_cast<int>(g_pGame->getCurrentLevelWidth()), static_cast<int>(g_pGame->getCurrentLevelHeight()));
     auto lastTime = std::chrono::high_resolution_clock::now();
     while (!glfwWindowShouldClose(window))
     {

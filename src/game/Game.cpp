@@ -38,22 +38,16 @@ bool Game::init()
         std::cerr << "No tanksTextureAtlas!" << std::endl;
         return false;
     }
-    
 
-    std::vector<std::pair<std::string, uint64_t>> tankTopState;
-
-
-    glm::mat4 modelMatrix = glm::mat4(1.f);
-    modelMatrix = glm::translate(modelMatrix, glm::vec3(100.f, 200.f, 0.f));
+    m_pLevel = std::make_unique<Level>(ResourcesManager::getLevelsDescriptions()[1]);
+    m_windowSize.x = static_cast<int>(m_pLevel->getLevelWidth());
+    m_windowSize.y = static_cast<int>(m_pLevel->getLevelHeight());
     glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_windowSize.x), 0.f, static_cast<float>(m_windowSize.y), -100.f, 100.f);
-    /* Loop until the user closes the window */
     pSpriteShaderProgram->use();
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
 
     m_pTank = std::make_unique<Tank>(Tank::ETankType::Yellow1, 0.0000001, glm::vec2(0), glm::vec2(16), 0.f);
-
-    m_pLevel = std::make_unique<Level>(ResourcesManager::getLevelsDescriptions()[1]);
 	return true;
 }
 
@@ -110,4 +104,14 @@ void Game::render()
 void Game::setKey(const int key, const int action)
 {
 	m_keys[key] = action;
+}
+
+size_t Game::getCurrentLevelWidth() const
+{
+    return m_pLevel->getLevelWidth();
+}
+
+size_t Game::getCurrentLevelHeight() const
+{
+    return m_pLevel->getLevelHeight();
 }

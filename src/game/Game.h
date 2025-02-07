@@ -12,6 +12,8 @@ public:
 	void update(const uint64_t delta);
 	void render();
 	void setKey(const int key, const int action);
+	size_t getCurrentLevelWidth() const;
+	size_t getCurrentLevelHeight() const;
 private:
 	std::array<bool,349> m_keys;
 	enum class GameState
