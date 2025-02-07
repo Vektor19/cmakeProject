@@ -49,6 +49,71 @@ add_executable(${ProjectName}
 	src/game/game_objects/Eagle.h
 	src/game/game_objects/Eagle.cpp)
 
+source_group("Header Files\\resources" FILES 
+    src/resources/ResourceManager.h
+    src/resources/stb_image.h
+)
+
+source_group("Header Files\\renderer" FILES 
+    src/renderer/ShaderProgram.h
+    src/renderer/Texture2D.h
+    src/renderer/Sprite.h
+    src/renderer/VertexBuffer.h
+    src/renderer/IndexBuffer.h
+    src/renderer/VertexArray.h
+    src/renderer/VertexBufferLayout.h
+    src/renderer/Renderer.h
+    src/renderer/SpriteAnimator.h
+)
+
+source_group("Header Files\\game" FILES 
+    src/game/Game.h
+    src/game/Level.h
+)
+
+source_group("Header Files\\game\\game_objects" FILES 
+    src/game/game_objects/GameObject.h
+    src/game/game_objects/Tank.h
+    src/game/game_objects/BrickWall.h
+    src/game/game_objects/BetonWall.h
+    src/game/game_objects/Water.h
+    src/game/game_objects/Trees.h
+    src/game/game_objects/Ice.h
+    src/game/game_objects/Eagle.h
+)
+
+source_group("Source Files\\resources" FILES 
+    src/resources/ResourceManager.cpp
+)
+
+source_group("Source Files\\renderer" FILES 
+    src/renderer/ShaderProgram.cpp
+    src/renderer/Texture2D.cpp
+    src/renderer/Sprite.cpp
+    src/renderer/VertexBuffer.cpp
+    src/renderer/IndexBuffer.cpp
+    src/renderer/VertexArray.cpp
+    src/renderer/VertexBufferLayout.cpp
+    src/renderer/Renderer.cpp
+    src/renderer/SpriteAnimator.cpp
+)
+
+source_group("Source Files\\game" FILES 
+    src/game/Game.cpp
+    src/game/Level.cpp
+)
+
+source_group("Source Files\\game\\game_objects" FILES 
+    src/game/game_objects/GameObject.cpp
+    src/game/game_objects/Tank.cpp
+    src/game/game_objects/BrickWall.cpp
+    src/game/game_objects/BetonWall.cpp
+    src/game/game_objects/Water.cpp
+    src/game/game_objects/Trees.cpp
+    src/game/game_objects/Ice.cpp
+    src/game/game_objects/Eagle.cpp
+)
+
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
