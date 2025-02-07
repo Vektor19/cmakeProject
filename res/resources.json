@@ -266,7 +266,18 @@
             "shader"            : "spriteShader",
             "initialSubTexture" : "bullet_Right"
         },
-        
+        {
+            "name"              : "eagle",
+            "textureAtlas"      : "mapTextureAtlas_16x16",
+            "shader"            : "spriteShader",
+            "initialSubTexture" : "eagle"
+        },
+        {
+            "name"              : "eagle_dead",
+            "textureAtlas"      : "mapTextureAtlas_16x16",
+            "shader"            : "spriteShader",
+            "initialSubTexture" : "eagle_dead"
+        },
         {
 			"name" 				: "tankSprite_top",
 			"textureAtlas" 		: "tanksTextureAtlas",

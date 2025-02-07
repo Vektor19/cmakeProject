@@ -37,7 +37,17 @@ add_executable(${ProjectName}
 	src/game/game_objects/Tank.h
 	src/game/game_objects/Tank.cpp
 	src/game/game_objects/BrickWall.h
-	src/game/game_objects/BrickWall.cpp)
+	src/game/game_objects/BrickWall.cpp
+	src/game/game_objects/BetonWall.h
+	src/game/game_objects/BetonWall.cpp
+	src/game/game_objects/Water.h
+	src/game/game_objects/Water.cpp
+	src/game/game_objects/Trees.h
+	src/game/game_objects/Trees.cpp
+	src/game/game_objects/Ice.h
+	src/game/game_objects/Ice.cpp
+	src/game/game_objects/Eagle.h
+	src/game/game_objects/Eagle.cpp)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)

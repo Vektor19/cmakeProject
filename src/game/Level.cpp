@@ -1,6 +1,11 @@
 #include "Level.h"
 #include "game_objects/GameObject.h"
 #include "game_objects/BrickWall.h"
+#include "game_objects/BetonWall.h"
+#include "game_objects/Water.h"
+#include "game_objects/Trees.h"
+#include "game_objects/Ice.h"
+#include "game_objects/Eagle.h"
 #include "../resources/ResourceManager.h"
 #include <iostream>
 const unsigned int BLOCK_SIZE = 16;
@@ -27,6 +32,24 @@ std::shared_ptr<GameObject> createGameObjectByChar(const char character, const g
 		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopLeft, position, size, rotation);
 	case 'J':
 		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopRight, position, size, rotation);
+	case '5':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Right, position, size, rotation);
+	case '6':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Bottom, position, size, rotation);
+	case '7':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Left, position, size, rotation);
+	case '8':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Top, position, size, rotation);
+	case '9':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::All, position, size, rotation);
+	case 'A':
+		return std::make_shared<Water>(position, size, rotation);
+	case 'B':
+		return std::make_shared<Trees>(position, size, rotation);
+	case 'C':
+		return std::make_shared<Ice>(position, size, rotation);
+	case 'E':
+		return std::make_shared<Eagle>(position, size, rotation);
 	case 'D':
 		return nullptr;
 	default:
