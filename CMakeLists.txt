@@ -9,6 +9,9 @@ add_executable(${ProjectName}
 	src/resources/ResourceManager.cpp
 	src/resources/stb_image.h
 	
+	src/utils/Timer.h
+	src/utils/Timer.cpp
+	
 	src/renderer/ShaderProgram.h
 	src/renderer/ShaderProgram.cpp
 	src/renderer/Texture2D.h
@@ -56,6 +59,10 @@ source_group("Header Files\\resources" FILES
     src/resources/stb_image.h
 )
 
+source_group("Header Files\\utils" FILES 
+	src/utils/Timer.h
+)
+
 source_group("Header Files\\renderer" FILES 
     src/renderer/ShaderProgram.h
     src/renderer/Texture2D.h
@@ -87,6 +94,10 @@ source_group("Header Files\\game\\game_objects" FILES
 
 source_group("Source Files\\resources" FILES 
     src/resources/ResourceManager.cpp
+)
+
+source_group("Source Files\\utils" FILES 
+	src/utils/Timer.cpp
 )
 
 source_group("Source Files\\renderer" FILES 
