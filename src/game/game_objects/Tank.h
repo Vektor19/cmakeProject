@@ -3,6 +3,7 @@
 #include <glm/vec2.hpp>
 #include "GameObject.h"
 #include "../../renderer/SpriteAnimator.h"
+#include "../../utils/Timer.h"
 namespace renderer { class Sprite; }
 class Tank: public GameObject
 {
@@ -38,7 +39,7 @@ public:
 		Red4
 	};
 	Tank(const ETankType eTankType,
-		 const float velocity,
+		 const double velocity,
 		 const glm::vec2& position,
 		 const glm::vec2& size,
 	  	 const float rotation = 0,
@@ -64,7 +65,18 @@ private:
 	std::unique_ptr<renderer::SpriteAnimator> m_spriteAnimator_left;
 	std::unique_ptr<renderer::SpriteAnimator> m_spriteAnimator_right;
 
+	std::shared_ptr<renderer::Sprite> m_pSprite_respawn;
+	std::unique_ptr<renderer::SpriteAnimator> m_spriteAnimator_respawn;
+
+	std::shared_ptr<renderer::Sprite> m_pSprite_shield;
+	std::unique_ptr<renderer::SpriteAnimator> m_spriteAnimator_shield;
+
+	Timer m_respawnTimer;
+	Timer m_shieldTimer;
+
 	bool m_move;
-	float m_velocity;
+	double m_velocity;
 	glm::vec2 m_moveOffset;
+	bool m_isSpawning;
+	bool m_hasShield;
 };

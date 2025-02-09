@@ -341,6 +341,54 @@
                     "duration"   : 200
                 }
             ]
+		},
+        {
+			"name" 				: "respawn",
+			"textureAtlas" 		: "mapTextureAtlas_16x16",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "respawn1",
+			"frames" : [
+                {
+                    "subTexture" : "respawn1",
+                    "duration"   : 100
+                },
+                {
+                    "subTexture" : "respawn2",
+                    "duration"   : 100
+                },
+                {
+                    "subTexture" : "respawn3",
+                    "duration"   : 100
+                },
+                {
+                    "subTexture" : "respawn4",
+                    "duration"   : 100
+                },
+                {
+                    "subTexture" : "respawn3",
+                    "duration"   : 100
+                },
+                {
+                    "subTexture" : "respawn2",
+                    "duration"   : 100
+                }
+            ]
+		},
+        {
+			"name" 				: "shield",
+			"textureAtlas" 		: "mapTextureAtlas_16x16",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "shield1",
+			"frames" : [
+                {
+                    "subTexture" : "shield1",
+                    "duration"   : 50
+                },
+                {
+                    "subTexture" : "shield2",
+                    "duration"   : 50
+                }
+            ]
 		}
 	],
 	"levels" : [

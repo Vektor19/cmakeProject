@@ -9,11 +9,11 @@
 #include "renderer/Renderer.h"
 #include "game/Game.h"
 #include <chrono>
-
 using namespace resources;
 
 glm::ivec2 windowSize(13 * 16, 14 * 16);
 std::unique_ptr<Game> g_pGame = std::make_unique<Game>(windowSize);
+glm::ivec2 g_screenResolution(1920, 1080);
 
 void glfwWindowSizeCallback(GLFWwindow* window, int newWidth, int newHeight)
 {
@@ -81,7 +81,8 @@ int main(int argc, char** argv)
         std::cerr << "Can't init game";
         return -1;
     }
-    glfwSetWindowSize(window, static_cast<int>(g_pGame->getCurrentLevelWidth()), static_cast<int>(g_pGame->getCurrentLevelHeight()));
+    glfwSetWindowSize(window, static_cast<int>(3*g_pGame->getCurrentLevelWidth()), static_cast<int>(3 * g_pGame->getCurrentLevelHeight()));
+    glfwSetWindowPos(window, abs(g_screenResolution.x - windowSize.x) * 0.5, abs(g_screenResolution.y - windowSize.y) * 0.5);
     auto lastTime = std::chrono::high_resolution_clock::now();
     while (!glfwWindowShouldClose(window))
     {
