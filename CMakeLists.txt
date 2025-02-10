@@ -52,7 +52,10 @@ add_executable(${ProjectName}
 	src/game/game_objects/Eagle.h
 	src/game/game_objects/Eagle.cpp
 	src/game/game_objects/Border.h
-	src/game/game_objects/Border.cpp)
+	src/game/game_objects/Border.cpp
+	
+	src/physics/PhysicsEngine.h
+	src/physics/PhysicsEngine.cpp)
 
 source_group("Header Files\\resources" FILES 
     src/resources/ResourceManager.h
@@ -92,6 +95,10 @@ source_group("Header Files\\game\\game_objects" FILES
 	src/game/game_objects/Border.h
 )
 
+source_group("Header Files\\physics" FILES 
+	src/physics/PhysicsEngine.h
+)
+
 source_group("Source Files\\resources" FILES 
     src/resources/ResourceManager.cpp
 )
@@ -127,6 +134,10 @@ source_group("Source Files\\game\\game_objects" FILES
     src/game/game_objects/Ice.cpp
     src/game/game_objects/Eagle.cpp
 	src/game/game_objects/Border.cpp
+)
+
+source_group("Source Files\\physics" FILES 
+	src/physics/PhysicsEngine.cpp
 )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
