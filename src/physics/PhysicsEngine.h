@@ -5,7 +5,7 @@ namespace physics
 	{
 	public:
 		PhysicsEngine();
-
+		void update(const double delta);
 	private:
 
 	};
