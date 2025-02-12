@@ -1,6 +1,7 @@
 #include "Tank.h"
 #include "../../renderer/Sprite.h"
 #include "../../resources/ResourceManager.h"
+#include "../../physics/collision/AABBCollider.h"
 Tank::Tank(const ETankType eTankType,
 		   const double maxVelocity,
 		   const glm::vec2& position,
@@ -44,6 +45,11 @@ Tank::Tank(const ETankType eTankType,
 	m_spriteAnimator_bottom = std::make_unique<renderer::SpriteAnimator>(m_pSprite_bottom);
 	m_spriteAnimator_left	= std::make_unique<renderer::SpriteAnimator>(m_pSprite_left);
 	m_spriteAnimator_right	= std::make_unique<renderer::SpriteAnimator>(m_pSprite_right);
+	int collisionMask =
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Static) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
+	m_colliders.emplace_back(std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic, collisionMask, glm::vec2(0.f, 0.f), m_size));
 
 	m_respawnTimer.setCallBack([&]()
 		{

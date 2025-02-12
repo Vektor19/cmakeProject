@@ -4,8 +4,9 @@
 #include "GameObject.h"
 #include "../../renderer/SpriteAnimator.h"
 #include "../../utils/Timer.h"
+#include "../../physics/collision/ICollidable.h"
 namespace renderer { class Sprite; }
-class Tank: public GameObject
+class Tank: public GameObject, public physics::ICollidable
 {
 public:
 	enum class EOrientation

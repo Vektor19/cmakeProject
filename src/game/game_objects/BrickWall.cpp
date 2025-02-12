@@ -1,6 +1,7 @@
 #include "BrickWall.h"
 #include "../../renderer/Sprite.h"
 #include "../../resources/ResourceManager.h"
+#include "../../physics/collision/AABBCollider.h"
 
 BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 	const glm::vec2& position,
@@ -68,6 +69,33 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 	default:
 		break;
 	}
+	int collisionMask =
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
+
+	m_colliders[static_cast<size_t>(EBrickLocation::BottomLeft)] =
+		std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+												collisionMask,
+												glm::vec2(0.f, 0.f),
+												m_size/2.f);
+
+	m_colliders[static_cast<size_t>(EBrickLocation::TopLeft)] =
+		std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+												collisionMask,
+												glm::vec2(0.f, m_size.y / 2.f),
+												glm::vec2(m_size.x / 2.f, m_size.y));
+
+	m_colliders[static_cast<size_t>(EBrickLocation::BottomRight)] =
+		std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+												collisionMask,
+												glm::vec2(m_size.x / 2.f, 0.f),
+												glm::vec2(m_size.x, m_size.y / 2.f));
+
+	m_colliders[static_cast<size_t>(EBrickLocation::TopRight)] =
+		std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+												collisionMask,
+												m_size/2.f,
+												m_size);
 }
 
 void BrickWall::render() const

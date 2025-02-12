@@ -2,11 +2,12 @@
 #include "GameObject.h"
 #include <memory>
 #include <array>
+#include "../../physics/collision/ICollidable.h"
 namespace renderer
 {
 	class Sprite;
 }
-class BrickWall : public GameObject
+class BrickWall : public GameObject, public physics::ICollidable
 {
 public:
 	enum class EBrickWallType {
