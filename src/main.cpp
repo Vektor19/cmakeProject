@@ -7,6 +7,7 @@
 #include "renderer/Texture2D.h"
 #include "renderer/Sprite.h"
 #include "renderer/Renderer.h"
+#include "physics/PhysicsEngine.h"
 #include "game/Game.h"
 #include <chrono>
 using namespace resources;
@@ -76,6 +77,7 @@ int main(int argc, char** argv)
     renderer::Renderer::setClearColor(0, 0, 0, 1);
     renderer::Renderer::setDepthTest(true);
     ResourcesManager::setExecutablePath(argv[0]);
+    physics::PhysicsEngine::init();
     if(!g_pGame->init())
     {
         std::cerr << "Can't init game";
@@ -90,6 +92,7 @@ int main(int argc, char** argv)
         double duration = std::chrono::duration<double, std::milli>(currentTime - lastTime).count();
         lastTime = currentTime;
         g_pGame->update(duration);
+        physics::PhysicsEngine::update(duration);
         /* Render here */
         renderer::Renderer::clear();
         g_pGame->render();

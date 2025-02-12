@@ -1,12 +1,25 @@
 #pragma once
+#include <unordered_set>
+#include <memory>
+
+class GameObject;
 namespace physics
 {
 	class PhysicsEngine
 	{
 	public:
-		PhysicsEngine();
-		void update(const double delta);
-	private:
+		PhysicsEngine() = delete;
+		~PhysicsEngine() = delete;
+		PhysicsEngine(const PhysicsEngine&) = delete;
+		PhysicsEngine(PhysicsEngine&&) = delete;
+		PhysicsEngine& operator=(const PhysicsEngine&) = delete;
+		PhysicsEngine& operator=(PhysicsEngine&&) = delete;
 
+		static void init();
+		static void terminate();
+		static void update(const double delta);
+		static void addDynamicObject(std::shared_ptr<GameObject> pGameObject);
+	private:
+		static std::unordered_set<std::shared_ptr<GameObject>> m_dynamicObjects;
 	};
 }
