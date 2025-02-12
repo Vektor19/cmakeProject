@@ -1,0 +1,22 @@
+#pragma once
+#include <glm/vec2.hpp>
+namespace physics
+{
+	class Collider
+	{
+	public:
+		enum class CollisionLayer {
+			None = 0,
+			Static = 1 << 0,
+			Dynamic = 1 << 1,
+			Water = 1 << 2,
+			Bullet = 1 << 3,
+		};
+		Collider(CollisionLayer collisionLayer, int collisionMask);
+		virtual bool canCollideWith(const Collider& other) const;
+		virtual ~Collider() = 0;
+	private:
+		CollisionLayer m_layer;
+		int m_collisionMask;
+	};
+}
