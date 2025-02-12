@@ -8,6 +8,7 @@ namespace physics
 		AABBCollider(CollisionLayer collisionLayer, int collisionMask, const glm::vec2& m_bottomLeft, const glm::vec2& m_topRight);
 		const glm::vec2& getBottomLeft() const { return m_bottomLeft; }
 		const glm::vec2& getTopRight() const { return m_topRight; }
+		virtual ~AABBCollider() override;
 	private:
 		glm::vec2 m_bottomLeft;
 		glm::vec2 m_topRight;

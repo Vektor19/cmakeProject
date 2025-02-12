@@ -72,7 +72,7 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 	int collisionMask =
 		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
 		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
-
+	m_colliders.resize(4);
 	m_colliders[static_cast<size_t>(EBrickLocation::BottomLeft)] =
 		std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
 												collisionMask,
@@ -107,6 +107,10 @@ void BrickWall::render() const
 }
 
 void BrickWall::update(const double delta)
+{
+}
+
+BrickWall::~BrickWall()
 {
 }
 

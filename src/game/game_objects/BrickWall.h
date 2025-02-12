@@ -7,7 +7,7 @@ namespace renderer
 {
 	class Sprite;
 }
-class BrickWall : public GameObject, public physics::ICollidable
+class BrickWall : public GameObject
 {
 public:
 	enum class EBrickWallType {
@@ -52,7 +52,7 @@ public:
 		const float layer = 0);
 	void render() const override;
 	void update(const double delta) override;
-
+	virtual ~BrickWall() override;
 private:
 	void renderBrick(EBrickLocation eBrickLocation) const;
 	std::array<std::shared_ptr<renderer::Sprite>, 15> m_sprites;

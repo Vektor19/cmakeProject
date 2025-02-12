@@ -162,6 +162,7 @@ source_group("Source Files\\physics\\collision" FILES
 	src/physics/collision/AABBCollider.cpp
 	src/physics/collision/ICollidable.cpp
 )
+target_compile_features(${ProjectName} PUBLIC cxx_std_17)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)

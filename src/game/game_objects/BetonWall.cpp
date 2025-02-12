@@ -2,6 +2,7 @@
 #include "../../renderer/Sprite.h"
 #include "../../resources/ResourceManager.h"
 
+#include "../../physics/collision/AABBCollider.h"
 BetonWall::BetonWall(const EBetonWallType eBetonWallType,
 	const glm::vec2& position,
 	const glm::vec2& size,
@@ -54,6 +55,13 @@ BetonWall::BetonWall(const EBetonWallType eBetonWallType,
 	default:
 		break;
 	}
+	int collisionMask =
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Static) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
+	m_colliders.reserve(1);
+	m_colliders.emplace_back(std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic, collisionMask, glm::vec2(0.f, 0.f), m_size));
+
 }
 
 void BetonWall::render() const

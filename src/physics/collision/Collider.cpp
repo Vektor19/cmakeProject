@@ -11,4 +11,5 @@ namespace physics
 	{
 		return (m_collisionMask & static_cast<int>(other.m_layer)) != 0;
 	}
+	Collider::~Collider() {}
 }

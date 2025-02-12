@@ -6,4 +6,7 @@ namespace physics
 	: Collider(collisionLayer, collisionMask, ColliderType::AABB), m_bottomLeft(bottomLeft), m_topRight(topRight)
 	{
 	}
+	AABBCollider::~AABBCollider()
+	{
+	}
 }

@@ -6,7 +6,7 @@
 #include "../../utils/Timer.h"
 #include "../../physics/collision/ICollidable.h"
 namespace renderer { class Sprite; }
-class Tank: public GameObject, public physics::ICollidable
+class Tank: public GameObject
 {
 public:
 	enum class EOrientation
@@ -52,6 +52,7 @@ public:
 	void update(const double delta) override;
 	double getMaxVelocity() const { return m_maxVelocity; }
 	virtual void setVelocity(const double velocity) override;
+	virtual ~Tank() override;
 
 
 private:

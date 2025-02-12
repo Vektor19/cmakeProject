@@ -2,6 +2,7 @@
 #include "../../renderer/Sprite.h"
 #include "../../resources/ResourceManager.h"
 
+#include "../../physics/collision/AABBCollider.h"
 Ice::Ice(const glm::vec2& position,
 	const glm::vec2& size,
 	const float rotation,
@@ -13,7 +14,13 @@ Ice::Ice(const glm::vec2& position,
 					   glm::vec2(m_size.x / 2.f, 0) }
 	, m_sprite(resources::ResourcesManager::getSprite("ice"))
 {
-	
+	int collisionMask =
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Static) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
+	m_colliders.reserve(1);
+	m_colliders.emplace_back(std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic, collisionMask, glm::vec2(0.f, 0.f), m_size));
+
 }
 
 void Ice::render() const
