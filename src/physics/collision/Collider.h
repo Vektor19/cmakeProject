@@ -12,11 +12,17 @@ namespace physics
 			Water = 1 << 2,
 			Bullet = 1 << 3,
 		};
-		Collider(CollisionLayer collisionLayer, int collisionMask);
+		enum class ColliderType {
+			AABB = 0,
+			Circle
+		};
+		Collider(CollisionLayer collisionLayer, int collisionMask, ColliderType type);
+		virtual bool canCollideWith(const Collider& other) const;
 		virtual bool canCollideWith(const Collider& other) const;
 		virtual ~Collider() = 0;
 	private:
 		CollisionLayer m_layer;
 		int m_collisionMask;
+		ColliderType m_type;
 	};
 }

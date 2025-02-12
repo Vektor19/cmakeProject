@@ -6,11 +6,10 @@ namespace physics
 	{
 	public:
 		AABBCollider(CollisionLayer collisionLayer, int collisionMask);
-		struct AABB {
-			glm::vec2 leftBottom;
-			glm::vec2 topRight;
-		};
+		const glm::vec2& getBottomLeft() const { return m_bottomLeft; }
+		const glm::vec2& getTopRight() const { return m_topRight; }
 	private:
-
+		glm::vec2 m_bottomLeft;
+		glm::vec2 m_topRight;
 	};
 }

@@ -1,7 +1,10 @@
 #include "Collider.h"
 namespace physics
 {
-	Collider::Collider(CollisionLayer collisionLayer, int collisionMask): m_layer(collisionLayer), m_collisionMask(collisionMask)
+	Collider::Collider(CollisionLayer collisionLayer, int collisionMask, ColliderType type)
+				: m_layer(collisionLayer)
+				, m_collisionMask(collisionMask)
+				, m_type(type)
 	{
 	}
 	bool Collider::canCollideWith(const Collider& other) const

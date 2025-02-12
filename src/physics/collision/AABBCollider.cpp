@@ -2,7 +2,7 @@
 
 namespace physics
 {
-	AABBCollider::AABBCollider(CollisionLayer collisionLayer, int collisionMask) : Collider(collisionLayer, collisionMask)
+	AABBCollider::AABBCollider(CollisionLayer collisionLayer, int collisionMask) : Collider(collisionLayer, collisionMask, ColliderType::AABB)
 	{
 	}
 }
