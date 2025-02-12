@@ -55,7 +55,16 @@ add_executable(${ProjectName}
 	src/game/game_objects/Border.cpp
 	
 	src/physics/PhysicsEngine.h
-	src/physics/PhysicsEngine.cpp)
+	src/physics/PhysicsEngine.cpp
+	src/physics/collision/CollisionManager.h
+	src/physics/collision/CollisionManager.cpp
+	src/physics/collision/Collider.h
+	src/physics/collision/Collider.cpp
+	src/physics/collision/AABBCollider.h
+	src/physics/collision/AABBCollider.cpp
+	src/physics/collision/ICollidable.h
+	src/physics/collision/ICollidable.cpp
+	)
 
 source_group("Header Files\\resources" FILES 
     src/resources/ResourceManager.h
@@ -99,6 +108,13 @@ source_group("Header Files\\physics" FILES
 	src/physics/PhysicsEngine.h
 )
 
+source_group("Header Files\\physics\\collision" FILES 
+	src/physics/collision/CollisionManager.h
+	src/physics/collision/Collider.h
+	src/physics/collision/AABBCollider.h
+	src/physics/collision/ICollidable.h
+)
+
 source_group("Source Files\\resources" FILES 
     src/resources/ResourceManager.cpp
 )
@@ -138,6 +154,13 @@ source_group("Source Files\\game\\game_objects" FILES
 
 source_group("Source Files\\physics" FILES 
 	src/physics/PhysicsEngine.cpp
+)
+
+source_group("Source Files\\physics\\collision" FILES 
+	src/physics/collision/CollisionManager.cpp
+	src/physics/collision/Collider.cpp
+	src/physics/collision/AABBCollider.cpp
+	src/physics/collision/ICollidable.cpp
 )
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
