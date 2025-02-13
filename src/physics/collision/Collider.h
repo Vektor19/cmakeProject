@@ -11,6 +11,7 @@ namespace physics
 			Dynamic = 1 << 1,
 			Water = 1 << 2,
 			Bullet = 1 << 3,
+			Trees = 1 << 4
 		};
 		enum class ColliderType {
 			AABB = 0,

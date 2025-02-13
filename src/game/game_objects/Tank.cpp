@@ -48,7 +48,8 @@ Tank::Tank(const ETankType eTankType,
 	int collisionMask =
 		static_cast<int>(physics::AABBCollider::CollisionLayer::Static) |
 		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
-		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Water);
 	m_colliders.reserve(1);
 	m_colliders.emplace_back(std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic, collisionMask, glm::vec2(1.f, 1.f), glm::vec2(m_size.x - 1.f, m_size.y - 1.f)));
 	
