@@ -47,7 +47,7 @@ namespace physics{
         }
         if (topRight_first.x < bottomLeft_second.x)
         {
-            return true;
+            return false;
         }
         if (topRight_first.y < bottomLeft_second.y)
         {

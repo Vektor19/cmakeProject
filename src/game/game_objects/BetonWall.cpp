@@ -19,49 +19,87 @@ BetonWall::BetonWall(const EBetonWallType eBetonWallType,
 					   glm::vec2(m_size.x / 2.f, 0) }
 {
 	m_sprites[static_cast<size_t>(EBrickState::All)] = resources::ResourcesManager::getSprite("betonWall");
+	
+	int collisionMask =
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
+		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
 	switch (eBetonWallType)
 	{
 	case EBetonWallType::All:
 		m_eBrickStates.fill(EBrickState::All);
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(0), m_size));
 		break;
 	case EBetonWallType::Top:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopLeft)]	 = EBrickState::All;
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopRight)]	 = EBrickState::All;
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(0, m_size.y / 2.f), m_size));
 		break;
 	case EBetonWallType::Bottom:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomLeft)]  = EBrickState::All;
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomRight)] = EBrickState::All;
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(0), glm::vec2(m_size.x, m_size.y / 2.f)));
 		break;
 	case EBetonWallType::Left:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopLeft)]	 = EBrickState::All;
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomLeft)]  = EBrickState::All;
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(0), glm::vec2(m_size.x / 2.f, m_size.y)));
 		break;
 	case EBetonWallType::Right:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopRight)]	 = EBrickState::All;
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomRight)] = EBrickState::All;
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(m_size.x / 2.f, 0), m_size));
 		break;
 	case EBetonWallType::TopLeft:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopLeft)]	 = EBrickState::All;
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(0.f, m_size.y / 2.f),
+				glm::vec2(m_size.x / 2.f, m_size.y)));
 		break;
 	case EBetonWallType::TopRight:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopRight)]	 = EBrickState::All;
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(m_size.x / 2.f, m_size.y / 2.f),
+				m_size));
 		break;
 	case EBetonWallType::BottomLeft:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomLeft)]	 = EBrickState::All;
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(0.f, 0.f),
+				glm::vec2(m_size.x / 2.f, m_size.y / 2.f)));
 		break;
 	case EBetonWallType::BottomRight:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomRight)] = EBrickState::All;
+		m_colliders.emplace_back(
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+				collisionMask,
+				glm::vec2(m_size.x / 2.f, 0.f),
+				glm::vec2(m_size.x, m_size.y / 2.f)));
 		break;
 	default:
 		break;
 	}
-	int collisionMask =
-		static_cast<int>(physics::AABBCollider::CollisionLayer::Static) |
-		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
-		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
-	m_colliders.reserve(1);
-	m_colliders.emplace_back(std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic, collisionMask, glm::vec2(0.f, 0.f), m_size));
-
+	
 }
 
 void BetonWall::render() const

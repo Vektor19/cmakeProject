@@ -2,6 +2,7 @@
 #include "../game/game_objects/GameObject.h"
 #include "../game/Level.h"
 #include "collision/CollisionManager.h"
+#include <iostream>
 namespace physics{
 	std::unordered_set<std::shared_ptr<GameObject>> PhysicsEngine::m_dynamicObjects;
 	std::shared_ptr<Level> PhysicsEngine::m_pLevel;

@@ -75,7 +75,7 @@ Level::Level(const std::vector<std::string>& levelDescription)
 	m_enemyRespawn2  = { BLOCK_SIZE * (m_widthBlocks / 2 + 1), BLOCK_SIZE * m_heightBlocks - BLOCK_SIZE / 2 };
 	m_enemyRespawn3  = { BLOCK_SIZE * m_widthBlocks,           BLOCK_SIZE * m_heightBlocks - BLOCK_SIZE / 2 };
 
-	m_mapObjects.reserve(static_cast<size_t>(m_widthBlocks) * m_heightBlocks);
+	m_mapObjects.reserve(m_widthBlocks * m_heightBlocks + 4);
 	unsigned int currentBottomOffset = static_cast<unsigned int>(BLOCK_SIZE * (m_heightBlocks - 1) + BLOCK_SIZE / 2.f);
 	for (const std::string& currentRow : levelDescription)
 	{
@@ -86,23 +86,23 @@ Level::Level(const std::vector<std::string>& levelDescription)
 			{
 			case 'K':
 				m_playerRespawn1 = { currentLeftOffset, currentBottomOffset };
-				m_mapObjects.emplace_back(nullptr);
+				//m_mapObjects.emplace_back(nullptr);
 				break;
 			case 'L':
 				m_playerRespawn2 = { currentLeftOffset, currentBottomOffset };
-				m_mapObjects.emplace_back(nullptr);
+				//m_mapObjects.emplace_back(nullptr);
 				break;
 			case 'M':
 				m_enemyRespawn1 = { currentLeftOffset, currentBottomOffset };
-				m_mapObjects.emplace_back(nullptr);
+				//m_mapObjects.emplace_back(nullptr);
 				break;
 			case 'N':
 				m_enemyRespawn2 = { currentLeftOffset, currentBottomOffset };
-				m_mapObjects.emplace_back(nullptr);
+				//m_mapObjects.emplace_back(nullptr);
 				break;
 			case 'O':
 				m_enemyRespawn3 = { currentLeftOffset, currentBottomOffset };
-				m_mapObjects.emplace_back(nullptr);
+				//m_mapObjects.emplace_back(nullptr);
 				break;
 			default:
 				break;
@@ -153,6 +153,9 @@ size_t Level::getLevelHeight() const
 
 std::vector<std::shared_ptr<GameObject>> Level::getObjectsInArea(const glm::vec2& bottomLeft, const glm::vec2& topRight) const
 {
+	/*std::cout << "New Pos: x: " << bottomLeft.x << " y: " << bottomLeft.y << std::endl;
+	std::cout << "Top right Pos: x: " << topRight.x << " y: " << topRight.y << std::endl;*/
+
 	std::vector<std::shared_ptr<GameObject>> objectsInArea;
 
 	objectsInArea.reserve(9);
@@ -161,10 +164,18 @@ std::vector<std::shared_ptr<GameObject>> Level::getObjectsInArea(const glm::vec2
 	glm::vec2 topRight_converted(std::clamp(topRight.x - BLOCK_SIZE, 0.f, static_cast<float>(m_widthPixels)),
 		std::clamp(m_heightPixels - topRight.y + BLOCK_SIZE / 2, 0.f, static_cast<float>(m_heightPixels)));
 
+
+	/*std::cout << "bottomLeft_converted.x: " << bottomLeft_converted.x << " bottomLeft_converted.y: " << bottomLeft_converted.y << std::endl;
+	std::cout << "topRight_converted.x: " << topRight_converted.x << " topRight_converted.y: " << topRight_converted.y << std::endl;*/
+
 	size_t startX = static_cast<size_t>(floor(bottomLeft_converted.x / BLOCK_SIZE));
 	size_t endX = static_cast<size_t>(ceil(topRight_converted.x / BLOCK_SIZE));
 	size_t startY = static_cast<size_t>(floor(topRight_converted.y / BLOCK_SIZE));
 	size_t endY = static_cast<size_t>(ceil(bottomLeft_converted.y / BLOCK_SIZE));
+
+	/*std::cout << "Start X: " << startX << ", End X: " << endX << std::endl;
+	std::cout << "Start Y: " << startY << ", End Y: " << endY << std::endl;*/
+	
 	for (size_t currentColumn = startX; currentColumn < endX; ++currentColumn)
 	{
 		for (size_t currentRow = startY; currentRow < endY; ++currentRow)
