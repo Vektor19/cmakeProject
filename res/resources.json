@@ -103,6 +103,15 @@
 				"yellowType1_right1",
 				"yellowType1_right2"
 			]
+		},
+		{
+			"name": "bullet_3x4",
+			"filePath": "res/textures/bullet.png",
+			"subTextureWidth": 3,
+			"subTextureHeight": 4,
+			"subTextures":[
+				"bullet_top"
+			]
 		}
 	],
 	"sprites" : [
@@ -389,7 +398,13 @@
                     "duration"   : 50
                 }
             ]
-		}
+		},
+		{
+            "name"              : "bullet_top",
+            "textureAtlas"      : "bullet_3x4",
+            "shader"            : "spriteShader",
+            "initialSubTexture" : "bullet_top"
+        }
 	],
 	"levels" : [
 		{
