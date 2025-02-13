@@ -187,6 +187,23 @@ std::vector<std::shared_ptr<GameObject>> Level::getObjectsInArea(const glm::vec2
 			}
 		}
 	}
+
+	if (endX >= m_widthBlocks)
+	{
+		objectsInArea.push_back(m_mapObjects[m_mapObjects.size() - 1]);
+	}
+	if (startX <= 1)
+	{
+		objectsInArea.push_back(m_mapObjects[m_mapObjects.size() - 2]);
+	}
+	if (startY <= 1)
+	{
+		objectsInArea.push_back(m_mapObjects[m_mapObjects.size() - 3]);
+	}
+	if (endY >= m_heightBlocks)
+	{
+		objectsInArea.push_back(m_mapObjects[m_mapObjects.size() - 4]);
+	}
 	return objectsInArea;
 }
 
