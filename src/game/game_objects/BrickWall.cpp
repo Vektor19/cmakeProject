@@ -43,30 +43,30 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 	case EBrickWallType::All:
 		m_eBrickStates.fill(EBrickState::All);
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0), m_size));
 		
 		/*m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0.f, 0.f),
 				m_size / 2.f));
 
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				m_size / 2.f,
 				m_size));
 
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(m_size.x / 2.f, 0.f),
 				glm::vec2(m_size.x, m_size.y / 2.f)));
 
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				m_size / 2.f,
 				m_size));*/
@@ -75,17 +75,17 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopLeft)]	 = EBrickState::All;
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopRight)]	 = EBrickState::All;
 		/*m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				m_size / 2.f,
 				m_size));
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				m_size / 2.f,
 				m_size));*/
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0, m_size.y / 2.f), m_size));
 		break;
@@ -93,17 +93,17 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomLeft)]  = EBrickState::All;
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomRight)] = EBrickState::All;
 		/*m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0.f, 0.f),
 				m_size / 2.f));
-		std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+		std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 			collisionMask,
 			glm::vec2(m_size.x / 2.f, 0.f),
 			glm::vec2(m_size.x, m_size.y / 2.f));*/
 
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0), glm::vec2(m_size.x, m_size.y / 2.f)));
 		break;
@@ -111,17 +111,17 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopLeft)]	 = EBrickState::All;
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomLeft)]  = EBrickState::All;
 		/*m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0.f, m_size.y / 2.f),
 				glm::vec2(m_size.x / 2.f, m_size.y)));
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0.f, 0.f),
 				m_size / 2.f));*/
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0), glm::vec2(m_size.x / 2.f, m_size.y)));
 		break;
@@ -129,24 +129,24 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopRight)]	 = EBrickState::All;
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomRight)] = EBrickState::All;
 		/*m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(m_size.x / 2.f, 0.f),
 				glm::vec2(m_size.x, m_size.y / 2.f)));
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(m_size.x / 2.f, 0.f),
 				glm::vec2(m_size.x, m_size.y / 2.f)));*/
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(m_size.x / 2.f, 0), m_size));
 		break;
 	case EBrickWallType::TopLeft:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopLeft)]	 = EBrickState::All;
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0.f, m_size.y / 2.f),
 				glm::vec2(m_size.x / 2.f, m_size.y)));
@@ -154,7 +154,7 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 	case EBrickWallType::TopRight:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::TopRight)]	 = EBrickState::All;
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(m_size.x / 2.f, m_size.y / 2.f),
 				m_size));
@@ -162,7 +162,7 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 	case EBrickWallType::BottomLeft:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomLeft)]	 = EBrickState::All;
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(0.f, 0.f),
 				glm::vec2(m_size.x / 2.f, m_size.y / 2.f)));
@@ -170,7 +170,7 @@ BrickWall::BrickWall(const EBrickWallType eBrickWallType,
 	case EBrickWallType::BottomRight:
 		m_eBrickStates[static_cast<size_t>(EBrickLocation::BottomRight)] = EBrickState::All;
 		m_colliders.emplace_back(
-			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic,
+			std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static,
 				collisionMask,
 				glm::vec2(m_size.x / 2.f, 0.f),
 				glm::vec2(m_size.x, m_size.y / 2.f)));

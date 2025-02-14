@@ -17,7 +17,7 @@ Eagle::Eagle(const glm::vec2& position,
 		static_cast<int>(physics::AABBCollider::CollisionLayer::Dynamic) |
 		static_cast<int>(physics::AABBCollider::CollisionLayer::Bullet);
 	m_colliders.reserve(1);
-	m_colliders.emplace_back(std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Dynamic, collisionMask, glm::vec2(0.f, 0.f), m_size));
+	m_colliders.emplace_back(std::make_unique<physics::AABBCollider>(physics::AABBCollider::CollisionLayer::Static, collisionMask, glm::vec2(0.f, 0.f), m_size));
 
 }
 

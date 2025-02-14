@@ -10,6 +10,7 @@
 #include "Game.h"
 #include "../game/game_objects/Tank.h"
 #include "../game/Level.h"
+#include "../game/DynamicObjectsRenderer.h"
 #include <GLFW/glfw3.h>
 using namespace resources;
 Game::Game(const glm::ivec2& windowSize)
@@ -17,6 +18,7 @@ Game::Game(const glm::ivec2& windowSize)
     , m_windowSize(windowSize)
 {
     m_keys.fill(false);
+    m_previousKeysStates.fill(false);
 }
 
 Game::~Game()
@@ -83,6 +85,12 @@ void Game::update(const double delta)
         {
             m_pTank->setVelocity(0);
         }
+        if (m_keys[GLFW_KEY_SPACE] && !m_previousKeysStates[GLFW_KEY_SPACE])
+        {
+            m_pTank->shoot();
+        }
+
+        m_previousKeysStates[GLFW_KEY_SPACE] = m_keys[GLFW_KEY_SPACE];
         m_pTank->update(delta);
     }
     if (m_pLevel)
@@ -102,6 +110,7 @@ void Game::render()
     {
         m_pLevel->render();
     }
+    DynamicObjectsRenderer::render();
 }
 
 void Game::setKey(const int key, const int action)

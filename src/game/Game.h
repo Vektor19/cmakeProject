@@ -15,7 +15,8 @@ public:
 	size_t getCurrentLevelWidth() const;
 	size_t getCurrentLevelHeight() const;
 private:
-	std::array<bool,349> m_keys;
+	std::array<bool, 349> m_keys;
+	std::array<bool, 349> m_previousKeysStates;
 	enum class GameState
 	{
 		Active,
