@@ -52,6 +52,7 @@ public:
 	void update(const double delta) override;
 	double getMaxVelocity() const { return m_maxVelocity; }
 	virtual void setVelocity(const double velocity) override;
+	virtual void shoot();
 	virtual ~Tank() override;
 
 

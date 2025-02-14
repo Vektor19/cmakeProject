@@ -1,7 +1,10 @@
 #include "Tank.h"
+#include "Bullet.h"
 #include "../../renderer/Sprite.h"
 #include "../../resources/ResourceManager.h"
 #include "../../physics/collision/AABBCollider.h"
+#include "../../physics/PhysicsEngine.h"
+#include "../DynamicObjectsRenderer.h"
 Tank::Tank(const ETankType eTankType,
 		   const double maxVelocity,
 		   const glm::vec2& position,
@@ -173,6 +176,13 @@ void Tank::setVelocity(const double velocity)
 	{
 		m_velocity = velocity;
 	}
+}
+
+void Tank::shoot()
+{
+	auto bullet = std::make_shared<Bullet>(static_cast<Bullet::EOrientation>(m_eOrientation), 0.1, m_position, glm::vec2(3.f, 4.f), 1.f);
+	physics::PhysicsEngine::addDynamicObject(bullet);
+	DynamicObjectsRenderer::addDynamicObject(bullet);
 }
 
 Tank::~Tank()
