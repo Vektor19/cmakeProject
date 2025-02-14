@@ -76,8 +76,11 @@ private:
 
 	Timer m_respawnTimer;
 	Timer m_shieldTimer;
+	Timer m_reloadingTimer;
 
 	double m_maxVelocity;
 	bool m_isSpawning;
 	bool m_hasShield;
+	bool m_isReloading;
+	double m_reloadingDuration;
 };

@@ -23,7 +23,14 @@ namespace physics{
 			{
 				glm::vec2 newPosition = currentGameObject->getCurrentPosition() + currentGameObject->getCurrentDirection() * static_cast<float>(currentGameObject->getCurrentVelocity() * delta);
 				auto& objectsToCheck = m_pLevel->getObjectsInArea(newPosition, newPosition + currentGameObject->getSize());
-
+				for (auto& otherDynamicObject : m_dynamicObjects)
+				{
+					if (currentGameObject!=otherDynamicObject)
+					{
+						objectsToCheck.push_back(otherDynamicObject);
+					}
+					
+				}
 				bool hasCollision = false;
 				if (!objectsToCheck.empty())
 				{

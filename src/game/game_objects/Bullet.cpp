@@ -30,6 +30,7 @@ Bullet::Bullet(const Bullet::EOrientation eOrientation,
 		m_direction.x = 0.f;
 		m_direction.y = -1.f;
 		m_positionOffset.x = fabs(Level::BLOCK_SIZE - m_size.x) / 2.f;
+		m_positionOffset.y = -m_size.y;
 		break;
 	case Bullet::EOrientation::Left:
 		m_rotation = 90.f;
@@ -38,6 +39,7 @@ Bullet::Bullet(const Bullet::EOrientation eOrientation,
 		m_direction.x = -1.f;
 		m_direction.y = 0.f;
 		m_positionOffset.y = fabs(Level::BLOCK_SIZE - m_size.y) / 2.f;
+		m_positionOffset.x = -m_size.x;
 		break;
 	case Bullet::EOrientation::Right:
 		m_rotation = 270.f;

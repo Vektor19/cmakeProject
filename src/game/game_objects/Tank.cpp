@@ -20,6 +20,8 @@ Tank::Tank(const ETankType eTankType,
 		   , m_spriteAnimator_shield(std::make_unique<renderer::SpriteAnimator>(m_pSprite_shield))
 		   , m_isSpawning(true)
 		   , m_hasShield(false)
+		   , m_isReloading(true)
+		   , m_reloadingDuration(1000)
 {
 	std::string spriteTopName;
 	std::string spriteBottomName;
@@ -60,6 +62,7 @@ Tank::Tank(const ETankType eTankType,
 		{
 			m_isSpawning = false;
 			m_hasShield = true;
+			m_isReloading = false;
 			m_shieldTimer.start(2000);
 		});
 
@@ -68,6 +71,10 @@ Tank::Tank(const ETankType eTankType,
 			m_hasShield = false;
 		});
 	m_respawnTimer.start(2000);
+	m_reloadingTimer.setCallBack([&]()
+		{
+			m_isReloading = false;
+		});
 }
 
 void Tank::render() const
@@ -168,6 +175,10 @@ void Tank::update(const double delta)
 			}
 		}
 	}
+	if (m_isReloading)
+	{
+		m_reloadingTimer.update(delta);
+	}
 }
 
 void Tank::setVelocity(const double velocity)
@@ -180,9 +191,14 @@ void Tank::setVelocity(const double velocity)
 
 void Tank::shoot()
 {
-	auto bullet = std::make_shared<Bullet>(static_cast<Bullet::EOrientation>(m_eOrientation), 0.1, m_position, glm::vec2(3.f, 4.f), 1.f);
-	physics::PhysicsEngine::addDynamicObject(bullet);
-	DynamicObjectsRenderer::addDynamicObject(bullet);
+	if (!m_isReloading)
+	{
+		auto bullet = std::make_shared<Bullet>(static_cast<Bullet::EOrientation>(m_eOrientation), 0.1, m_position, glm::vec2(3.f, 4.f), 1.f);
+		physics::PhysicsEngine::addDynamicObject(bullet);
+		DynamicObjectsRenderer::addDynamicObject(bullet);
+		m_isReloading = true;
+		m_reloadingTimer.start(m_reloadingDuration);
+	}
 }
 
 Tank::~Tank()
