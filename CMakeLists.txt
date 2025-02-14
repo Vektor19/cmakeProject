@@ -35,6 +35,9 @@ add_executable(${ProjectName}
 	src/game/Game.cpp
 	src/game/Level.h
 	src/game/Level.cpp
+	src/game/DynamicObjectsRenderer.h
+	src/game/DynamicObjectsRenderer.cpp
+	
 	src/game/game_objects/GameObject.h
 	src/game/game_objects/GameObject.cpp
 	src/game/game_objects/Tank.h
@@ -53,6 +56,8 @@ add_executable(${ProjectName}
 	src/game/game_objects/Eagle.cpp
 	src/game/game_objects/Border.h
 	src/game/game_objects/Border.cpp
+	src/game/game_objects/Bullet.h
+	src/game/game_objects/Bullet.cpp
 	
 	src/physics/PhysicsEngine.h
 	src/physics/PhysicsEngine.cpp
@@ -90,6 +95,7 @@ source_group("Header Files\\renderer" FILES
 source_group("Header Files\\game" FILES 
     src/game/Game.h
     src/game/Level.h
+	src/game/DynamicObjectsRenderer.h
 )
 
 source_group("Header Files\\game\\game_objects" FILES 
@@ -102,6 +108,7 @@ source_group("Header Files\\game\\game_objects" FILES
     src/game/game_objects/Ice.h
     src/game/game_objects/Eagle.h
 	src/game/game_objects/Border.h
+	src/game/game_objects/Bullet.h
 )
 
 source_group("Header Files\\physics" FILES 
@@ -138,6 +145,7 @@ source_group("Source Files\\renderer" FILES
 source_group("Source Files\\game" FILES 
     src/game/Game.cpp
     src/game/Level.cpp
+	src/game/DynamicObjectsRenderer.cpp
 )
 
 source_group("Source Files\\game\\game_objects" FILES 
@@ -150,6 +158,7 @@ source_group("Source Files\\game\\game_objects" FILES
     src/game/game_objects/Ice.cpp
     src/game/game_objects/Eagle.cpp
 	src/game/game_objects/Border.cpp
+	src/game/game_objects/Bullet.cpp
 )
 
 source_group("Source Files\\physics" FILES 
