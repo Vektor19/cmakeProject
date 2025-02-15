@@ -178,8 +178,18 @@ std::vector<std::shared_ptr<GameObject>> Level::getObjectsInArea(const glm::vec2
 void Level::replaceObject(std::shared_ptr<GameObject> oldObject, std::shared_ptr<GameObject> newObject)
 {
 	auto it = std::find(m_mapObjects.begin(), m_mapObjects.end(), oldObject);
-	if (it != m_mapObjects.end()) {
+	if (it != m_mapObjects.end())
+	{
 		*it = std::move(newObject);
+	}
+}
+
+void Level::removeNonMapObject(std::shared_ptr<GameObject> object)
+{
+	auto it = std::find(m_nonMapDynamicObjects.begin(), m_nonMapDynamicObjects.end(), object);
+	if (it != m_nonMapDynamicObjects.end())
+	{
+		m_nonMapDynamicObjects.erase(it);
 	}
 }
 
@@ -188,6 +198,11 @@ void Level::postInit()
 	for (const auto& obj : m_mapObjects) {
 		if (auto ice = std::dynamic_pointer_cast<Ice>(obj)) {
 			ice->setParentLevel(shared_from_this());
+		}
+	}
+	for (const auto& obj : m_nonMapDynamicObjects) {
+		if (auto tank = std::dynamic_pointer_cast<Tank>(obj)) {
+			tank->setParentLevel(shared_from_this());
 		}
 	}
 }

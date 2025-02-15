@@ -24,6 +24,7 @@ public:
 	std::vector<std::shared_ptr<GameObject>> getObjectsInArea(const glm::vec2& bottomLeft, const glm::vec2& topRight) const;
 
 	void replaceObject(std::shared_ptr<GameObject> oldObject, std::shared_ptr<GameObject> newObject);
+	void removeNonMapObject(std::shared_ptr<GameObject> object);
 	void postInit();
 	~Level();
 

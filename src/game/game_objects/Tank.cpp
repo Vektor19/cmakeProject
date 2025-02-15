@@ -218,7 +218,17 @@ void Tank::takeDamage(const double damage)
 	{
 		physics::PhysicsEngine::addObjectToRemove(shared_from_this());
 		DynamicObjectsRenderer::removeDynamicObject(shared_from_this());
+		
+		if (m_parentLevel)
+		{
+			m_parentLevel->removeNonMapObject(shared_from_this());
+		}
 	}
+}
+
+void Tank::setParentLevel(std::shared_ptr<Level> parentLevel)
+{
+	m_parentLevel = std::move(parentLevel);
 }
 
 Tank::~Tank()

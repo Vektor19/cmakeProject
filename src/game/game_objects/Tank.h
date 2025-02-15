@@ -5,6 +5,7 @@
 #include "../../renderer/SpriteAnimator.h"
 #include "../../utils/Timer.h"
 #include "../../physics/collision/ICollidable.h"
+#include "../Level.h"
 namespace renderer { class Sprite; }
 class Tank: public GameObject, public std::enable_shared_from_this<Tank>
 {
@@ -56,7 +57,7 @@ public:
 	virtual void shoot();
 	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint) override;
 	virtual void takeDamage(const double damage);
-
+	void setParentLevel(std::shared_ptr<Level> parentLevel);
 
 	virtual ~Tank() override;
 
@@ -89,4 +90,5 @@ private:
 	bool m_isReloading;
 	double m_reloadingDuration;
 	double m_hitPoints;
+	std::shared_ptr<Level> m_parentLevel;
 };
