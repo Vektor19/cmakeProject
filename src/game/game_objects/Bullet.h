@@ -28,7 +28,7 @@ public:
 	double getMaxVelocity() const { return m_maxVelocity; }
 	virtual void setVelocity(const double velocity) override;
 	virtual ~Bullet() override;
-	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> objectt) override;
+	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint) override;
 
 
 private:

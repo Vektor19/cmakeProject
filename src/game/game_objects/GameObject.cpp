@@ -20,7 +20,7 @@ void GameObject::setVelocity(const double velocity)
 	m_velocity = velocity;
 }
 
-void GameObject::OnCollisionCallback(const std::shared_ptr<GameObject> object)
+void GameObject::OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint)
 {
 }
 

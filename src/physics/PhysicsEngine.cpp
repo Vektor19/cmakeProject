@@ -39,9 +39,10 @@ namespace physics{
 				{
 					for (auto& objectToCheck : objectsToCheck)
 					{
-						if (CollisionManager::checkCollision(currentGameObject->getColliders(), newPosition, objectToCheck->getColliders(), objectToCheck->getCurrentPosition()))
+						auto& collisionCheck = CollisionManager::checkCollision(currentGameObject->getColliders(), newPosition, objectToCheck->getColliders(), objectToCheck->getCurrentPosition());
+						if (collisionCheck.first)
 						{
-							CollisionManager::handleCollision(currentGameObject, objectToCheck);
+							CollisionManager::handleCollision(currentGameObject, objectToCheck, collisionCheck.second);
 							hasCollision = true;
 							break;
 						}

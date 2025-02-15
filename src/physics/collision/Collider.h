@@ -21,6 +21,7 @@ namespace physics
 		virtual bool canCollideWith(const Collider& other) const;
 		ColliderType getType() const { return m_type; }
 		CollisionLayer getCollisionLayer() const { return m_layer; }
+		void setCollisionLayer(CollisionLayer eCollisionLayer);
 		virtual ~Collider() = 0;
 	protected:
 		CollisionLayer m_layer;

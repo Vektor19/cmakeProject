@@ -86,6 +86,6 @@ Bullet::~Bullet()
 {
 }
 
-void Bullet::OnCollisionCallback(const std::shared_ptr<GameObject> object)
+void Bullet::OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint)
 {
 }
