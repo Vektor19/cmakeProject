@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <glm/vec2.hpp>
+class Tank;
 class GameObject;
 class Level: public std::enable_shared_from_this<Level>
 {
@@ -25,7 +26,7 @@ public:
 
 	void replaceObject(std::shared_ptr<GameObject> oldObject, std::shared_ptr<GameObject> newObject);
 	void removeNonMapObject(std::shared_ptr<GameObject> object);
-	void postInit();
+	void postInit(std::shared_ptr<Tank> pTank);
 	~Level();
 
 private:

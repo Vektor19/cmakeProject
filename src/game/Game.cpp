@@ -41,9 +41,9 @@ bool Game::init()
         std::cerr << "No tanksTextureAtlas!" << std::endl;
         return false;
     }
-
     m_pLevel = std::make_shared<Level>(ResourcesManager::getLevelsDescriptions()[1]);
-    m_pLevel->postInit();
+    m_pTank = std::make_shared<Tank>(Tank::ETankType::Yellow1, 0.05, m_pLevel->getPlayerRespawn1(), glm::vec2(Level::BLOCK_SIZE), 0.f);
+    m_pLevel->postInit(m_pTank);
     m_windowSize.x = static_cast<int>(m_pLevel->getLevelWidth());
     m_windowSize.y = static_cast<int>(m_pLevel->getLevelHeight());
     glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_windowSize.x), 0.f, static_cast<float>(m_windowSize.y), -100.f, 100.f);
@@ -51,7 +51,6 @@ bool Game::init()
     pSpriteShaderProgram->setInt("tex", 0);
     pSpriteShaderProgram->setMatrix("projectionMat", projectionMatrix);
     
-    m_pTank = std::make_shared<Tank>(Tank::ETankType::Yellow1, 0.05, m_pLevel->getPlayerRespawn1(), glm::vec2(Level::BLOCK_SIZE), 0.f);
     physics::PhysicsEngine::addDynamicObject(m_pTank);
     physics::PhysicsEngine::setCurrentLevel(m_pLevel);
     return true;

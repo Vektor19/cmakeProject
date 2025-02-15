@@ -5,6 +5,7 @@
 #include "../../physics/collision/AABBCollider.h"
 #include "../../physics/PhysicsEngine.h"
 #include "../DynamicObjectsRenderer.h"
+#include "../ai/TankAIComponent.h"
 Tank::Tank(const ETankType eTankType,
 		   const double maxVelocity,
 		   const glm::vec2& position,
@@ -24,6 +25,7 @@ Tank::Tank(const ETankType eTankType,
 		   , m_isReloading(true)
 		   , m_reloadingDuration(1000)
 		   , m_hitPoints(hitPoints)
+		   , m_hasAI(false)
 {
 	std::string spriteTopName;
 	std::string spriteBottomName;
@@ -65,6 +67,10 @@ Tank::Tank(const ETankType eTankType,
 			m_isSpawning = false;
 			m_hasShield = true;
 			m_isReloading = false;
+			if (m_hasAI)
+			{
+				setVelocity(getMaxVelocity());
+			}
 			m_shieldTimer.start(2000);
 		});
 
@@ -177,6 +183,10 @@ void Tank::update(const double delta)
 			}
 		}
 	}
+	if (m_aiComponent)
+	{
+		m_aiComponent->update(delta);
+	}
 	if (m_isReloading)
 	{
 		m_reloadingTimer.update(delta);
@@ -216,6 +226,7 @@ void Tank::takeDamage(const double damage)
 	m_hitPoints-= damage;
 	if (m_hitPoints<=0)
 	{
+		m_isAlive = false;
 		physics::PhysicsEngine::addObjectToRemove(shared_from_this());
 		DynamicObjectsRenderer::removeDynamicObject(shared_from_this());
 		
@@ -229,6 +240,21 @@ void Tank::takeDamage(const double damage)
 void Tank::setParentLevel(std::shared_ptr<Level> parentLevel)
 {
 	m_parentLevel = std::move(parentLevel);
+}
+
+void Tank::initAI()
+{
+	m_aiComponent = std::make_unique<TankAIComponent>(shared_from_this());
+}
+
+void Tank::setTarget(std::shared_ptr<GameObject> target)
+{
+	m_aiComponent->setTarget(target);
+}
+
+void Tank::setHasAI(bool hasAI)
+{
+	m_hasAI = hasAI;
 }
 
 Tank::~Tank()

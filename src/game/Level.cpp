@@ -193,7 +193,7 @@ void Level::removeNonMapObject(std::shared_ptr<GameObject> object)
 	}
 }
 
-void Level::postInit()
+void Level::postInit(std::shared_ptr<Tank> pTank)
 {
 	for (const auto& obj : m_mapObjects) {
 		if (auto ice = std::dynamic_pointer_cast<Ice>(obj)) {
@@ -203,6 +203,8 @@ void Level::postInit()
 	for (const auto& obj : m_nonMapDynamicObjects) {
 		if (auto tank = std::dynamic_pointer_cast<Tank>(obj)) {
 			tank->setParentLevel(shared_from_this());
+			tank->initAI();
+			tank->setTarget(pTank);
 		}
 	}
 }

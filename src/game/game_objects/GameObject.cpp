@@ -8,7 +8,7 @@ GameObject::GameObject(const glm::vec2& position, const glm::vec2& size, const f
 	, m_direction(glm::vec2(0.f,1.f))
 	, m_velocity(0)
 {
-
+	m_isAlive = true;
 }
 
 GameObject::~GameObject()
@@ -18,6 +18,11 @@ GameObject::~GameObject()
 void GameObject::setVelocity(const double velocity)
 {
 	m_velocity = velocity;
+}
+
+void GameObject::initAI()
+{
+    
 }
 
 void GameObject::OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint)
