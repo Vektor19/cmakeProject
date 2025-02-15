@@ -1,8 +1,10 @@
 #include "Ice.h"
 #include "../../renderer/Sprite.h"
 #include "../../resources/ResourceManager.h"
-
 #include "../../physics/collision/AABBCollider.h"
+#include "Bullet.h"
+#include "Water.h"
+
 Ice::Ice(const glm::vec2& position,
 	const glm::vec2& size,
 	const float rotation,
@@ -33,6 +35,28 @@ void Ice::render() const
 
 void Ice::update(const double delta)
 {
+}
+
+void Ice::OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint)
+{
+	if (auto bullet = std::dynamic_pointer_cast<Bullet>(object))
+	{
+		takeDamage();
+	}
+}
+
+void Ice::takeDamage()
+{
+	if (!m_parentLevel)
+	{
+		return;
+	}
+	m_parentLevel->replaceObject(shared_from_this(), std::make_shared<Water>(m_position, m_size, m_rotation, 0.f));
+}
+
+void Ice::setParentLevel(std::shared_ptr<Level> parentLevel)
+{
+	m_parentLevel = std::move(parentLevel);
 }
 
 void Ice::renderBlock(EBlockLocation eBlockLocation) const

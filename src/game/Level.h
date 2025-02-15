@@ -5,7 +5,7 @@
 #include <string>
 #include <glm/vec2.hpp>
 class GameObject;
-class Level
+class Level: public std::enable_shared_from_this<Level>
 {
 public:
 	static constexpr unsigned int BLOCK_SIZE = 16;
@@ -22,9 +22,13 @@ public:
 
 	const std::vector<std::shared_ptr<GameObject>>& getMapObjects() const { return m_mapObjects; }
 	std::vector<std::shared_ptr<GameObject>> getObjectsInArea(const glm::vec2& bottomLeft, const glm::vec2& topRight) const;
+
+	void replaceObject(std::shared_ptr<GameObject> oldObject, std::shared_ptr<GameObject> newObject);
+	void postInit();
 	~Level();
 
 private:
+	std::shared_ptr<GameObject> Level::createGameObjectByChar(const char character, const glm::vec2& position, const glm::vec2& size, const float rotation = 0);
 	size_t m_widthBlocks;
 	size_t m_heightBlocks;
 	unsigned int m_widthPixels = 0;

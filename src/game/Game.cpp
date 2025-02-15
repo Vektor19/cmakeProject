@@ -43,6 +43,7 @@ bool Game::init()
     }
 
     m_pLevel = std::make_shared<Level>(ResourcesManager::getLevelsDescriptions()[1]);
+    m_pLevel->postInit();
     m_windowSize.x = static_cast<int>(m_pLevel->getLevelWidth());
     m_windowSize.y = static_cast<int>(m_pLevel->getLevelHeight());
     glm::mat4 projectionMatrix = glm::ortho(0.f, static_cast<float>(m_windowSize.x), 0.f, static_cast<float>(m_windowSize.y), -100.f, 100.f);

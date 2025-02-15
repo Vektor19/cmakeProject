@@ -12,53 +12,7 @@
 #include <cmath>
 #include <algorithm>
 
-std::shared_ptr<GameObject> createGameObjectByChar(const char character, const glm::vec2& position, const glm::vec2& size, const float rotation = 0)
-{
-	switch (character)
-	{
-	case '0':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Right, position, size, rotation, 0.f);
-	case '1':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Bottom, position, size, rotation, 0.f);
-	case '2':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Left, position, size, rotation, 0.f);
-	case '3':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Top, position, size, rotation, 0.f);
-	case '4':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::All, position, size, rotation, 0.f);
-	case 'G':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomLeft, position, size, rotation, 0.f);
-	case 'H':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomRight, position, size, rotation, 0.f);
-	case 'I':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopLeft, position, size, rotation, 0.f);
-	case 'J':
-		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopRight, position, size, rotation, 0.f);
-	case '5':
-		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Right, position, size, rotation, 0.f);
-	case '6':
-		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Bottom, position, size, rotation, 0.f);
-	case '7':
-		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Left, position, size, rotation, 0.f);
-	case '8':
-		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Top, position, size, rotation, 0.f);
-	case '9':
-		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::All, position, size, rotation, 0.f);
-	case 'A':
-		return std::make_shared<Water>(position, size, rotation, 0.f);
-	case 'B':
-		return std::make_shared<Trees>(position, size, rotation, 1.f);
-	case 'C':
-		return std::make_shared<Ice>(position, size, rotation, -1.f);
-	case 'E':
-		return std::make_shared<Eagle>(position, size, rotation, 0.f);
-	case 'D':
-		return nullptr;
-	default:
-		std::cerr << "Unknown character: " << character << std::endl;
-	}
-	return nullptr;
-}
+
 Level::Level(const std::vector<std::string>& levelDescription)
 {
 	if (levelDescription.empty())
@@ -207,6 +161,71 @@ std::vector<std::shared_ptr<GameObject>> Level::getObjectsInArea(const glm::vec2
 	return objectsInArea;
 }
 
+void Level::replaceObject(std::shared_ptr<GameObject> oldObject, std::shared_ptr<GameObject> newObject)
+{
+	auto it = std::find(m_mapObjects.begin(), m_mapObjects.end(), oldObject);
+	if (it != m_mapObjects.end()) {
+		*it = std::move(newObject);
+	}
+}
+
+void Level::postInit()
+{
+	for (const auto& obj : m_mapObjects) {
+		if (auto ice = std::dynamic_pointer_cast<Ice>(obj)) {
+			ice->setParentLevel(shared_from_this());
+		}
+	}
+}
+
 Level::~Level()
 {
+}
+
+std::shared_ptr<GameObject> Level::createGameObjectByChar(const char character, const glm::vec2& position, const glm::vec2& size, const float rotation)
+{
+	switch (character)
+	{
+	case '0':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Right, position, size, rotation, 0.f);
+	case '1':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Bottom, position, size, rotation, 0.f);
+	case '2':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Left, position, size, rotation, 0.f);
+	case '3':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::Top, position, size, rotation, 0.f);
+	case '4':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::All, position, size, rotation, 0.f);
+	case 'G':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomLeft, position, size, rotation, 0.f);
+	case 'H':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::BottomRight, position, size, rotation, 0.f);
+	case 'I':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopLeft, position, size, rotation, 0.f);
+	case 'J':
+		return std::make_shared<BrickWall>(BrickWall::EBrickWallType::TopRight, position, size, rotation, 0.f);
+	case '5':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Right, position, size, rotation, 0.f);
+	case '6':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Bottom, position, size, rotation, 0.f);
+	case '7':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Left, position, size, rotation, 0.f);
+	case '8':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::Top, position, size, rotation, 0.f);
+	case '9':
+		return std::make_shared<BetonWall>(BetonWall::EBetonWallType::All, position, size, rotation, 0.f);
+	case 'A':
+		return std::make_shared<Water>(position, size, rotation, 0.f);
+	case 'B':
+		return std::make_shared<Trees>(position, size, rotation, 1.f);
+	case 'C':
+		return std::make_shared<Ice>(position, size, rotation, -1.f);
+	case 'E':
+		return std::make_shared<Eagle>(position, size, rotation, 0.f);
+	case 'D':
+		return nullptr;
+	default:
+		std::cerr << "Unknown character: " << character << std::endl;
+	}
+	return nullptr;
 }
