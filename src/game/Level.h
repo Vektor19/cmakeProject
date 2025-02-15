@@ -40,4 +40,5 @@ private:
 	glm::ivec2 m_enemyRespawn2;
 	glm::ivec2 m_enemyRespawn3;
 	std::vector<std::shared_ptr<GameObject>> m_mapObjects;
+	std::vector<std::shared_ptr<GameObject>> m_nonMapDynamicObjects;
 };

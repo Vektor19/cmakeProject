@@ -10,7 +10,8 @@ Tank::Tank(const ETankType eTankType,
 		   const glm::vec2& position,
 		   const glm::vec2& size,
 		   const float rotation,
-		   const float layer)
+		   const float layer,
+		   const double hitPoints)
 	       : GameObject(position, size, rotation, layer)
 		   , m_eOrientation(EOrientation::Top)
 		   , m_maxVelocity(maxVelocity)
@@ -22,6 +23,7 @@ Tank::Tank(const ETankType eTankType,
 		   , m_hasShield(false)
 		   , m_isReloading(true)
 		   , m_reloadingDuration(1000)
+		   , m_hitPoints(hitPoints)
 {
 	std::string spriteTopName;
 	std::string spriteBottomName;
@@ -198,6 +200,24 @@ void Tank::shoot()
 		DynamicObjectsRenderer::addDynamicObject(bullet);
 		m_isReloading = true;
 		m_reloadingTimer.start(m_reloadingDuration);
+	}
+}
+
+void Tank::OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint)
+{
+	if (auto bullet = std::dynamic_pointer_cast<Bullet>(object))
+	{
+		takeDamage(bullet->getDamage());
+	}
+}
+
+void Tank::takeDamage(const double damage)
+{
+	m_hitPoints-= damage;
+	if (m_hitPoints<=0)
+	{
+		physics::PhysicsEngine::addObjectToRemove(shared_from_this());
+		DynamicObjectsRenderer::removeDynamicObject(shared_from_this());
 	}
 }
 

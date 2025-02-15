@@ -6,7 +6,7 @@
 #include "../../utils/Timer.h"
 #include "../../physics/collision/ICollidable.h"
 namespace renderer { class Sprite; }
-class Tank: public GameObject
+class Tank: public GameObject, public std::enable_shared_from_this<Tank>
 {
 public:
 	enum class EOrientation
@@ -44,7 +44,8 @@ public:
 		 const glm::vec2& position,
 		 const glm::vec2& size,
 	  	 const float rotation = 0,
-		 const float layer = 0);
+		 const float layer = 0,
+		 const double hitPoints = 100.0);
 	
 
 	void render() const override;
@@ -53,6 +54,10 @@ public:
 	double getMaxVelocity() const { return m_maxVelocity; }
 	virtual void setVelocity(const double velocity) override;
 	virtual void shoot();
+	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint) override;
+	virtual void takeDamage(const double damage);
+
+
 	virtual ~Tank() override;
 
 
@@ -83,4 +88,5 @@ private:
 	bool m_hasShield;
 	bool m_isReloading;
 	double m_reloadingDuration;
+	double m_hitPoints;
 };

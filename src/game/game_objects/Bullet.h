@@ -20,12 +20,14 @@ public:
 		 const double maxVelocity,
 		 const glm::vec2& position,
 		 const glm::vec2& size,
-		 const float layer = 0);
+		 const float layer = 0,
+		 const double damage = 20.0);
 	
 
 	void render() const override;
 	void update(const double delta) override;
 	double getMaxVelocity() const { return m_maxVelocity; }
+	double getDamage() const { return m_damage; }
 	virtual void setVelocity(const double velocity) override;
 	virtual ~Bullet() override;
 	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint) override;
@@ -36,4 +38,5 @@ private:
 	std::shared_ptr<renderer::Sprite> m_pSprite;
 
 	double m_maxVelocity;
+	double m_damage;
 };

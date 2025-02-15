@@ -9,11 +9,13 @@ Bullet::Bullet(const Bullet::EOrientation eOrientation,
 			const double maxVelocity,
 			const glm::vec2& position,
 			const glm::vec2& size,
-			const float layer)
+			const float layer,
+			const double damage)
 	       : GameObject(position, size, 0, layer)
 		   , m_eOrientation(eOrientation)
 		   , m_maxVelocity(maxVelocity)
 		   , m_pSprite(resources::ResourcesManager::getSprite("bullet_top"))
+		   , m_damage(damage)
 {
 
 	glm::vec2 m_positionOffset(0);

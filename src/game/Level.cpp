@@ -7,7 +7,10 @@
 #include "game_objects/Ice.h"
 #include "game_objects/Eagle.h"
 #include "game_objects/Border.h"
+#include "game_objects/Tank.h"
 #include "../resources/ResourceManager.h"
+#include "../physics/PhysicsEngine.h"
+#include "DynamicObjectsRenderer.h"
 #include <iostream>
 #include <cmath>
 #include <algorithm>
@@ -66,7 +69,11 @@ Level::Level(const std::vector<std::string>& levelDescription)
 		}
 		currentBottomOffset -= BLOCK_SIZE;
 	}
-	
+
+	auto enemyTank = std::make_shared<Tank>(Tank::ETankType::Yellow1, 0.05, m_enemyRespawn1, glm::vec2(Level::BLOCK_SIZE), 0.f);
+	physics::PhysicsEngine::addDynamicObject(enemyTank);
+	DynamicObjectsRenderer::addDynamicObject(enemyTank);
+	m_nonMapDynamicObjects.emplace_back(enemyTank);
 	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(BLOCK_SIZE, 0.f), glm::vec2(m_widthBlocks * BLOCK_SIZE, BLOCK_SIZE / 2.f), 0, 0.f)); //bottom
 	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(BLOCK_SIZE, m_heightBlocks * BLOCK_SIZE + BLOCK_SIZE / 2.f), glm::vec2(m_widthBlocks * BLOCK_SIZE, BLOCK_SIZE), 0, 0.f)); //top
 	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(0.f, 0.f), glm::vec2(BLOCK_SIZE, (m_heightBlocks + 1) * BLOCK_SIZE), 0, 0.f)); //left
@@ -87,6 +94,13 @@ void Level::render() const
 void Level::update(const double delta)
 {
 	for (const auto& gameObject : m_mapObjects)
+	{
+		if (gameObject)
+		{
+			gameObject->update(delta);
+		}
+	}
+	for (const auto& gameObject : m_nonMapDynamicObjects)
 	{
 		if (gameObject)
 		{
