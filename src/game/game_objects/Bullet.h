@@ -6,7 +6,7 @@
 #include "../../utils/Timer.h"
 #include "../../physics/collision/ICollidable.h"
 namespace renderer { class Sprite; }
-class Bullet: public GameObject
+class Bullet: public GameObject, public std::enable_shared_from_this<Bullet>
 {
 public:
 	enum class EOrientation
@@ -28,6 +28,7 @@ public:
 	double getMaxVelocity() const { return m_maxVelocity; }
 	virtual void setVelocity(const double velocity) override;
 	virtual ~Bullet() override;
+	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> objectt) override;
 
 
 private:

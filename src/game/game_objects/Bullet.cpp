@@ -2,6 +2,8 @@
 #include "../../renderer/Sprite.h"
 #include "../../resources/ResourceManager.h"
 #include "../../physics/collision/AABBCollider.h"
+#include "../../physics/PhysicsEngine.h"
+#include "../DynamicObjectsRenderer.h"
 #include "../Level.h"
 Bullet::Bullet(const Bullet::EOrientation eOrientation,
 			const double maxVelocity,
@@ -81,5 +83,9 @@ void Bullet::setVelocity(const double velocity)
 }
 
 Bullet::~Bullet()
+{
+}
+
+void Bullet::OnCollisionCallback(const std::shared_ptr<GameObject> object)
 {
 }

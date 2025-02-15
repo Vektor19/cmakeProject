@@ -1,6 +1,7 @@
 #pragma once
 #include <glm/vec2.hpp>
 #include "../../physics/collision/ICollidable.h"
+#include <memory>
 class GameObject : public physics::ICollidable
 {
 public:
@@ -13,6 +14,8 @@ public:
 	virtual const glm::vec2& getSize() { return m_size;}
 	virtual double getCurrentVelocity() { return m_velocity; }
 	virtual void setVelocity(const double velocity);
+	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object);
+	virtual physics::Collider::CollisionLayer getCollisionLayer() const;
 protected:
 	glm::vec2 m_position;
 	glm::vec2 m_size;

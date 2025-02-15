@@ -193,6 +193,10 @@ void BrickWall::update(const double delta)
 {
 }
 
+void BrickWall::OnCollisionCallback(const std::shared_ptr<GameObject> object)
+{
+}
+
 BrickWall::~BrickWall()
 {
 }

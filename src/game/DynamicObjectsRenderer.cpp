@@ -17,3 +17,8 @@ void DynamicObjectsRenderer::addDynamicObject(std::shared_ptr<GameObject> pGameO
 {
 	m_dynamicObjects.insert(std::move(pGameObject));
 }
+
+void DynamicObjectsRenderer::removeDynamicObject(std::shared_ptr<GameObject> pGameObject)
+{
+	m_dynamicObjects.erase(pGameObject);
+}

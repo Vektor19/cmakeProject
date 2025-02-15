@@ -15,6 +15,7 @@ public:
 
 	static void render();
 	static void addDynamicObject(std::shared_ptr<GameObject> pGameObject);
+	static void removeDynamicObject(std::shared_ptr<GameObject> pGameObject);
 private:
 
 	static std::unordered_set<std::shared_ptr<GameObject>> m_dynamicObjects;

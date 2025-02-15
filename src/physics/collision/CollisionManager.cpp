@@ -1,5 +1,6 @@
 #include "CollisionManager.h"
-
+#include "../PhysicsEngine.h"
+#include "../../game/DynamicObjectsRenderer.h"
 namespace physics{
     bool CollisionManager::checkCollision(const std::vector<std::unique_ptr<Collider>>& firstColliders,
         const glm::vec2& firstPosition,
@@ -24,6 +25,28 @@ namespace physics{
             return false;
         }
         return false; //not implemented yet
+    }
+
+    void CollisionManager::handleCollision(std::shared_ptr<GameObject> first, std::shared_ptr<GameObject> second)
+    {
+        first->OnCollisionCallback(second);
+        second->OnCollisionCallback(first);
+
+        switch (first->getCollisionLayer())
+        {
+        case Collider::CollisionLayer::Bullet:
+            PhysicsEngine::addObjectToRemove(first);
+        default:
+            break;
+        }
+
+        switch (second->getCollisionLayer())
+        {
+        case Collider::CollisionLayer::Bullet:
+            PhysicsEngine::addObjectToRemove(second);
+        default:
+            break;
+        }
     }
 
 

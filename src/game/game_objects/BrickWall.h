@@ -52,6 +52,7 @@ public:
 		const float layer = 0);
 	void render() const override;
 	void update(const double delta) override;
+	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object) override;
 	virtual ~BrickWall() override;
 private:
 	void renderBrick(EBrickLocation eBrickLocation) const;

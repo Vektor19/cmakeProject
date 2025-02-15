@@ -3,6 +3,7 @@
 #include <memory>
 #include "ICollidable.h"
 #include "AABBCollider.h"
+#include "../../game/game_objects/GameObject.h"
 namespace physics
 {
 	class CollisionManager
@@ -18,11 +19,13 @@ namespace physics
 								   const glm::vec2& firstPosition,
 								   const std::vector<std::unique_ptr<Collider>>& secondColliders,
 								   const glm::vec2& secondPosition);
+		static void handleCollision(std::shared_ptr<GameObject> first, std::shared_ptr<GameObject> second);
 
 	private:
 		static bool checkCollisionAABB_AABB(const AABBCollider& first,
 											const glm::vec2& firstPosition,
 											const AABBCollider& second,
 											const glm::vec2& secondPosition);
+
 	};
 }

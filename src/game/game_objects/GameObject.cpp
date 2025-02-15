@@ -19,3 +19,12 @@ void GameObject::setVelocity(const double velocity)
 {
 	m_velocity = velocity;
 }
+
+void GameObject::OnCollisionCallback(const std::shared_ptr<GameObject> object)
+{
+}
+
+physics::Collider::CollisionLayer GameObject::getCollisionLayer() const
+{
+	return m_colliders[0]->getCollisionLayer();
+}
