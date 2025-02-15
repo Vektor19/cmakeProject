@@ -38,6 +38,11 @@ add_executable(${ProjectName}
 	src/game/DynamicObjectsRenderer.h
 	src/game/DynamicObjectsRenderer.cpp
 	
+	src/game/ai/AIComponent.h
+	src/game/ai/AIComponent.cpp
+	src/game/ai/TankAIComponent.h
+	src/game/ai/TankAIComponent.cpp
+	
 	src/game/game_objects/GameObject.h
 	src/game/game_objects/GameObject.cpp
 	src/game/game_objects/Tank.h
@@ -98,6 +103,11 @@ source_group("Header Files\\game" FILES
 	src/game/DynamicObjectsRenderer.h
 )
 
+source_group("Header Files\\game\\ai" FILES 
+	src/game/ai/AIComponent.h
+	src/game/ai/TankAIComponent.h
+)
+
 source_group("Header Files\\game\\game_objects" FILES 
     src/game/game_objects/GameObject.h
     src/game/game_objects/Tank.h
@@ -146,6 +156,11 @@ source_group("Source Files\\game" FILES
     src/game/Game.cpp
     src/game/Level.cpp
 	src/game/DynamicObjectsRenderer.cpp
+)
+
+source_group("Source Files\\game\\ai" FILES 
+	src/game/ai/AIComponent.cpp
+	src/game/ai/TankAIComponent.cpp
 )
 
 source_group("Source Files\\game\\game_objects" FILES 
