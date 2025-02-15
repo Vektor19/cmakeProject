@@ -37,7 +37,9 @@ public:
 		const float layer = 0);
 	void render() const override;
 	void update(const double delta) override;
-
+	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint) override;
+	virtual void takeDamageOnBrick(BetonWall::EBrickLocation eBrickLocation);
+	virtual EBrickLocation getBrickLocationByPoint(const glm::vec2& point);
 private:
 	void renderBrick(EBrickLocation eBrickLocation) const;
 	std::array<std::shared_ptr<renderer::Sprite>, 1> m_sprites;
