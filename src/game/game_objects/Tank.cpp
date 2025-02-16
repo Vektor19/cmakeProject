@@ -339,16 +339,19 @@ void Tank::OnCollisionCallback(const std::shared_ptr<GameObject> object, const g
 
 void Tank::takeDamage(const double damage)
 {
-	m_hitPoints-= damage;
-	if (m_hitPoints<=0)
+	if (!m_hasShield)
 	{
-		m_isAlive = false;
-		physics::PhysicsEngine::addObjectToRemove(shared_from_this());
-		DynamicObjectsRenderer::removeDynamicObject(shared_from_this());
-		
-		if (m_parentLevel)
+		m_hitPoints -= damage;
+		if (m_hitPoints <= 0)
 		{
-			m_parentLevel->removeNonMapObject(shared_from_this());
+			m_isAlive = false;
+			physics::PhysicsEngine::addObjectToRemove(shared_from_this());
+			DynamicObjectsRenderer::removeDynamicObject(shared_from_this());
+
+			if (m_parentLevel)
+			{
+				m_parentLevel->removeNonMapObject(shared_from_this());
+			}
 		}
 	}
 }

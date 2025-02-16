@@ -87,6 +87,10 @@ void TankAIComponent::update(const double delta)
 			m_actionType = TankAIComponent::EActionType::Patrol;
 		}
 	}
+	else if (m_actionType == TankAIComponent::EActionType::Patrol)
+	{
+		m_changeDirrectionTimer.update(delta);
+	}
 }
 
 bool TankAIComponent::isTargetClose(const glm::vec2& targetPos)
