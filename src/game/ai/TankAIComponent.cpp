@@ -4,10 +4,9 @@
 #include <glm/geometric.hpp>
 #include <ctime>
 
-TankAIComponent::TankAIComponent(std::shared_ptr<Tank> owner, const float m_detectionDistance)
+TankAIComponent::TankAIComponent(std::shared_ptr<Tank> owner, const float detectionDistance, const EActionType eActionType)
 	: m_owner(std::move(owner))
-	, AIComponent(m_detectionDistance)
-	, m_actionType(EActionType::None)
+	, AIComponent(detectionDistance, eActionType)
 {
 	srand(time(NULL));
 	m_owner->setHasAI(true);

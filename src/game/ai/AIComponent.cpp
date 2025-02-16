@@ -1,5 +1,5 @@
 #include "AIComponent.h"
 
-AIComponent::AIComponent(float detectionDistance) : m_detectionDistance(detectionDistance)
+AIComponent::AIComponent(const float detectionDistance, const EActionType eActionType) : m_detectionDistance(detectionDistance), m_actionType(eActionType)
 {
 }

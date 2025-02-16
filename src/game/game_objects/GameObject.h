@@ -15,7 +15,7 @@ public:
 	virtual const glm::vec2& getSize() { return m_size;}
 	virtual double getCurrentVelocity() { return m_velocity; }
 	virtual void setVelocity(const double velocity);
-	virtual void initAI();
+	virtual void initAI(const AIComponent::EActionType eActionType);
 	virtual bool isAlive() { return m_isAlive; }
 	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint);
 	virtual physics::Collider::CollisionLayer getCollisionLayer() const;

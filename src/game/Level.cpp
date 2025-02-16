@@ -70,10 +70,18 @@ Level::Level(const std::vector<std::string>& levelDescription)
 		currentBottomOffset -= BLOCK_SIZE;
 	}
 
-	auto enemyTank = std::make_shared<Tank>(Tank::ETankType::DarkGreen3, 0.05, m_enemyRespawn1, glm::vec2(Level::BLOCK_SIZE), 0.f);
-	physics::PhysicsEngine::addDynamicObject(enemyTank);
-	DynamicObjectsRenderer::addDynamicObject(enemyTank);
-	m_nonMapDynamicObjects.emplace_back(enemyTank);
+	auto enemyTank1 = std::make_shared<Tank>(Tank::ETankType::DarkGreen3, 0.05, m_enemyRespawn1, glm::vec2(Level::BLOCK_SIZE), 0.f);
+	physics::PhysicsEngine::addDynamicObject(enemyTank1);
+	DynamicObjectsRenderer::addDynamicObject(enemyTank1);
+	m_nonMapDynamicObjects.emplace_back(enemyTank1);
+	auto enemyTank2 = std::make_shared<Tank>(Tank::ETankType::Red1, 0.03, m_enemyRespawn2, glm::vec2(Level::BLOCK_SIZE), 0.f);
+	physics::PhysicsEngine::addDynamicObject(enemyTank2);
+	DynamicObjectsRenderer::addDynamicObject(enemyTank2);
+	m_nonMapDynamicObjects.emplace_back(enemyTank2);
+	auto enemyTank3 = std::make_shared<Tank>(Tank::ETankType::White1, 0.07, m_enemyRespawn3, glm::vec2(Level::BLOCK_SIZE), 0.f);
+	physics::PhysicsEngine::addDynamicObject(enemyTank3);
+	DynamicObjectsRenderer::addDynamicObject(enemyTank3);
+	m_nonMapDynamicObjects.emplace_back(enemyTank3);
 	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(BLOCK_SIZE, 0.f), glm::vec2(m_widthBlocks * BLOCK_SIZE, BLOCK_SIZE / 2.f), 0, 0.f)); //bottom
 	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(BLOCK_SIZE, m_heightBlocks * BLOCK_SIZE + BLOCK_SIZE / 2.f), glm::vec2(m_widthBlocks * BLOCK_SIZE, BLOCK_SIZE), 0, 0.f)); //top
 	m_mapObjects.emplace_back(std::make_shared<Border>(glm::vec2(0.f, 0.f), glm::vec2(BLOCK_SIZE, (m_heightBlocks + 1) * BLOCK_SIZE), 0, 0.f)); //left
@@ -203,7 +211,7 @@ void Level::postInit(std::shared_ptr<Tank> pTank)
 	for (const auto& obj : m_nonMapDynamicObjects) {
 		if (auto tank = std::dynamic_pointer_cast<Tank>(obj)) {
 			tank->setParentLevel(shared_from_this());
-			tank->initAI();
+			tank->initAI(AIComponent::EActionType::Patrol);
 			tank->setTarget(pTank);
 		}
 	}

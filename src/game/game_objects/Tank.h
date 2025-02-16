@@ -59,7 +59,7 @@ public:
 	virtual void OnCollisionCallback(const std::shared_ptr<GameObject> object, const glm::vec2& collisionPoint) override;
 	virtual void takeDamage(const double damage);
 	void setParentLevel(std::shared_ptr<Level> parentLevel);
-	virtual void initAI() override;
+	virtual void initAI(const AIComponent::EActionType eActionType) override;
 	virtual void setTarget(std::shared_ptr<GameObject> target);
 	virtual void setHasAI(bool hasAI);
 	virtual ~Tank() override;

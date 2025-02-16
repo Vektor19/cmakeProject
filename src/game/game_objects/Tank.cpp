@@ -358,9 +358,9 @@ void Tank::setParentLevel(std::shared_ptr<Level> parentLevel)
 	m_parentLevel = std::move(parentLevel);
 }
 
-void Tank::initAI()
+void Tank::initAI(const AIComponent::EActionType eActionType)
 {
-	m_aiComponent = std::make_unique<TankAIComponent>(shared_from_this());
+	m_aiComponent = std::make_unique<TankAIComponent>(shared_from_this(), 50.0, eActionType);
 }
 
 void Tank::setTarget(std::shared_ptr<GameObject> target)

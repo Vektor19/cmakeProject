@@ -20,7 +20,7 @@ void GameObject::setVelocity(const double velocity)
 	m_velocity = velocity;
 }
 
-void GameObject::initAI()
+void GameObject::initAI(const AIComponent::EActionType eActionType)
 {
     
 }
