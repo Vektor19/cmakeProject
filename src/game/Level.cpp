@@ -70,7 +70,7 @@ Level::Level(const std::vector<std::string>& levelDescription)
 		currentBottomOffset -= BLOCK_SIZE;
 	}
 
-	auto enemyTank = std::make_shared<Tank>(Tank::ETankType::Yellow1, 0.05, m_enemyRespawn1, glm::vec2(Level::BLOCK_SIZE), 0.f);
+	auto enemyTank = std::make_shared<Tank>(Tank::ETankType::DarkGreen3, 0.05, m_enemyRespawn1, glm::vec2(Level::BLOCK_SIZE), 0.f);
 	physics::PhysicsEngine::addDynamicObject(enemyTank);
 	DynamicObjectsRenderer::addDynamicObject(enemyTank);
 	m_nonMapDynamicObjects.emplace_back(enemyTank);

@@ -101,7 +101,181 @@
 				"yellowType1_bottom1",
 				"yellowType1_bottom2",
 				"yellowType1_right1",
-				"yellowType1_right2"
+				"yellowType1_right2",
+				
+				"whiteType1_top1",
+				"whiteType1_top2",
+				"whiteType1_left1",
+				"whiteType1_left2",
+				"whiteType1_bottom1",
+				"whiteType1_bottom2",
+				"whiteType1_right1",
+				"whiteType1_right2",
+				
+				"yellowType2_top1",
+				"yellowType2_top2",
+				"yellowType2_left1",
+				"yellowType2_left2",
+				"yellowType2_bottom1",
+				"yellowType2_bottom2",
+				"yellowType2_right1",
+				"yellowType2_right2",
+				
+				"whiteType2_top1",
+				"whiteType2_top2",
+				"whiteType2_left1",
+				"whiteType2_left2",
+				"whiteType2_bottom1",
+				"whiteType2_bottom2",
+				"whiteType2_right1",
+				"whiteType2_right2",
+				
+				"yellowType3_top1",
+				"yellowType3_top2",
+				"yellowType3_left1",
+				"yellowType3_left2",
+				"yellowType3_bottom1",
+				"yellowType3_bottom2",
+				"yellowType3_right1",
+				"yellowType3_right2",
+				
+				"whiteType3_top1",
+				"whiteType3_top2",
+				"whiteType3_left1",
+				"whiteType3_left2",
+				"whiteType3_bottom1",
+				"whiteType3_bottom2",
+				"whiteType3_right1",
+				"whiteType3_right2",
+				
+				"yellowType4_top1",
+				"yellowType4_top2",
+				"yellowType4_left1",
+				"yellowType4_left2",
+				"yellowType4_bottom1",
+				"yellowType4_bottom2",
+				"yellowType4_right1",
+				"yellowType4_right2",
+				
+				"whiteType4_top1",
+				"whiteType4_top2",
+				"whiteType4_left1",
+				"whiteType4_left2",
+				"whiteType4_bottom1",
+				"whiteType4_bottom2",
+				"whiteType4_right1",
+				"whiteType4_right2",
+				
+				"greenType1_top1",
+				"greenType1_top2",
+				"greenType1_left1",
+				"greenType1_left2",
+				"greenType1_bottom1",
+				"greenType1_bottom2",
+				"greenType1_right1",
+				"greenType1_right2",
+				
+				"darkgreenType1_top1",
+				"darkgreenType1_top2",
+				"darkgreenType1_left1",
+				"darkgreenType1_left2",
+				"darkgreenType1_bottom1",
+				"darkgreenType1_bottom2",
+				"darkgreenType1_right1",
+				"darkgreenType1_right2",
+				
+				"greenType2_top1",
+				"greenType2_top2",
+				"greenType2_left1",
+				"greenType2_left2",
+				"greenType2_bottom1",
+				"greenType2_bottom2",
+				"greenType2_right1",
+				"greenType2_right2",
+				
+				"darkgreenType2_top1",
+				"darkgreenType2_top2",
+				"darkgreenType2_left1",
+				"darkgreenType2_left2",
+				"darkgreenType2_bottom1",
+				"darkgreenType2_bottom2",
+				"darkgreenType2_right1",
+				"darkgreenType2_right2",
+				
+				"greenType3_top1",
+				"greenType3_top2",
+				"greenType3_left1",
+				"greenType3_left2",
+				"greenType3_bottom1",
+				"greenType3_bottom2",
+				"greenType3_right1",
+				"greenType3_right2",
+				
+				"darkgreenType3_top1",
+				"darkgreenType3_top2",
+				"darkgreenType3_left1",
+				"darkgreenType3_left2",
+				"darkgreenType3_bottom1",
+				"darkgreenType3_bottom2",
+				"darkgreenType3_right1",
+				"darkgreenType3_right2",
+				
+				"greenType4_top1",
+				"greenType4_top2",
+				"greenType4_left1",
+				"greenType4_left2",
+				"greenType4_bottom1",
+				"greenType4_bottom2",
+				"greenType4_right1",
+				"greenType4_right2",
+				
+				"darkgreenType4_top1",
+				"darkgreenType4_top2",
+				"darkgreenType4_left1",
+				"darkgreenType4_left2",
+				"darkgreenType4_bottom1",
+				"darkgreenType4_bottom2",
+				"darkgreenType4_right1",
+				"darkgreenType4_right2",
+				
+				"redType1_top1",
+				"redType1_top2",
+				"redType1_left1",
+				"redType1_left2",
+				"redType1_bottom1",
+				"redType1_bottom2",
+				"redType1_right1",
+				"redType1_right2",
+				"","","","","","","","",
+				
+				"redType2_top1",
+				"redType2_top2",
+				"redType2_left1",
+				"redType2_left2",
+				"redType2_bottom1",
+				"redType2_bottom2",
+				"redType2_right1",
+				"redType2_right2",
+				"","","","","","","","",
+				
+				"redType3_top1",
+				"redType3_top2",
+				"redType3_left1",
+				"redType3_left2",
+				"redType3_bottom1",
+				"redType3_bottom2",
+				"redType3_right1",
+				"redType3_right2",
+				"","","","","","","","",
+				
+				"redType4_top1",
+				"redType4_top2",
+				"redType4_left1",
+				"redType4_left2",
+				"redType4_bottom1",
+				"redType4_bottom2",
+				"redType4_right1",
+				"redType4_right2"
 			]
 		},
 		{
@@ -288,7 +462,7 @@
             "initialSubTexture" : "eagle_dead"
         },
         {
-			"name" 				: "tankSprite_top",
+			"name" 				: "yellowType1_top",
 			"textureAtlas" 		: "tanksTextureAtlas",
 			"shader" 			: "spriteShader",
 			"initialSubTexture" : "yellowType1_top1",
@@ -304,7 +478,7 @@
             ]
 		},
 		{
-			"name" 				: "tankSprite_bottom",
+			"name" 				: "yellowType1_bottom",
 			"textureAtlas" 		: "tanksTextureAtlas",
 			"shader" 			: "spriteShader",
 			"initialSubTexture" : "yellowType1_bottom1",
@@ -320,7 +494,7 @@
             ]
 		},
 		{
-			"name" 				: "tankSprite_left",
+			"name" 				: "yellowType1_left",
 			"textureAtlas" 		: "tanksTextureAtlas",
 			"shader" 			: "spriteShader",
 			"initialSubTexture" : "yellowType1_left1",
@@ -336,7 +510,7 @@
             ]
 		},
 		{
-			"name" 				: "tankSprite_right",
+			"name" 				: "yellowType1_right",
 			"textureAtlas" 		: "tanksTextureAtlas",
 			"shader" 			: "spriteShader",
 			"initialSubTexture" : "yellowType1_right1",
@@ -351,6 +525,1226 @@
                 }
             ]
 		},
+		{
+			"name" 				: "yellowType2_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType2_top1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType2_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "yellowType2_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType2_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType2_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType2_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType2_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType2_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType2_left1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType2_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType2_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType2_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType2_right1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType2_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType2_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType3_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType3_top1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType3_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "yellowType3_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType3_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType3_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType3_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType3_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType3_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType3_left1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType3_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType3_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType3_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType3_right1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType3_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType3_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType4_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType4_top1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType4_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "yellowType4_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType4_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType4_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType4_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType4_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType4_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType4_left1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType4_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType4_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "yellowType4_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "yellowType4_right1",
+			"frames" : [
+                {
+                    "subTexture" : "yellowType4_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "yellowType4_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType1_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType1_top1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType1_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "whiteType1_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType1_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType1_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType1_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType1_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType1_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType1_left1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType1_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType1_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType1_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType1_right1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType1_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType1_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType2_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType2_top1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType2_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "whiteType2_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType2_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType2_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType2_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType2_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType2_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType2_left1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType2_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType2_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType2_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType2_right1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType2_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType2_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType3_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType3_top1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType3_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "whiteType3_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType3_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType3_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType3_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType3_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType3_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType3_left1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType3_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType3_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType3_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType3_right1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType3_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType3_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType4_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType4_top1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType4_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "whiteType4_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType4_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType4_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType4_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType4_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType4_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType4_left1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType4_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType4_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "whiteType4_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "whiteType4_right1",
+			"frames" : [
+                {
+                    "subTexture" : "whiteType4_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "whiteType4_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		
+		{
+			"name" 				: "greenType1_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType1_top1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType1_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "greenType1_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType1_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType1_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType1_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType1_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType1_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType1_left1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType1_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType1_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType1_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType1_right1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType1_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType1_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType2_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType2_top1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType2_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "greenType2_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType2_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType2_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType2_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType2_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType2_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType2_left1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType2_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType2_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType2_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType2_right1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType2_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType2_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType3_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType3_top1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType3_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "greenType3_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType3_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType3_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType3_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType3_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType3_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType3_left1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType3_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType3_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType3_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType3_right1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType3_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType3_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType4_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType4_top1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType4_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "greenType4_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType4_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType4_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType4_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType4_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType4_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType4_left1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType4_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType4_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "greenType4_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "greenType4_right1",
+			"frames" : [
+                {
+                    "subTexture" : "greenType4_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "greenType4_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		
+		{
+			"name" 				: "darkgreenType1_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType1_top1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType1_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "darkgreenType1_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType1_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType1_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType1_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType1_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType1_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType1_left1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType1_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType1_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType1_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType1_right1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType1_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType1_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType2_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType2_top1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType2_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "darkgreenType2_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType2_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType2_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType2_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType2_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType2_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType2_left1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType2_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType2_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType2_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType2_right1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType2_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType2_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType3_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType3_top1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType3_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "darkgreenType3_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType3_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType3_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType3_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType3_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType3_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType3_left1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType3_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType3_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType3_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType3_right1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType3_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType3_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType4_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType4_top1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType4_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "darkgreenType4_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType4_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType4_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType4_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType4_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType4_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType4_left1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType4_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType4_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "darkgreenType4_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "darkgreenType4_right1",
+			"frames" : [
+                {
+                    "subTexture" : "darkgreenType4_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "darkgreenType4_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		
+		{
+			"name" 				: "redType1_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType1_top1",
+			"frames" : [
+                {
+                    "subTexture" : "redType1_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "redType1_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "redType1_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType1_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "redType1_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType1_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType1_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType1_left1",
+			"frames" : [
+                {
+                    "subTexture" : "redType1_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType1_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType1_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType1_right1",
+			"frames" : [
+                {
+                    "subTexture" : "redType1_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType1_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType2_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType2_top1",
+			"frames" : [
+                {
+                    "subTexture" : "redType2_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "redType2_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "redType2_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType2_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "redType2_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType2_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType2_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType2_left1",
+			"frames" : [
+                {
+                    "subTexture" : "redType2_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType2_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType2_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType2_right1",
+			"frames" : [
+                {
+                    "subTexture" : "redType2_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType2_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType3_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType3_top1",
+			"frames" : [
+                {
+                    "subTexture" : "redType3_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "redType3_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "redType3_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType3_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "redType3_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType3_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType3_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType3_left1",
+			"frames" : [
+                {
+                    "subTexture" : "redType3_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType3_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType3_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType3_right1",
+			"frames" : [
+                {
+                    "subTexture" : "redType3_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType3_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType4_top",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType4_top1",
+			"frames" : [
+                {
+                    "subTexture" : "redType4_top1",
+                    "duration"   : 500
+                },
+                {
+                    "subTexture" : "redType4_top2",
+                    "duration"   : 500
+                }
+            ]
+		},
+		{
+			"name" 				: "redType4_bottom",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType4_bottom1",
+			"frames" : [
+                {
+                    "subTexture" : "redType4_bottom1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType4_bottom2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType4_left",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType4_left1",
+			"frames" : [
+                {
+                    "subTexture" : "redType4_left1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType4_left2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		{
+			"name" 				: "redType4_right",
+			"textureAtlas" 		: "tanksTextureAtlas",
+			"shader" 			: "spriteShader",
+			"initialSubTexture" : "redType4_right1",
+			"frames" : [
+                {
+                    "subTexture" : "redType4_right1",
+                    "duration"   : 200
+                },
+                {
+                    "subTexture" : "redType4_right2",
+                    "duration"   : 200
+                }
+            ]
+		},
+		
         {
 			"name" 				: "respawn",
 			"textureAtlas" 		: "mapTextureAtlas_16x16",

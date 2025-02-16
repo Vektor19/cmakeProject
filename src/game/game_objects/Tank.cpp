@@ -34,17 +34,133 @@ Tank::Tank(const ETankType eTankType,
 	switch (eTankType)
 	{
 	case ETankType::Yellow1:
-		spriteTopName		= "tankSprite_top";
-		spriteBottomName	= "tankSprite_bottom";
-		spriteLeftName		= "tankSprite_left";
-		spriteRightName		= "tankSprite_right";
+		spriteTopName = "yellowType1_top";
+		spriteBottomName = "yellowType1_bottom";
+		spriteLeftName = "yellowType1_left";
+		spriteRightName = "yellowType1_right";
+		break;
+	case ETankType::Yellow2:
+		spriteTopName = "yellowType2_top";
+		spriteBottomName = "yellowType2_bottom";
+		spriteLeftName = "yellowType2_left";
+		spriteRightName = "yellowType2_right";
+		break;
+	case ETankType::Yellow3:
+		spriteTopName = "yellowType3_top";
+		spriteBottomName = "yellowType3_bottom";
+		spriteLeftName = "yellowType3_left";
+		spriteRightName = "yellowType3_right";
+		break;
+	case ETankType::Yellow4:
+		spriteTopName = "yellowType4_top";
+		spriteBottomName = "yellowType4_bottom";
+		spriteLeftName = "yellowType4_left";
+		spriteRightName = "yellowType4_right";
+		break;
+	case ETankType::White1:
+		spriteTopName = "whiteType1_top";
+		spriteBottomName = "whiteType1_bottom";
+		spriteLeftName = "whiteType1_left";
+		spriteRightName = "whiteType1_right";
+		break;
+	case ETankType::White2:
+		spriteTopName = "whiteType2_top";
+		spriteBottomName = "whiteType2_bottom";
+		spriteLeftName = "whiteType2_left";
+		spriteRightName = "whiteType2_right";
+		break;
+	case ETankType::White3:
+		spriteTopName = "whiteType3_top";
+		spriteBottomName = "whiteType3_bottom";
+		spriteLeftName = "whiteType3_left";
+		spriteRightName = "whiteType3_right";
+		break;
+	case ETankType::White4:
+		spriteTopName = "whiteType4_top";
+		spriteBottomName = "whiteType4_bottom";
+		spriteLeftName = "whiteType4_left";
+		spriteRightName = "whiteType4_right";
+		break;
+	case ETankType::Green1:
+		spriteTopName = "greenType1_top";
+		spriteBottomName = "greenType1_bottom";
+		spriteLeftName = "greenType1_left";
+		spriteRightName = "greenType1_right";
+		break;
+	case ETankType::Green2:
+		spriteTopName = "greenType2_top";
+		spriteBottomName = "greenType2_bottom";
+		spriteLeftName = "greenType2_left";
+		spriteRightName = "greenType2_right";
+		break;
+	case ETankType::Green3:
+		spriteTopName = "greenType3_top";
+		spriteBottomName = "greenType3_bottom";
+		spriteLeftName = "greenType3_left";
+		spriteRightName = "greenType3_right";
+		break;
+	case ETankType::Green4:
+		spriteTopName = "greenType4_top";
+		spriteBottomName = "greenType4_bottom";
+		spriteLeftName = "greenType4_left";
+		spriteRightName = "greenType4_right";
+		break;
+	case ETankType::DarkGreen1:
+		spriteTopName = "darkgreenType1_top";
+		spriteBottomName = "darkgreenType1_bottom";
+		spriteLeftName = "darkgreenType1_left";
+		spriteRightName = "darkgreenType1_right";
+		break;
+	case ETankType::DarkGreen2:
+		spriteTopName = "darkgreenType2_top";
+		spriteBottomName = "darkgreenType2_bottom";
+		spriteLeftName = "darkgreenType2_left";
+		spriteRightName = "darkgreenType2_right";
+		break;
+	case ETankType::DarkGreen3:
+		spriteTopName = "darkgreenType3_top";
+		spriteBottomName = "darkgreenType3_bottom";
+		spriteLeftName = "darkgreenType3_left";
+		spriteRightName = "darkgreenType3_right";
+		break;
+	case ETankType::DarkGreen4:
+		spriteTopName = "darkgreenType4_top";
+		spriteBottomName = "darkgreenType4_bottom";
+		spriteLeftName = "darkgreenType4_left";
+		spriteRightName = "darkgreenType4_right";
+		break;
+	case ETankType::Red1:
+		spriteTopName = "redType1_top";
+		spriteBottomName = "redType1_bottom";
+		spriteLeftName = "redType1_left";
+		spriteRightName = "redType1_right";
+		break;
+	case ETankType::Red2:
+		spriteTopName = "redType2_top";
+		spriteBottomName = "redType2_bottom";
+		spriteLeftName = "redType2_left";
+		spriteRightName = "redType2_right";
+		break;
+	case ETankType::Red3:
+		spriteTopName = "redType3_top";
+		spriteBottomName = "redType3_bottom";
+		spriteLeftName = "redType3_left";
+		spriteRightName = "redType3_right";
+		break;
+	case ETankType::Red4:
+		spriteTopName = "redType4_top";
+		spriteBottomName = "redType4_bottom";
+		spriteLeftName = "redType4_left";
+		spriteRightName = "redType4_right";
+		break;
 	default:
-		spriteTopName		= "tankSprite_top";
-		spriteBottomName	= "tankSprite_bottom";
-		spriteLeftName		= "tankSprite_left";
-		spriteRightName		= "tankSprite_right";
+		spriteTopName = "yellowType1_top";
+		spriteBottomName = "yellowType1_bottom";
+		spriteLeftName = "yellowType1_left";
+		spriteRightName = "yellowType1_right";
 		break;
 	}
+
 	m_pSprite_top    = resources::ResourcesManager::getSprite(spriteTopName);
 	m_pSprite_bottom = resources::ResourcesManager::getSprite(spriteBottomName);
 	m_pSprite_left   = resources::ResourcesManager::getSprite(spriteLeftName);
