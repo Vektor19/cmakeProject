@@ -51,6 +51,7 @@ public:
 
 	void render() const override;
 	void setOrientation(const EOrientation eOrientation);
+	EOrientation getOrientation() const { return m_eOrientation; }
 	void update(const double delta) override;
 	double getMaxVelocity() const { return m_maxVelocity; }
 	virtual void setVelocity(const double velocity) override;
