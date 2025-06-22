@@ -199,6 +199,9 @@ target_link_libraries(${ProjectName} glfw)
 add_subdirectory(external/glad)
 target_link_libraries(${ProjectName} glad)
 
+add_subdirectory(external/Network)
+target_link_libraries(${ProjectName} ws2_32 Network)
+
 include_directories(external/glm)
 
 include_directories(external/rapidjson/include)
